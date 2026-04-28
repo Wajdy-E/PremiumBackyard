@@ -1,0 +1,216 @@
+{% liquid
+  assign query_results = false
+  assign product_results = false
+  assign collection_results = false
+  assign content_results = false
+  assign page_results = false
+  assign post_results = false
+  assign two_columns = false
+  assign no_search_results = true
+
+  if predictive_search.resources.queries.size > 0
+    assign query_results = true
+  endif
+
+  if predictive_search.resources.products.size > 0
+    assign product_results = true
+  endif
+
+  if predictive_search.resources.collections.size > 0
+    assign collection_results = true
+  endif
+
+  if predictive_search.resources.pages.size > 0
+    assign page_results = true
+  endif
+
+  if predictive_search.resources.articles.size > 0
+    assign post_results = true
+  endif
+
+  if page_results or post_results
+    assign content_results = true
+  endif
+
+  if product_results and content_results
+    assign two_columns = true
+  endif
+
+  if query_results or product_results or collection_results or content_results
+    assign no_search_results = false
+  endif
+%}
+
+{%- if predictive_search.performed -%}
+  <div class="predictive-search {% if no_search_results %}predictive-search--empty{%- endif -%}" data-predictive-search>
+    {%- if no_search_results -%}
+      <div class="search-flydown__no-results">
+        {{ 'search.general.livesearch_no_results' | t }}
+      </div>
+    {%- else -%}
+      <div class="predictive-search__results-container">
+        {%- if query_results or collection_results -%}
+          <div class="search-flydown__results-group search-flydown__results-group--suggestions">
+            <h5 class="search-flydown__group-title">
+              {{ 'search.general.suggestions' | t }}
+            </h5>
+            {%- if query_results -%}
+              <ul class="search-flydown__query-suggestions search-flydown__result-list">
+                {%- for query in predictive_search.resources.queries -%}
+                  <li class="search-flydown__list-item ">
+                    <a
+                      class="search-flydown__query-suggestion"
+                      href="{{ query.url }}"
+                    >
+                      {{ query.styled_text }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+
+            {%- if collection_results -%}
+              <ul class="search-flydown__collection-results search-flydown__result-list">
+                {%- for collection in predictive_search.resources.collections -%}
+                  <li class="search-flydown__list-item">
+                    <a
+                      class="search-flydown__collection-result"
+                      href="{{ collection.url }}"
+                    >
+                      {{ collection.title }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if product_results or page_results or post_results -%}
+          <div class="
+            search-flydown__results-group
+            search-flydown__results-group--products-content
+            {% if two_columns %}
+              search-flydown__results-group--two-column
+            {% else %}
+              search-flydown__results-group--one-column
+            {%- endif -%}
+            "
+          >
+            {%- if product_results -%}
+              <div class="search-flydown__products">
+                <h5 class="search-flydown__group-title">
+                  {{ 'search.general.products' | t }}
+                </h5>
+                <ul class="search-flydown__product-items search-flydown__result-list">
+                  {%- for product in predictive_search.resources.products-%}
+                    {%
+                      include 'api' with 'product:price',
+                      product: product,
+                    %}
+
+                    <li class="search-flydown__list-item">
+                      <a
+                        class="search-flydown__product"
+                        href="{{ product.url }}"
+                        aria-label="{{ product.title }}"
+                      >
+                        <figure class="search-flydown__product-image">
+                          {%- if product.featured_media != blank -%}
+                            {%
+                              render 'rimg'
+                              img: product.featured_media.preview_image,
+                              alt: product.featured_media.preview_image.alt,
+                              size: '70x',
+                              lazy: true,
+                            %}
+                          {%- else -%}
+                            {{ 'image' | placeholder_svg_tag: 'placeholder--image' }}
+                          {%- endif -%}
+                        </figure>
+                        <div class="search-flydown__product-text">
+                          <span class="search-flydown__product-title">
+                            {{ product.title }}
+                          </span>
+                          <span class="search-flydown__product-price">
+                            {%- liquid
+                              assign on_sale = false
+                              if compare_at_price > price
+                                assign on_sale = true
+                              endif
+                            -%}
+                              {%
+                                include 'product-price',
+                                class_root: 'search-flydown__product',
+                                price: price,
+                                price_varies: price_varies,
+                                compare_at_price: compare_at_price,
+                                compare_at_price_varies: compare_at_price_varies,
+                                on_sale: on_sale,
+                                emphasize_price: emphasize_price,
+                                show_original: consistent_saved
+                              %}
+                          </span>
+                          {%- if settings.swatches_enable == true and settings.swatches_product_page_only == false -%}
+                            {%- liquid
+                                assign swatch_count = nil
+                                assign swatch_trigger = settings.swatches_swatch_trigger | strip | downcase
+                                for option in product.options_with_values
+                                  assign option_name = option.name | downcase
+                                  if option_name == swatch_trigger
+                                    assign swatch_count = 'product.color_swatches.swatches_count' | t: count: option.values.size
+                                    break
+                                  endif
+                                endfor
+                            -%}
+                            {%- if swatch_count -%}
+                              <span class="search-flydown__swatches">
+                                {{ swatch_count }}
+                              </span>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </div>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+
+            {%- if page_results or post_results -%}
+              <div class="search-flydown__content-items {% if product_results == false %}search-flydown__no-products{%- endif -%}">
+                <h5 class="search-flydown__group-title">
+                  {%- if page_results and post_results == false -%}
+                    {{ 'search.general.pages_title' | t }}
+                  {%- elsif page_results == false and post_results -%}
+                    {{ 'search.general.posts_title' | t }}
+                  {%- else -%}
+                    {{ 'search.general.pages_and_posts_title' | t }}
+                  {%- endif -%}
+                </h5>
+                <ul class="search-flydown__content-items-list search-flydown__result-list">
+                  {%- for page in predictive_search.resources.pages -%}
+                    <li class="search-flydown__list-item search-flydown__content-item">
+                      <a class="search-flydown__content-item-link" href="{{ page.url }}">{{ page.title }}</a>
+                    </li>
+                  {%- endfor -%}
+                  {%- for article in predictive_search.resources.articles -%}
+                    <li class="search-flydown__list-item search-flydown__content-item">
+                      <a class="search-flydown__content-item-link" href="{{ article.url }}">{{ article.title }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="search-flydown__footer" data-predictive-search-footer>
+      <button class="search-flydown__continue" type="submit">
+        {{ 'search.general.search_for_term' | t: terms: predictive_search.terms }}
+      </button>
+    </div>
+  </div>
+{%- endif -%}

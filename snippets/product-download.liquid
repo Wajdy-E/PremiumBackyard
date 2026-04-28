@@ -1,0 +1,115 @@
+{% liquid
+  assign file = blank
+  assign namespace = block.settings.metafield_namespace | default: 'custom'
+  assign key = block.settings.metafield_key | default: 'rolux_guide'
+
+  if namespace != blank and key != blank
+    assign metafield = product.metafields[namespace][key]
+    assign file = metafield.value
+  endif
+%}
+
+{% if file != blank %}
+  {% liquid
+    assign file_url = file.url | default: file
+    assign button_label = block.settings.button_label
+
+    if button_label == blank
+      assign button_label = 'Download guide'
+    endif
+  %}
+
+  <style>
+    #shopify-section-{{ section.id }} .product-download {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid {{ block.settings.border_color }};
+      border-radius: {{ block.settings.border_radius }}px;
+      background: {{ block.settings.background_color }};
+    }
+
+    #shopify-section-{{ section.id }} .product-download__icon {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: {{ block.settings.icon_background_color }};
+      color: {{ block.settings.accent_color }};
+    }
+
+    #shopify-section-{{ section.id }} .product-download__icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    #shopify-section-{{ section.id }} .product-download__content {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    #shopify-section-{{ section.id }} .product-download__heading {
+      margin: 0;
+      color: {{ block.settings.heading_color }};
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    #shopify-section-{{ section.id }} .product-download__text {
+      margin: 3px 0 0;
+      color: {{ block.settings.text_color }};
+      font-size: 0.8125rem;
+      line-height: 1.45;
+    }
+
+    #shopify-section-{{ section.id }} .product-download__link {
+      flex: 0 0 auto;
+      color: {{ block.settings.accent_color }};
+      font-size: 0.8125rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    #shopify-section-{{ section.id }} .product-download__link:hover {
+      color: {{ block.settings.accent_hover_color }};
+    }
+
+    @media screen and (max-width: 479px) {
+      #shopify-section-{{ section.id }} .product-download {
+        align-items: flex-start;
+      }
+
+      #shopify-section-{{ section.id }} .product-download__link {
+        align-self: center;
+      }
+    }
+  </style>
+
+  <aside class="product-download" aria-label="{{ block.settings.heading | escape }}">
+    <span class="product-download__icon">
+      {% render 'icon-library', id: 'icon-label-tag' %}
+    </span>
+
+    <div class="product-download__content">
+      {% if block.settings.heading != blank %}
+        <h2 class="product-download__heading">{{ block.settings.heading | escape }}</h2>
+      {% endif %}
+
+      {% if block.settings.text != blank %}
+        <p class="product-download__text">{{ block.settings.text | escape }}</p>
+      {% endif %}
+    </div>
+
+    <a class="product-download__link" href="{{ file_url }}" download>
+      {{ button_label | escape }}
+    </a>
+  </aside>
+{% endif %}

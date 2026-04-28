@@ -1,0 +1,605 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_image_with_text_MDgDrD": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_crRtbd": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/Rolux_Z-series_in_9BL_White.jpg",
+            "img_position_desktop": "right",
+            "img_width_desktop": 40,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#ffffff",
+            "preheading": "Precision Lawn Care",
+            "preheading_color": "#4d4d4d",
+            "heading": "Starts with Rolux",
+            "heading_color": "#d63932",
+            "heading_size": "xlarge",
+            "text_content": "<p>Discover our complete line of premium lawn mowers designed for every need. From compact residential models to professional zero-turn machines.</p>",
+            "text_content_color": "#4a5565",
+            "button_link": "shopify://collections/rolux-reel-mowers",
+            "button_text": "Explore The Rolux Series",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "bottom-right",
+            "overlay_background": "#d63932",
+            "overlay_heading": "Precision in Every Pass",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "<p>Built to perform</p>",
+            "overlay_text_content_color": "#ffffff",
+            "signpost_color": "#ffffff",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_crRtbd"
+      ],
+      "custom_css": [
+        ".alt-img-with-text--content .alt-img-with-text--text .heading.xlarge {font-size: 2.1rem;}",
+        ".preheading,.text-content {font-size: 1rem;}",
+        ".image-mobile .img-with-text-overlay {display: none;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "#1f2937",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    },
+    "main": {
+      "type": "static-page",
+      "disabled": true,
+      "custom_css": [
+        "img {border-radius: 10px;}"
+      ],
+      "settings": {}
+    },
+    "dynamic_image_with_text_EjFddX": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_Njgd6U": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/Rolux_Z-series_in_9BL_White.jpg",
+            "img_position_desktop": "left",
+            "img_width_desktop": 50,
+            "img_height_desktop": "custom",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#111827",
+            "preheading": "",
+            "preheading_color": "#ffffff",
+            "heading": "Rolux Z Series",
+            "heading_color": "#ffffff",
+            "heading_size": "xlarge",
+            "text_content": "<p>The Z Series represents the most advanced Rolux reel mowers, designed for serious lawn care enthusiasts who want tournament-quality results and maximum performance.</p><ul><li><strong>20\" and 25\" cutting widths for larger lawns</strong><br/></li><li><strong>High-performance Honda engine</strong><br/></li><li><strong>Precision reel system for ultra-clean cuts</strong><br/></li><li><strong>Heavy-duty construction for professional-grade mowing</strong></li></ul>",
+            "text_content_color": "#ffffff",
+            "button_link": "shopify://collections/rolux-z-series",
+            "button_text": "Shop The Z Series",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "#d63932",
+            "overlay_heading": "Z Series",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "",
+            "overlay_text_content_color": "#ffffff",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_Njgd6U"
+      ],
+      "custom_css": [
+        "svg {stroke-width: 2; fill: #f79c9c; fill-opacity: 0.3;}",
+        ".feature-content-wrapper {color: white;}",
+        ".alt-img-with-text--content {border: 1px solid #111827;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_featured_collection_wKLPJV": {
+      "type": "dynamic-featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "collection": "rolux-z-series",
+        "product_count": 11,
+        "product_layout": "slideshow",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    },
+    "dynamic_image_with_text_NDdBxy": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_XjcFCx": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/13_326de726-0171-4b10-bddd-6dd02a6c5577.webp",
+            "img_position_desktop": "right",
+            "img_width_desktop": 50,
+            "img_height_desktop": "custom",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#1f2937",
+            "preheading": "",
+            "preheading_color": "#ffffff",
+            "heading": "Rolux S Series",
+            "heading_color": "#ffffff",
+            "heading_size": "xlarge",
+            "text_content": "<p>Designed for homeowners seeking a clean, precision cut without the complexity of commercial equipment. The S Series delivers reliable performance and golf-course style striping in a compact residential mower.</p><ul><li>Available in <strong>17\" and 20\" cutting widths</strong><br/></li><li><strong>6- or 9-blade precision reel options</strong><br/></li><li><strong>Adjustable cutting height (15–37 mm) with indicator</strong><br/></li><li><strong>Rear roller and grass catcher included for clean striping</strong></li></ul>",
+            "text_content_color": "#ffffff",
+            "button_link": "shopify://collections/rolux-s-series",
+            "button_text": "Shop The S Series",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "right",
+            "overlay_background": "#d63932",
+            "overlay_heading": "S Series",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_XjcFCx"
+      ],
+      "custom_css": [
+        "svg {stroke-width: 2; fill: #f79c9c; fill-opacity: 0.3;}",
+        ".feature-content-wrapper {color: white;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_featured_collection_rh7GTR": {
+      "type": "dynamic-featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "collection": "rolux-s-series",
+        "product_count": 4,
+        "product_layout": "grid",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    },
+    "comparision_table_BePn4M": {
+      "type": "comparision-table",
+      "blocks": {
+        "row_UVPAza": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Price Range (CAD)",
+            "cell_1_primary_text": false,
+            "cell_2": "$2,999.99 – ~$7,000 (electric batteries extra)",
+            "cell_2_primary_text": false,
+            "cell_3": "$4,499.99 – $5,499.99",
+            "cell_3_primary_text": false,
+            "cell_4": "~$5,000+ (USD-priced, no CAD dealer)",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_LfwNLT": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Engine",
+            "cell_1_primary_text": false,
+            "cell_2": "Honda GX160 (Z-Series gas) B&S 196cc (S-Series) EGO battery (Z-Series electric)",
+            "cell_2_primary_text": false,
+            "cell_3": "B&S 127cc XR550 (B models) Honda 122cc GX120 (H models)",
+            "cell_3_primary_text": false,
+            "cell_4": "B&S XR550 127cc (Edwin gas) LiFePO4 battery (Electra electric)",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_kFUPTT": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Drive System",
+            "cell_1_primary_text": false,
+            "cell_2": "Full chain drive + friction clutch for reel engagement/disengagement",
+            "cell_2_primary_text": false,
+            "cell_3": "V-belt + gear drive (enables 60-sec cartridge swap)",
+            "cell_3_primary_text": false,
+            "cell_4": "V-belt (Continental CONTIV-GARDEN + SYNCHROFORCE belts)",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_3a84kG": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Build Quality",
+            "cell_1_primary_text": false,
+            "cell_2": "99% steel construction. Only 8 oz of plastic on the entire mower",
+            "cell_2_primary_text": false,
+            "cell_3": "Steel frame, plastic grassbox +belt covers",
+            "cell_3_primary_text": false,
+            "cell_4": "All-metal construction, minimal plastic parts",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_LAw86h": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Warranty",
+            "cell_1_primary_text": false,
+            "cell_2": "5 Years",
+            "cell_2_primary_text": false,
+            "cell_3": "2 Years (homeowner) 3 MONTHS if used commercially",
+            "cell_3_primary_text": false,
+            "cell_4": "2 Years (homeowner) 6 Months (commercial use)",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_cRkR64": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Cutting Widths",
+            "cell_1_primary_text": false,
+            "cell_2": "17\", 20\", 25\", 30\" (S + Z Series)",
+            "cell_2_primary_text": false,
+            "cell_3": "14\", 17\", 20\"",
+            "cell_3_primary_text": false,
+            "cell_4": "18\" (45cm) / 22\" (55cm)",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_mwVUKC": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Blade Count Options",
+            "cell_1_primary_text": false,
+            "cell_2": "6, 9, or 12 blades (model dependent)",
+            "cell_2_primary_text": false,
+            "cell_3": "6 blades standard (10-blade cartridge optional)",
+            "cell_3_primary_text": false,
+            "cell_4": "5, 6, or 10 blades (via cartridge swap)",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_EVh3bG": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Cartridge / Accessory System",
+            "cell_1_primary_text": false,
+            "cell_2": "No cartridge swap. Single-purpose, dedicated mowing machine.",
+            "cell_2_primary_text": false,
+            "cell_3": "Quick Cartridge system: swap to scarifier,  aerator, dethatcher in ~60 seconds",
+            "cell_3_primary_text": false,
+            "cell_4": "5-in-1 cartridge system: verticutter, scarifier, groomer, brush",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_NHyY6k": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Lawn Size Fit",
+            "cell_1_primary_text": false,
+            "cell_2": "S17: up to ~3,500 sq ft, Z20:~5,000–8,000 sq ft, Z25:~8,000–15,000 sq ft Z30:15,000+ sq ft",
+            "cell_2_primary_text": false,
+            "cell_3": "14\": up to ~4,300 sq, ft17\": up to ~7,500 sq, ft20\": up to ~9,700 sq ft",
+            "cell_3_primary_text": false,
+            "cell_4": "45cm: up to ~6,500 sq, ft55cm: up to ~21,500 sq ft",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_Lb8N7d": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Height of Cut Range",
+            "cell_1_primary_text": false,
+            "cell_2": "3/16\" – 1-3/4\" (5mm - 45mm)",
+            "cell_2_primary_text": false,
+            "cell_3": "1/4\" – 1-1/4\" (6mm – 32mm)",
+            "cell_3_primary_text": false,
+            "cell_4": "0.2\" – 1.8\" (4mm – 45mm)",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_jyezHi": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Z-Series Availability",
+            "cell_1_primary_text": false,
+            "cell_2": "Late April 2026 (gas models) Late May 2026 (electric)",
+            "cell_2_primary_text": false,
+            "cell_3": "In stock (Canada dealer stocks Kensington range)",
+            "cell_3_primary_text": false,
+            "cell_4": "❌ NOT available in Canada. No Canadian dealer (US only)",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_zdmG4M": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Where to Buy (Canada)",
+            "cell_1_primary_text": false,
+            "cell_2": "PremiumBackyard.ca Ships across Canada",
+            "cell_2_primary_text": false,
+            "cell_3": "Allett Canada (separate retailer)",
+            "cell_3_primary_text": false,
+            "cell_4": "❌ No Canadian option.US orders + cross-border shipping at your expense.",
+            "cell_4_primary_text": false,
+            "cell_5": "",
+            "cell_5_primary_text": false
+          }
+        }
+      },
+      "block_order": [
+        "row_UVPAza",
+        "row_LfwNLT",
+        "row_kFUPTT",
+        "row_3a84kG",
+        "row_LAw86h",
+        "row_cRkR64",
+        "row_mwVUKC",
+        "row_EVh3bG",
+        "row_NHyY6k",
+        "row_Lb8N7d",
+        "row_jyezHi",
+        "row_zdmG4M"
+      ],
+      "custom_css": [
+        ".comparison-table__table tbody tr td:first-child {font-weight: bold;}"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "heading": "Why Choose Rolux?",
+        "subheading": "",
+        "header_color": "#111827",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "col_1": "Feature",
+        "col_1_highlight": false,
+        "col_2": "Rolux",
+        "col_2_highlight": true,
+        "col_3": "Allett Kensington",
+        "col_3_highlight": false,
+        "col_4": "Swardman Edwin 2.1",
+        "col_4_highlight": false,
+        "col_5": "",
+        "col_5_highlight": false
+      }
+    },
+    "dynamic_video_QUyjJx": {
+      "type": "dynamic-video",
+      "name": "Video",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "url": "https://youtu.be/f84uJ_FYmTU",
+        "show_caption": false,
+        "caption": "",
+        "autoplay": false,
+        "aspect_ratio": "16-9",
+        "show_overlay": false,
+        "background": "#000000",
+        "opacity": 50
+      }
+    },
+    "dynamic_image_with_text_6Ft4ma": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_g96thH": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/RoluxX20-20ReelStyleLawnMower.jpg",
+            "img_position_desktop": "left",
+            "img_width_desktop": 50,
+            "img_height_desktop": "custom",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#1f2937",
+            "preheading": "",
+            "preheading_color": "#ffffff",
+            "heading": "Rolux X Series (DISCONTINUED)",
+            "heading_color": "#ffffff",
+            "heading_size": "xlarge",
+            "text_content": "<p>Built for lawn enthusiasts who want a more advanced reel mower with professional-grade components. The X Series offers increased power, durability, and precision for maintaining high-quality lawns.</p><ul><li><strong>20\" and 25\" cutting width options</strong></li><li><strong>Honda-powered engine for dependable performance</strong></li><li><strong>6- or 9-blade cutting cylinder</strong></li><li><strong>Self-drive acceleration and manual height adjustment (4–37 mm)</strong></li></ul>",
+            "text_content_color": "#ffffff",
+            "button_link": "shopify://collections/rolux-x-series",
+            "button_text": "Shop The X Series",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "#d63932",
+            "overlay_heading": "X Series",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_g96thH"
+      ],
+      "custom_css": [
+        "svg {stroke-width: 2; fill: #f79c9c; fill-opacity: 0.3;}",
+        ".feature-content-wrapper {color: white;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_featured_collection_ygXRGf": {
+      "type": "dynamic-featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "collection": "rolux-x-series",
+        "product_count": 4,
+        "product_layout": "grid",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    },
+    "dynamic_video_fNt8mx": {
+      "type": "dynamic-video",
+      "name": "Video",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "url": "https://youtu.be/rWAb6X8xEFg",
+        "show_caption": false,
+        "caption": "",
+        "autoplay": false,
+        "aspect_ratio": "16-9",
+        "show_overlay": false,
+        "background": "#000000",
+        "opacity": 50
+      }
+    }
+  },
+  "order": [
+    "dynamic_image_with_text_MDgDrD",
+    "main",
+    "dynamic_image_with_text_EjFddX",
+    "dynamic_featured_collection_wKLPJV",
+    "dynamic_image_with_text_NDdBxy",
+    "dynamic_featured_collection_rh7GTR",
+    "comparision_table_BePn4M",
+    "dynamic_video_QUyjJx",
+    "dynamic_image_with_text_6Ft4ma",
+    "dynamic_featured_collection_ygXRGf",
+    "dynamic_video_fNt8mx"
+  ]
+}

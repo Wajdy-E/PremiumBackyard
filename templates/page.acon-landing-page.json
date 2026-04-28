@@ -1,0 +1,550 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_image_with_text_overlay_GMLwjY": {
+      "type": "dynamic-image-with-text-overlay",
+      "custom_css": [],
+      "name": "Image with text overlay",
+      "settings": {
+        "section_height": "medium",
+        "background_color": "",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 5,
+        "image": "shopify://shop_images/x-trampoline-jumpers-point-of-view.webp",
+        "title": "Elevate Every Jump",
+        "text": "<p>From family fun to elite performance — find the ACON X17 built for your level.</p>",
+        "content_position": "center-center",
+        "overlay_style": "solid",
+        "color": "#ffffff",
+        "overlay_background": "#000000",
+        "overlay_opacity": 50,
+        "link": "#quiz",
+        "button_text": "Take  A Quiz"
+      }
+    },
+    "main": {
+      "type": "static-page",
+      "disabled": true,
+      "custom_css": [
+        "img {border-radius: 10px;}"
+      ],
+      "settings": {}
+    },
+    "dynamic_custom_liquid_CbjXeb": {
+      "type": "dynamic-custom-liquid",
+      "disabled": true,
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<style>\n  :root {\n    --red:#D42E25; --red-dk:#a82219; --black:#000000;\n    --white:#ffffff; --offwhite:#f7f7f7; --grey:#666666;\n    --grey-lt:#e8e8e8; --grey-md:#333333; --border:#e0e0e0;\n    --t1:#5B9BD5; --t2:#4CAF7D; --t3:#D42E25; --t4:#000000;\n  }\n.features-list {\ntext-align: left;\n}\n.overlay.active .acon-modal { visibility:visible; }\n  .demo-wrap { text-align:center; margin: auto; }\n  .demo-brand { display:flex; flex-direction:column; align-items:center; gap:5px; margin-bottom:24px; }\n  .demo-icon { width:52px; height:52px; background:var(--black); display:flex; align-items:center; justify-content:center; padding:5px; }\n  .demo-icon img { width:100%; height:100%; object-fit:contain; }\n  .demo-name { font-size:11px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--grey-md); }\n  .demo-slogan { font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--grey); font-style:italic; }\n  .demo-product { font-weight:900; font-size:20px; color:var(--grey-md); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px; }\n  .demo-price { font-size:16px; color:var(--grey); margin-bottom:24px; }\n  .pdp-trigger { background:var(--red); display: flex; align-items: center;\n    gap: 4px;color:var(--white); border:none; font-family:'Bitter',serif; font-size:14px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:14px 12px; cursor:pointer; border-radius: 10px; box-shadow:0 3px 18px rgba(212,46,37,0.25); transition:background 0.15s,transform 0.15s; }\n  .pdp-trigger:hover { background:var(--red-dk); transform:translateY(-2px); }\n\n  .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.55); backdrop-filter:blur(6px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:16px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }\n  .overlay.active { opacity:1; pointer-events:all; }\n\n  .acon-modal { background:var(--white); width:100%; max-width:700px; max-height:70vh; overflow-y:auto; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.18); transform:translateY(20px) scale(0.97); top: 5%; transition:transform 0.38s cubic-bezier(0.22,1,0.36,1); -webkit-overflow-scrolling:touch; }\n  .overlay.active .acon-modal { transform:translateY(0) scale(1); }\n  .acon-modal-topbar { height:4px; background:var(--red); }\n\n  .acon-modal-brand { background:var(--black); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }\n  .brand-left { display:flex; align-items:center; gap:11px; }\n  .brand-icon { width:34px; height:34px; background:var(--black); display:flex; align-items:center; justify-content:center; flex-shrink:0; }\n  .brand-icon img { width:34px; height:34px; object-fit:contain; }\n  .brand-name { font-family:'Bitter',serif; font-weight:700; font-size:12px; color:var(--white); letter-spacing:0.05em; text-transform:uppercase; line-height:1.1; }\n  .brand-name span { color:var(--red); }\n  .brand-slogan { font-size:9px; color:rgba(255,255,255,0.4); letter-spacing:0.14em; text-transform:uppercase; font-style:italic; }\n  .acon-modal-close { background:none; border:none; color:rgba(255,255,255,0.4); cursor:pointer; font-size:22px; line-height:1; padding:4px; transition:color 0.15s; }\n  .acon-modal-close:hover { color:var(--white); }\n\n  .acon-modal-header { padding:22px 24px 16px; border-bottom:1px solid var(--border); }\n  .acon-modal-eyebrow { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--red); margin-bottom:7px; }\n  .acon-modal-title { font-family:'Bitter',serif; font-weight:900; font-size:clamp(24px,5vw,34px); line-height:1.05; color:var(--black); margin-bottom:5px; }\n  .acon-modal-title em { color:var(--red); font-style:normal; }\n  .acon-modal-sub { font-size:13px; color:var(--grey); font-weight:400; }\n\n  .progress-wrap { padding:14px 24px 0; }\n  .progress-track { height:3px; background:var(--grey-lt); border-radius:2px; overflow:hidden; }\n  .progress-fill { height:100%; width:0%; background:var(--red); transition:width 0.4s cubic-bezier(0.22,1,0.36,1); border-radius:2px; }\n  .progress-meta { display:flex; justify-content:space-between; font-size:10px; color:var(--grey); letter-spacing:0.1em; text-transform:uppercase; padding-top:6px; margin-bottom:2px; }\n\n  .acon-modal-body { padding:18px 24px 28px; }\n  .screen { display:none; }\n  .screen.active { display:block; }\n  .q-text { font-size:17px; font-weight:700; color:var(--black); line-height:1.35; margin-bottom:4px; }\n  .q-hint { font-size:12px; color:var(--grey); font-style:italic; margin-bottom:14px; }\n\n  .options { display:flex; flex-direction:column; gap:7px; }\n  .opt { display:flex; align-items:center; gap:12px; background:var(--offwhite); border:1.5px solid var(--border); padding:11px 13px; cursor:pointer; transition:border-color 0.15s,background 0.15s,transform 0.1s; }\n  .opt:hover { border-color:#bbb; background:#f0f0f0; transform:translateX(3px); }\n  .opt.selected { border-color:var(--red); background:rgba(212,46,37,0.04); }\n  .opt-icon { font-size:18px; width:24px; text-align:center; flex-shrink:0; }\n  .opt-content { flex:1; min-width:0; }\n  .opt-label { font-size:13px; font-weight:700; color:var(--black); line-height:1.3; }\n  .opt-desc { font-size:11px; color:var(--grey); margin-top:2px; }\n  .opt-tag { font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:2px 7px; flex-shrink:0; white-space:nowrap; }\n  .tag-family  { background:rgba(76,175,125,0.12); color:var(--t2); }\n  .tag-athlete { background:rgba(212,46,37,0.10); color:var(--red); }\n  .tag-elite   { background:rgba(0,0,0,0.07); color:var(--black); }\n  .opt-check { width:17px; height:17px; border:1.5px solid var(--border); border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:background 0.15s,border-color 0.15s; }\n  .opt.selected .opt-check { background:var(--red); border-color:var(--red); }\n  .opt-check::after { content:''; width:5px; height:5px; background:var(--white); border-radius:50%; opacity:0; transition:opacity 0.15s; }\n  .opt.selected .opt-check::after { opacity:1; }\n\n  .btn-next { margin-top:16px; width:100%; background:var(--red); color:var(--white); border:none; font-family:'Bitter',serif; font-size:14px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; padding:14px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.2s,background 0.15s,transform 0.15s; }\n  .btn-next.visible { opacity:1; pointer-events:all; }\n  .btn-next:hover { background:var(--red-dk); transform:translateY(-1px); }\n\n  /* RESULT */\n  .result-badge { display:inline-flex; align-items:center; gap:7px; padding:4px 11px 4px 7px; margin-bottom:10px; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border:1px solid currentColor; }\n  .r-dot { width:7px; height:7px; border-radius:50%; background:currentColor; }\n  .result-title { font-family:'Bitter',serif; font-weight:900; font-size:clamp(26px,5vw,36px); line-height:1.0; color:var(--black); margin-bottom:2px; }\n  .result-subtitle { font-size:14px; font-weight:700; margin-bottom:10px; }\n\n  /* PRICING BLOCK */\n  .pricing-block { border:1px solid var(--border); margin-bottom:12px; overflow:hidden; }\n  .pricing-top { display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:var(--offwhite); border-bottom:1px solid var(--border); }\n  .pricing-retail-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--grey); }\n  .pricing-retail-amt { font-size:16px; font-weight:700; color:var(--grey); text-decoration:line-through; }\n  .pricing-bottom { display:flex; align-items:center; justify-content:space-between; padding:12px 14px; }\n  .pricing-you-pay { }\n  .pricing-you-pay-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--grey); margin-bottom:2px; }\n  .pricing-you-pay-amt { font-family:'Bitter',serif; font-weight:900; font-size:26px; color:var(--black); }\n  .pricing-saving { text-align:right; }\n  .pricing-saving-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--grey); margin-bottom:2px; }\n  .pricing-saving-amt { font-family:'Bitter',serif; font-weight:900; font-size:20px; }\n\n  .result-rationale { font-size:13px; color:var(--grey-md); line-height:1.7; margin-bottom:12px; font-style:italic; border-left:3px solid; padding-left:13px; }\n\n  .result-includes { background:var(--offwhite); border:1px solid var(--border); padding:13px 15px; margin-bottom:10px; }\n  .includes-label { font-size:10px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--grey); margin-bottom:8px; }\n  .includes-list { list-style:none; display:flex; flex-direction:column; gap:5px; }\n  .includes-list li { font-size:12px; color:var(--grey-md); display:flex; align-items:flex-start; gap:7px; }\n  .includes-list li::before { content:''; width:4px; height:4px; border-radius:50%; flex-shrink:0; margin-top:5px; }\n  .includes-list li.safety-item { color:var(--grey); font-style:italic; }\n\n  /* SAFETY NOTE */\n  .safety-note { background:#f0f7f0; border:1px solid #c8e6c9; padding:10px 13px; margin-bottom:10px; display:flex; align-items:flex-start; gap:9px; }\n  .safety-note-icon { font-size:14px; flex-shrink:0; margin-top:1px; }\n  .safety-note-text { font-size:11px; color:#2e5e2e; line-height:1.6; font-weight:600; }\n\n  /* INGROUND NOTE */\n  .inground-note { background:#f0f7ff; border:1px solid #c8dff5; padding:10px 13px; margin-bottom:12px; display:flex; align-items:flex-start; gap:9px; }\n  .inground-icon { font-size:14px; flex-shrink:0; margin-top:1px; }\n  .inground-text { font-size:11px; color:#2a4a6b; line-height:1.6; }\n  .inground-text strong { font-weight:700; display:block; margin-bottom:1px; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; }\n\n  .btn-cta { width:100%; color:var(--white); border:none; font-family:'Bitter',serif; font-size:14px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; padding:14px; cursor:pointer; margin-bottom:8px; transition:opacity 0.15s,transform 0.15s; }\n  .btn-cta:hover { opacity:0.88; transform:translateY(-1px); }\n  .btn-nudge { width:100%; background:none; border:1.5px solid var(--border); color:var(--grey); font-family:'Bitter',serif; font-size:12px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; padding:10px; cursor:pointer; margin-bottom:7px; transition:border-color 0.15s,color 0.15s; }\n  .btn-nudge:hover { border-color:#999; color:var(--grey-md); }\n  .btn-retake { width:100%; background:none; border:none; color:#bbb; font-family:'Bitter',serif; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; padding:6px; cursor:pointer; transition:color 0.15s; }\n  .btn-retake:hover { color:var(--grey); }\n\n  /* Tier themes */\n  .t1-theme .result-badge,.t1-theme .result-subtitle { color:var(--t1); }\n  .t1-theme .result-rationale { border-color:var(--t1); }\n  .t1-theme .pricing-saving-amt { color:var(--t1); }\n  .t1-theme .btn-cta { background:var(--t1); }\n  .t1-theme .includes-list li::before { background:var(--t1); }\n\n  .t2-theme .result-badge,.t2-theme .result-subtitle { color:var(--t2); }\n  .t2-theme .result-rationale { border-color:var(--t2); }\n  .t2-theme .pricing-saving-amt { color:var(--t2); }\n  .t2-theme .btn-cta { background:var(--t2); }\n  .t2-theme .includes-list li::before { background:var(--t2); }\n\n  .t3-theme .result-badge,.t3-theme .result-subtitle { color:var(--t3); }\n  .t3-theme .result-rationale { border-color:var(--t3); }\n  .t3-theme .pricing-saving-amt { color:var(--t3); }\n  .t3-theme .btn-cta { background:var(--t3); }\n  .t3-theme .includes-list li::before { background:var(--t3); }\n\n  .t4-theme .result-badge,.t4-theme .result-subtitle { color:var(--t4); }\n  .t4-theme .result-rationale { border-color:var(--t4); }\n  .t4-theme .pricing-saving-amt { color:var(--t4); }\n  .t4-theme .btn-cta { background:var(--t4); }\n  .t4-theme .includes-list li::before { background:var(--t4); }\n\n  @media(max-width:480px) {\n    .acon-modal-brand,.acon-modal-header,.acon-modal-body { padding-left:16px; padding-right:16px; }\n    .progress-wrap { padding-left:16px; padding-right:16px; }\n    .opt-tag { display:none; }\n  }\n</style>\n\n\n<div class=\"demo-wrap\">\n  <div class=\"demo-brand\">\n  <button class=\"pdp-trigger\" onclick=\"openQuiz()\">\n    <svg width=\"14\" height=\"14\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg>\n    Take A Quiz\n  </button>\n</div>\n\n<div class=\"overlay\" id=\"overlay\" onclick=\"handleOverlayClick(event)\">\n  <div class=\"acon-modal\" id=\"acon-modal\">\n    <div class=\"acon-modal-topbar\"></div>\n    <div class=\"acon-modal-brand\">\n      <div class=\"brand-left\">\n        <div class=\"brand-icon\"><img src=\"https://cdn.shopify.com/s/files/1/0686/9293/4930/files/acon_quiz_thumbnail.png?v=1774830213\" alt=\"PremiumBackyard.ca\"></div>\n        <div class=\"brand-text\">\n          <div class=\"brand-name\">Premium<span>Backyard</span>.ca</div>\n          <div class=\"brand-slogan\">Unlock Your Property Potential</div>\n        </div>\n      </div>\n      <button class=\"acon-modal-close\" onclick=\"closeQuiz()\">×</button>\n    </div>\n\n    <div class=\"acon-modal-header\">\n      <div class=\"acon-modal-eyebrow\">ACON X17 · Configuration Finder</div>\n      <div class=\"acon-modal-title\">Which X17 is <em>Yours?</em>\n</div>\n      <div class=\"acon-modal-sub\">3 questions. We'll match you to the right configuration and show you your package value.</div>\n    </div>\n\n    <div class=\"progress-wrap\">\n      <div class=\"progress-track\"><div class=\"progress-fill\" id=\"progressFill\"></div></div>\n      <div class=\"progress-meta\">\n<span id=\"progressText\">Question 1 of 3</span><span id=\"progressPct\">0%</span>\n</div>\n    </div>\n\n    <div class=\"acon-modal-body\">\n\n      <!-- Q1 -->\n      <div class=\"screen active\" id=\"q1\">\n        <div class=\"q-text\">Who is primarily using this trampoline?</div>\n        <div class=\"q-hint\">Be honest — this shapes everything about the right configuration</div>\n        <div class=\"options\">\n          <div class=\"opt\" onclick=\"selectOpt(this,'q1','young_kids')\">\n            <div class=\"opt-icon\">🧒</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Young kids (under 10)</div>\n<div class=\"opt-desc\">Safety and confidence are the priority</div>\n</div>\n            <div class=\"opt-tag tag-family\">Family</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q1','mixed_family')\">\n            <div class=\"opt-icon\">👨‍👩‍👧‍👦</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Mixed family — all ages jumping</div>\n<div class=\"opt-desc\">Kids, teens, adults sharing it together</div>\n</div>\n            <div class=\"opt-tag tag-family\">Family</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q1','teen_athlete')\">\n            <div class=\"opt-icon\">🤸</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Teens or young athletes pushing limits</div>\n<div class=\"opt-desc\">Tricks, freestyle, serious progression</div>\n</div>\n            <div class=\"opt-tag tag-athlete\">Athlete</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q1','adult_athlete')\">\n            <div class=\"opt-icon\">🏅</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Adult athlete — fitness or training</div>\n<div class=\"opt-desc\">Conditioning, skill work, serious use</div>\n</div>\n            <div class=\"opt-tag tag-athlete\">Athlete</div>\n<div class=\"opt-check\"></div>\n          </div>\n        </div>\n        <button class=\"btn-next\" id=\"next1\" onclick=\"nextQ(2)\">Next Question →</button>\n      </div>\n\n      <!-- Q2 -->\n      <div class=\"screen\" id=\"q2\">\n        <div class=\"q-text\">What does jumping actually look like?</div>\n        <div class=\"q-hint\">Picture it — what's really happening on this trampoline</div>\n        <div class=\"options\">\n          <div class=\"opt\" onclick=\"selectOpt(this,'q2','safe_fun')\">\n            <div class=\"opt-icon\">😄</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Safe fun, exercise, and outdoor play</div>\n<div class=\"opt-desc\">Nothing extreme — joy, play, fresh Canadian air</div>\n</div>\n            <div class=\"opt-tag tag-family\">Family</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q2','active_bouncing')\">\n            <div class=\"opt-icon\">⚡</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Active bouncing — higher, some tricks</div>\n<div class=\"opt-desc\">More than casual, not quite competitive</div>\n</div>\n            <div class=\"opt-tag tag-family\">Family+</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q2','freestyle_skills')\">\n            <div class=\"opt-icon\">🔥</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Freestyle moves and skill progression</div>\n<div class=\"opt-desc\">Flips, body control, pushing the limits</div>\n</div>\n            <div class=\"opt-tag tag-athlete\">Athlete</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q2','structured_training')\">\n            <div class=\"opt-icon\">🎯</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Structured training and drills</div>\n<div class=\"opt-desc\">Conditioning, repetition, serious progression</div>\n</div>\n            <div class=\"opt-tag tag-elite\">Elite</div>\n<div class=\"opt-check\"></div>\n          </div>\n        </div>\n        <button class=\"btn-next\" id=\"next2\" onclick=\"nextQ(3)\">Next Question →</button>\n      </div>\n\n      <!-- Q3 -->\n      <div class=\"screen\" id=\"q3\">\n        <div class=\"q-text\">What matters most to you?</div>\n        <div class=\"q-hint\">This is the question that separates good from exceptional</div>\n        <div class=\"options\">\n          <div class=\"opt\" onclick=\"selectOpt(this,'q3','solid_safe')\">\n            <div class=\"opt-icon\">🛡️</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Solid, safe, and built to last</div>\n<div class=\"opt-desc\">Reliability and safety above all else</div>\n</div>\n            <div class=\"opt-tag tag-family\">Family</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q3','room_to_grow')\">\n            <div class=\"opt-icon\">📈</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Room to grow as skills improve</div>\n<div class=\"opt-desc\">Start great, level up over time</div>\n</div>\n            <div class=\"opt-tag tag-family\">Family+</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q3','best_feel')\">\n            <div class=\"opt-icon\">🏆</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">Best performance feel from day one</div>\n<div class=\"opt-desc\">Athletic response, precision, no compromise on bounce</div>\n</div>\n            <div class=\"opt-tag tag-athlete\">Athlete</div>\n<div class=\"opt-check\"></div>\n          </div>\n          <div class=\"opt\" onclick=\"selectOpt(this,'q3','no_ceiling')\">\n            <div class=\"opt-icon\">💎</div>\n            <div class=\"opt-content\">\n<div class=\"opt-label\">The very best available — nothing held back</div>\n<div class=\"opt-desc\">Elite equipment built for the serious jumper</div>\n</div>\n            <div class=\"opt-tag tag-elite\">Elite</div>\n<div class=\"opt-check\"></div>\n          </div>\n        </div>\n        <button class=\"btn-next\" id=\"next3\" onclick=\"showResult()\">See My Configuration →</button>\n      </div>\n\n      <div class=\"screen\" id=\"result\"></div>\n    </div>\n  </div>\n</div>\n\n<script>\n// -----------------------------\n// STATE\n// -----------------------------\nconst answers = { q1:null, q2:null, q3:null };\n\n// -----------------------------\n// TIERS (WITH VARIANT IDS)\n// -----------------------------\nconst tiers = {\n  t1:{\n    variantId:52148207419666,\n    theme:'t1-theme',\n    badge:'Configuration 1 · Performance',\n    title:'ACON X17 Performance',\n    subtitle:'The Family Foundation',\n    retail:null,\n    custPays:'$6,299.99',\n    saving:'Included',\n    savingAmt:'Included',\n    includes:[\n      {text:'ACON X17 Trampoline + Safety Net & Ladder',safety:false},\n      {text:'Performance Spring Kit — 42 springs',safety:false},\n      {text:'Height Adjustment Kit',safety:true},\n      {text:'Inflatable Safety Block',safety:true},\n    ],\n    cta:'Select Performance Configuration',\n    nudge:'Step up to Configuration 2 — a better mat, more capability',\n  },\n  t2:{\n    variantId:52149434450194,\n    theme:'t2-theme',\n    badge:'Configuration 2 · Performance+',\n    title:'ACON X17 Performance+',\n    subtitle:'The Active Family Upgrade',\n    retail:'$7,299.99',\n    custPays:'$6,799.99',\n    saving:'You Save',\n    savingAmt:'$500 CAD',\n    includes:[\n      {text:'ACON X17 Trampoline + Safety Net & Ladder',safety:false},\n      {text:'Performance Mat',safety:false},\n      {text:'Performance Spring Kit — 42 springs',safety:false},\n      {text:'Height Adjustment Kit',safety:true},\n      {text:'Inflatable Safety Block',safety:true},\n    ],\n    cta:'Select Performance+ Configuration',\n    nudge:'Step up to Configuration 3 — Save $750 and go further',\n  },\n  t3:{\n    variantId:52149434581266,\n    theme:'t3-theme',\n    badge:'Configuration 3 · Freestyle',\n    title:'ACON X17 Freestyle',\n    subtitle:\"The Athlete's Trampoline\",\n    retail:'$10,999.99',\n    custPays:'$10,249.99',\n    saving:'You Save',\n    savingAmt:'$750 CAD',\n    includes:[\n      {text:'ACON X17 Trampoline + Safety Net & Ladder',safety:false},\n      {text:'Freestyle Mat',safety:false},\n      {text:'Super Stretch Springs — 42 springs',safety:false},\n      {text:'Crash Mat',safety:false},\n      {text:'Height Adjustment Kit',safety:true},\n      {text:'Inflatable Safety Block',safety:true},\n    ],\n    cta:'Select Freestyle Configuration',\n    nudge:'Step up to Configuration 4 — Save $1,000 and train at the highest level',\n  },\n  t4:{\n    variantId:52149967749394,\n    theme:'t4-theme',\n    badge:'Configuration 4 · Competition',\n    title:'ACON X17 Competition',\n    subtitle:'No Limits. No Compromises.',\n    retail:'$15,499.99',\n    custPays:'$14,499.99',\n    saving:'You Save',\n    savingAmt:'$1,000 CAD',\n    includes:[\n      {text:'ACON X17 Trampoline + Safety Net & Ladder',safety:false},\n      {text:'Competition Mat',safety:false},\n      {text:'Therapy Springs 220 — full set',safety:false},\n      {text:'Crash Mat',safety:false},\n      {text:'Height Adjustment Kit',safety:true},\n      {text:'Inflatable Safety Block',safety:true},\n    ],\n    cta:'Select Competition Configuration',\n    nudge:null,\n  },\n};\n\n// -----------------------------\n// NOTES\n// -----------------------------\nconst safetyNote = `<div class=\"safety-note\">🛡️ Safety upgrades included</div>`;\nconst ingroundNote = `<div class=\"inground-note\">🏡 In-ground installation compatible</div>`;\n\n// -----------------------------\n// QUIZ NAVIGATION\n// -----------------------------\nfunction selectOpt(el,q,val){\n  answers[q]=val;\n  document.querySelectorAll(`#${q} .opt`).forEach(o=>o.classList.remove('selected'));\n  el.classList.add('selected');\n  document.getElementById(`next${q.slice(1)}`).classList.add('visible');\n}\n\nfunction nextQ(n){\n  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));\n  document.getElementById(`q${n}`).classList.add('active');\n    updateProgress(n);\n\n}\n\n// -----------------------------\n// TIER LOGIC\n// -----------------------------\nfunction calcTier(){\n  const{q1,q2,q3}=answers;\n  if(q2==='structured_training'&&q3==='no_ceiling') return 't4';\n  if(q1==='adult_athlete'&&q3==='no_ceiling') return 't4';\n  if((q1==='teen_athlete'||q1==='adult_athlete')&&(q2==='freestyle_skills'||q2==='structured_training')) return 't3';\n  if(q2==='freestyle_skills'&&q3==='best_feel') return 't3';\n  if(q3==='best_feel'&&q1!=='young_kids'&&q1!=='mixed_family') return 't3';\n  if((q1==='mixed_family'||q1==='young_kids')&&q2==='active_bouncing') return 't2';\n  if(q3==='room_to_grow') return 't2';\n  if(q2==='active_bouncing'&&q3==='solid_safe') return 't2';\n  return 't1';\n}\n\n// -----------------------------\n// CART\n// -----------------------------\nfunction clearCart(){\n  return fetch('/cart/clear.js', {\n    method:'POST',\n    headers:{ 'Content-Type':'application/json' }\n  });\n}\n\nfunction addVariant(variantId){\n  return fetch('/cart/add.js', {\n    method:'POST',\n    headers:{ 'Content-Type':'application/json' },\n    body: JSON.stringify({\n      items: [{ id: variantId, quantity: 1 }]\n    })\n  })\n  .then(res => {\n    if (!res.ok) throw new Error('Add to cart failed');\n    return res.json();\n  });\n}\n\nfunction handleCTA(key){\n  const variantId = tiers[key].variantId;\n\n  console.log(\"ADDING VARIANT:\", variantId);\n\n  closeQuiz();\n\n  // -----------------------------\n  // CREATE REAL PRODUCT FORM\n  // -----------------------------\n  const form = document.createElement('form');\n  form.action = '/cart/add';\n  form.method = 'post';\n  form.classList.add('product-form'); // 👈 IMPORTANT (theme hook)\n\n  form.innerHTML = `\n    <input type=\"hidden\" name=\"id\" value=\"${variantId}\">\n    <input type=\"hidden\" name=\"quantity\" value=\"1\">\n    <button type=\"submit\" style=\"display:none;\">Add</button>\n  `;\n\n  document.body.appendChild(form);\n\n  // -----------------------------\n  // TRIGGER SUBMIT (LIKE USER)\n  // -----------------------------\n  const submitEvent = new Event('submit', {\n    bubbles: true,\n    cancelable: true\n  });\n\n  form.dispatchEvent(submitEvent);\n\n  // fallback if theme doesn't intercept\n  if (!submitEvent.defaultPrevented) {\n    form.submit();\n  }\n}\n// -----------------------------\n// BUILD RESULT\n// -----------------------------\nfunction buildResult(key,isNudge,fromKey){\n  const t = tiers[key];\n\n  return `\n    <div class=\"${t.theme}\">\n      <div class=\"result-badge\">${t.badge}</div>\n      <h2>${t.title}</h2>\n      <p>${t.subtitle}</p>\n\n      <div>\n        ${t.retail ? `<div style=\"text-decoration:line-through\">${t.retail}</div>`:''}\n        <div>${t.custPays}</div>\n        <div>${t.savingAmt}</div>\n      </div>\n\n      ${safetyNote}\n      ${ingroundNote}\n\n      <ul class=\"features-list\">\n        ${t.includes.map(i=>`<li>${i.text}</li>`).join('')}\n      </ul>\n<div class=\"button-group--quiz\">\n      <button onclick=\"handleCTA('${key}')\" class=\"btn-cta\">\n        ${t.cta}\n      </button>\n\n      ${t.nudge && !isNudge ? `\n        <button class=\"button-primary\" onclick=\"showNudge('${key}')\">\n          ${t.nudge}\n        </button>`:''}\n\n      <button onclick=\"retake()\" class=\"button-secondary\">Start Over</button>\n</div>\n    </div>\n  `;\n}\n\n// -----------------------------\n// RESULT + NUDGE\n// -----------------------------\nfunction showResult(){\nupdateProgress(4);\n\n  const key=calcTier();\n  const el=document.getElementById('result');\n\n  el.className='screen active '+tiers[key].theme;\n  el.innerHTML=buildResult(key,false,null);\n\n  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));\n  el.classList.add('active');\n\n  document.getElementById('acon-modal').scrollTop=0;\n}\n\nfunction showNudge(currentKey){\n  const map={t1:'t2',t2:'t3',t3:'t4'},key=map[currentKey];\n  if(!key) return;\n\n  const el=document.getElementById('result');\n  el.className='screen active '+tiers[key].theme;\n  el.innerHTML=buildResult(key,true,currentKey);\n\n  document.getElementById('acon-modal').scrollTop=0;\n}\n\n// -----------------------------\n// RESET\n// -----------------------------\nfunction retake(){\n  answers.q1=null;answers.q2=null;answers.q3=null;\n\n  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));\n  document.querySelectorAll('.btn-next').forEach(b=>b.classList.remove('visible'));\n\nupdateProgress(1);\n\n  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));\n  document.getElementById('q1').classList.add('active');\n\n  document.getElementById('acon-modal').scrollTop=0;\n}\n\n// -----------------------------\n// MODAL\n// -----------------------------\nfunction openQuiz(){\n  document.getElementById('overlay').classList.add('active');\n}\n\nfunction closeQuiz(){\n  document.getElementById('overlay').classList.remove('active');\n}\n\nfunction handleOverlayClick(e){\n  if(e.target.id==='overlay') closeQuiz();\n}\n\n  function updateProgress(step){\n    console.log(step);\n  const total = 3;\n\n  // step = 1,2,3, or 4 (result)\n  const pct = ((step - 1) / total) * 100;\n    console.log(pct);\n\n  document.getElementById('progressFill').style.width = pct + '%';\n  document.getElementById('progressPct').textContent = Math.round(pct) + '%';\n\n  if (step <= 3) {\n    document.getElementById('progressText').textContent = `Question ${step} of 3`;\n  } else {\n    document.getElementById('progressText').textContent = 'Complete';\n  }\n}\n// -----------------------------\ndocument.addEventListener('keydown',e=>{\n  if(e.key==='Escape') closeQuiz();\n});\n</script>",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0
+      }
+    },
+    "dynamic_promo_grid_HzMecn": {
+      "type": "dynamic-promo-grid",
+      "blocks": {
+        "promotion_VdzLPK": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/acon-x-trampoline-family.jpg",
+            "preheading": "For Families",
+            "preheading_color": "#ffffff",
+            "title": "Family Fun",
+            "heading_color": "#ffffff",
+            "text": "<p>Perfect for families looking to create lasting memories and keep kids active outdoors.</p>",
+            "text_color": "#ffffff",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "bottom-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "gradient",
+            "background": "#111827",
+            "opacity": 73
+          }
+        },
+        "promotion_c6MEn8": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/x-trampoline-trickers.webp",
+            "preheading": "Elite Performance",
+            "preheading_color": "#ffffff",
+            "title": "Athletic Performance",
+            "heading_color": "#ffffff",
+            "text": "<p>Professional-grade trampolines designed for athletes who demand the highest performance.</p>",
+            "text_color": "#ffffff",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "bottom-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "gradient",
+            "background": "#111827",
+            "opacity": 73
+          }
+        },
+        "promotion_Efwr97": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/x-trampoline-semi-inground.webp",
+            "preheading": "Premium Lifestyle",
+            "preheading_color": "#ffffff",
+            "title": "Backyard Living",
+            "heading_color": "#ffffff",
+            "text": "<p>Transform your outdoor space into a premium entertainment destination for the whole family.</p>",
+            "text_color": "#ffffff",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "bottom-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "gradient",
+            "background": "#111827",
+            "opacity": 73
+          }
+        },
+        "promotion_RfiWmD": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/x-trampoline-players.webp",
+            "preheading": "Built to Last",
+            "preheading_color": "#ffffff",
+            "title": "Year-Round Quality",
+            "heading_color": "#ffffff",
+            "text": "<p>Built to withstand Canadian weather conditions, ensuring durability through every season.</p>",
+            "text_color": "#ffffff",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "bottom-left",
+            "promo_width": "full-width",
+            "desktop_height": 460,
+            "mobile_height": 270,
+            "overlay_style": "gradient",
+            "background": "#111827",
+            "opacity": 73
+          }
+        }
+      },
+      "block_order": [
+        "promotion_VdzLPK",
+        "promotion_c6MEn8",
+        "promotion_Efwr97",
+        "promotion_RfiWmD"
+      ],
+      "custom_css": [
+        ".promo-block-grid--preheading {text-transform: uppercase; font-size: smaller;}"
+      ],
+      "name": "Grid",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#ffffff",
+        "subheading_color": "#ffffff",
+        "background_color": "",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "maintain_aspect_ratio": false,
+        "compress_blocks": false
+      }
+    },
+    "dynamic_featured_collection_wKLPJV": {
+      "type": "dynamic-featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "collection": "acon-x17",
+        "product_count": 4,
+        "product_layout": "grid",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    },
+    "product_feature_highlights_Q9WNXi": {
+      "type": "product-feature-highlights",
+      "blocks": {
+        "card_DwkXeC": {
+          "type": "card",
+          "settings": {
+            "title": "Performance",
+            "subtitle": "Family",
+            "price": "$1,299",
+            "features": "14ft rectangular family design  \nSmooth, controlled bounce (42 springs)  \nSafety net, ladder & frame protection included  \nAdjustable height for growing kids  \nDurable, weather-resistant build",
+            "button_text": "View Configuration",
+            "button_link": "shopify://products/acon-x17-family-friendly-bundle"
+          }
+        },
+        "card_pingdg": {
+          "type": "card",
+          "settings": {
+            "title": "Performance+",
+            "subtitle": "Active Family",
+            "price": "$1,299",
+            "features": "17ft rectangular design for more space  \nEnhanced spring system for higher bounce  \nPerformance mat for responsive jumping  \nIncludes ladder, anchors & safety upgrades  \nBuilt for teens & active families",
+            "button_text": "View Configuration",
+            "button_link": "shopify://products/acon-x17-older-mixed-family-bundle"
+          }
+        },
+        "card_rdDKcp": {
+          "type": "card",
+          "settings": {
+            "title": "Freestyle",
+            "subtitle": "Athlete",
+            "price": "$1,299",
+            "features": "Super stretch springs for maximum lift  \nFreestyle mat for trick precision  \nPro-level bounce height & responsiveness  \nCrash mat for safe skill progression  \nHeight-adjustable for training control",
+            "button_text": "View Configuration",
+            "button_link": "shopify://products/acon-x17-athletes-bundle"
+          }
+        },
+        "card_nh3GYL": {
+          "type": "card",
+          "settings": {
+            "title": "Competition",
+            "subtitle": "Elite",
+            "price": "$1,299",
+            "features": "220 therapy springs for explosive power  \nCompetition-grade performance mat  \nMaximum lift, control & consistency  \nCrash + safety block for elite training  \nBuilt for athletes & professional use",
+            "button_text": "View Configuration",
+            "button_link": "shopify://products/acon-x17-extreme-athletes-bundle"
+          }
+        }
+      },
+      "block_order": [
+        "card_DwkXeC",
+        "card_pingdg",
+        "card_rdDKcp",
+        "card_nh3GYL"
+      ],
+      "custom_css": [
+        ".comparison-card ul {font-size: smaller;}"
+      ],
+      "name": "Product feature highlights",
+      "settings": {
+        "heading": "Find Your Perfect Match",
+        "subheading": "From backyard fun to elite training, we have the right configuration for you",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30
+      }
+    },
+    "dynamic_video_fNt8mx": {
+      "type": "dynamic-video",
+      "name": "Video",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "url": "https://youtu.be/utdos1gpWdc?si=5obpJKTV308CqVhn",
+        "show_caption": true,
+        "caption": "<h3>The Making of X</h3>",
+        "autoplay": false,
+        "aspect_ratio": "21-9",
+        "cover": "shopify://shop_images/acon-x-trampoline.webp",
+        "show_overlay": false,
+        "background": "#000000",
+        "opacity": 50
+      }
+    },
+    "comparision_table_BePn4M": {
+      "type": "comparision-table",
+      "blocks": {
+        "row_UVPAza": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Price (CAD)",
+            "cell_1_primary_text": false,
+            "cell_2": "Premium but competitive for size & performance (~$2,000–$3,000 depending on setup)",
+            "cell_2_primary_text": false,
+            "cell_3": "$3,000–$5,000+ (highest price tier)",
+            "cell_3_primary_text": false,
+            "cell_4": "$1,200–$2,000",
+            "cell_4_primary_text": false,
+            "cell_5": "$300–$800",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_LfwNLT": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Build Quality",
+            "cell_1_primary_text": false,
+            "cell_2": "Heavy-duty galvanized steel frame + premium UV-resistant materials built for Canadian climates",
+            "cell_2_primary_text": false,
+            "cell_3": "Flexible composite rods + steel frame (less rigid feel)",
+            "cell_3_primary_text": false,
+            "cell_4": "Standard steel frame, lighter-duty components",
+            "cell_4_primary_text": false,
+            "cell_5": "Lightweight steel, lower durability over time",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_kFUPTT": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Bounce Performance",
+            "cell_1_primary_text": false,
+            "cell_2": "High-performance bounce with deep, responsive rebound (gymnast-level feel)",
+            "cell_2_primary_text": false,
+            "cell_3": "Softer, controlled bounce (less height)",
+            "cell_3_primary_text": false,
+            "cell_4": "Moderate bounce, recreational level",
+            "cell_4_primary_text": false,
+            "cell_5": "Basic bounce, limited responsiveness",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_3a84kG": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Safety Design",
+            "cell_1_primary_text": false,
+            "cell_2": "Thick safety padding + reinforced enclosure + wide jump zone",
+            "cell_2_primary_text": false,
+            "cell_3": "No springs (rod system) + hidden frame",
+            "cell_3_primary_text": false,
+            "cell_4": "Standard net enclosure",
+            "cell_4_primary_text": false,
+            "cell_5": "Basic enclosure, thinner padding",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_LAw86h": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Weather Resistance",
+            "cell_1_primary_text": false,
+            "cell_2": "Designed for harsh winters, rust-resistant, long lifespan outdoors",
+            "cell_2_primary_text": false,
+            "cell_3": "Good durability but rods can weaken over time in extreme cold",
+            "cell_3_primary_text": false,
+            "cell_4": "Moderate weather resistance",
+            "cell_4_primary_text": false,
+            "cell_5": "Not ideal for long-term outdoor exposure",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_cRkR64": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Size & Jump Space",
+            "cell_1_primary_text": false,
+            "cell_2": "Massive 17 ft surface — ideal for teens, adults, and multiple users",
+            "cell_2_primary_text": false,
+            "cell_3": "Smaller usable jump area due to rod design",
+            "cell_3_primary_text": false,
+            "cell_4": "Standard sizes (12–15 ft)",
+            "cell_4_primary_text": false,
+            "cell_5": "Smaller and less usable space",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_mwVUKC": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Assembly & Setup",
+            "cell_1_primary_text": false,
+            "cell_2": "Straightforward setup, premium components fit cleanly",
+            "cell_2_primary_text": false,
+            "cell_3": "Complex installation due to rod system",
+            "cell_3_primary_text": false,
+            "cell_4": "Moderate difficulty",
+            "cell_4_primary_text": false,
+            "cell_5": "Simple but lower-quality hardware",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_EVh3bG": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Longevity",
+            "cell_1_primary_text": false,
+            "cell_2": "Built for 10+ years of use",
+            "cell_2_primary_text": false,
+            "cell_3": "Long lifespan but expensive to repair",
+            "cell_3_primary_text": false,
+            "cell_4": "Mid-range lifespan",
+            "cell_4_primary_text": false,
+            "cell_5": "Shorter lifespan (2–5 years typical)",
+            "cell_5_primary_text": false
+          }
+        },
+        "row_NHyY6k": {
+          "type": "row",
+          "settings": {
+            "cell_1": "Best For",
+            "cell_1_primary_text": false,
+            "cell_2": "Families who want performance + durability + long-term value",
+            "cell_2_primary_text": false,
+            "cell_3": "Safety-focused buyers willing to pay premium",
+            "cell_3_primary_text": false,
+            "cell_4": "Casual users",
+            "cell_4_primary_text": false,
+            "cell_5": "Budget buyers",
+            "cell_5_primary_text": false
+          }
+        }
+      },
+      "block_order": [
+        "row_UVPAza",
+        "row_LfwNLT",
+        "row_kFUPTT",
+        "row_3a84kG",
+        "row_LAw86h",
+        "row_cRkR64",
+        "row_mwVUKC",
+        "row_EVh3bG",
+        "row_NHyY6k"
+      ],
+      "custom_css": [
+        ".comparison-table__table tbody tr td:first-child {font-weight: bold;}"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "heading": "Why Choose ACON?",
+        "subheading": "",
+        "header_color": "#111827",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "col_1": "Feature",
+        "col_1_highlight": false,
+        "col_2": "ACON X17",
+        "col_2_highlight": true,
+        "col_3": "Springfree",
+        "col_3_highlight": false,
+        "col_4": "Jumpflex",
+        "col_4_highlight": false,
+        "col_5": "Skywalker",
+        "col_5_highlight": false
+      }
+    },
+    "dynamic_featured_collections_CraxaX": {
+      "type": "dynamic-featured-collections",
+      "blocks": {
+        "collection_aqAAFU": {
+          "type": "collection",
+          "settings": {
+            "collection": "round-trampoline",
+            "title": "",
+            "title_mobile": ""
+          }
+        },
+        "collection_FTEn9R": {
+          "type": "collection",
+          "settings": {
+            "collection": "acon-trampoline-accessories",
+            "title": "",
+            "title_mobile": ""
+          }
+        },
+        "collection_tz6cV8": {
+          "type": "collection",
+          "settings": {
+            "collection": "acon-rectangular-trampoline",
+            "title": "",
+            "title_mobile": ""
+          }
+        },
+        "collection_xcV67P": {
+          "type": "collection",
+          "settings": {
+            "collection": "acon-fitness",
+            "title": "",
+            "title_mobile": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_aqAAFU",
+        "collection_FTEn9R",
+        "collection_tz6cV8",
+        "collection_xcV67P"
+      ],
+      "disabled": true,
+      "name": "Featured collections",
+      "settings": {
+        "title": "Other ACON PRODUCTS",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "image": "shopify://shop_images/acon-x-trampoline.webp",
+        "promo_title": "Promotion",
+        "text": "<p>Use this section to promote a group of collections.</p>",
+        "color": "#ffffff",
+        "block_link": "",
+        "button_text": "Button",
+        "button_style": "primary",
+        "text_alignment": "bottom-left",
+        "overlay_style": "solid",
+        "overlay_color": "#000000",
+        "opacity": 50,
+        "collection_label_style": "heading",
+        "collection_text_alignment": "left"
+      }
+    },
+    "177498891032463eb9": {
+      "type": "apps",
+      "blocks": {
+        "revenuehunt_recommender_quiz_v2_link_quiz_block_wHYymR": {
+          "type": "shopify://apps/revenuehunt-recommender-quiz/blocks/v2-link-quiz-block/672f3d48-fd3b-4227-8778-c6e58c4f8a98",
+          "settings": {
+            "quiz_width": "60",
+            "quiz_height": "80",
+            "quiz_z_index": 100,
+            "popup_close_color": "#777777",
+            "show_list": true,
+            "quiz_id": "r5wNqe"
+          }
+        }
+      },
+      "block_order": [
+        "revenuehunt_recommender_quiz_v2_link_quiz_block_wHYymR"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "dynamic_image_with_text_overlay_GMLwjY",
+    "main",
+    "dynamic_custom_liquid_CbjXeb",
+    "dynamic_promo_grid_HzMecn",
+    "dynamic_featured_collection_wKLPJV",
+    "product_feature_highlights_Q9WNXi",
+    "dynamic_video_fNt8mx",
+    "comparision_table_BePn4M",
+    "dynamic_featured_collections_CraxaX",
+    "177498891032463eb9"
+  ]
+}

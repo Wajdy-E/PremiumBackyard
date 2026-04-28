@@ -1,0 +1,163 @@
+{% stylesheet %}
+.custom-tab-intro {
+  padding: 0; /* Remove extra padding */
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Tabs wrapper - match product description/gallery alignment */
+ul.custom--tabs {
+  list-style-type: none;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  padding: 0;
+  margin: 0 auto; /* Center inside parent container */
+  border-bottom: 1px solid #e1e1e1;
+
+  /* Force same width as main product content container */
+  max-width: var(--page-width, 1200px);
+  padding-left: var(--page-gutter, 0);
+  padding-right: var(--page-gutter, 0);
+}
+
+/* Space between tabs */
+.custom--tabs .tab__list {
+  margin-right: 20px;
+}
+
+/* Tab buttons */
+.tab__list h6.custom-tab {
+  display: inline-block !important;
+  padding: 10px 20px !important;
+  cursor: pointer !important;
+  margin: 0px !important;
+  font-weight: bold;
+  border-bottom: 3px solid transparent;
+}
+
+/* Active tab */
+.tab__list h6.custom-tab.active {
+  border-bottom: 3px solid #333;
+  color: #333;
+}
+
+/* Tabs content area - perfectly aligned with tabs above */
+.custom__tab-content {
+  display: none;
+  margin: 0 auto;
+  padding: 20px 0 0;
+
+  /* Match width with product content */
+  max-width: var(--page-width, 1200px);
+  padding-left: var(--page-gutter, 0);
+  padding-right: var(--page-gutter, 0);
+}
+
+.custom__tab-content.active {
+  display: block;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 576px) {
+  ul.custom--tabs {
+    flex-direction: column !important;
+    padding: 0 15px; /* Mobile-friendly padding */
+  }
+  .tab__list h6.custom-tab {
+    width: 100%;
+    padding: 10px 0 !important;
+  }
+}
+{% endstylesheet %}
+
+
+<!-- BEGIN: Product-specific intro text via metafield -->
+{% if product.metafields.custom.intro_text != blank %}
+  <div class="custom-tab-intro page-width">
+    {{ product.metafields.custom.intro_text }}
+  </div>
+{% endif %}
+
+<!-- BEGIN: Custom Tab Navigation -->
+<ul class="custom--tabs page-width">
+  {% for block in section.blocks %}
+    {% if block.type == 'tab' %}
+      <li class="tab__list">
+        <h6 class="custom-tab {% if forloop.first %}active{% endif %}" data-content-id="tab-content-{{ block.id }}">
+          {{ block.settings.tab_heading }}
+        </h6>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<!-- BEGIN: Custom Tab Content -->
+{% for block in section.blocks %}
+  {% if block.type == 'tab' %}
+    <div id="tab-content-{{ block.id }}" class="custom__tab-content page-width {% if forloop.first %}active{% endif %}">
+      {{ block.settings.tab_content }}
+    </div>
+  {% endif %}
+{% endfor %}
+
+<!-- BEGIN: Tab JavaScript -->
+{% javascript %}
+document.addEventListener('DOMContentLoaded', function () {
+  const tabs = document.querySelectorAll('.custom-tab');
+  const contents = document.querySelectorAll('.custom__tab-content');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      const targetId = this.getAttribute('data-content-id');
+
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      this.classList.add('active');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+});
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Custom Product Tabs",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_heading",
+          "label": "Tab Heading",
+          "default": "Tab Title"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content",
+          "label": "Tab Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Tabs",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

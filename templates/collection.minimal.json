@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-collection-minimal",
+      "settings": {}
+    },
+    "static-recently-viewed": {
+      "type": "static-recently-viewed",
+      "settings": {}
+    },
+    "static-collection-promo-grid": {
+      "type": "static-collection-promo-grid",
+      "blocks": {
+        "grid-tile-1": {
+          "type": "promotion",
+          "settings": {}
+        },
+        "grid-tile-2": {
+          "type": "promotion",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "grid-tile-1",
+        "grid-tile-2"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "static-recently-viewed",
+    "static-collection-promo-grid"
+  ]
+}

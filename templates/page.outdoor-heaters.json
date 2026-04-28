@@ -1,0 +1,264 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-page",
+      "custom_css": [
+        "h1 {text-align: left;}"
+      ],
+      "settings": {}
+    },
+    "editorify_section_widget": {
+      "type": "editorify_section_widget",
+      "disabled": true,
+      "settings": {}
+    },
+    "c261f222-a029-4f53-868e-682c96f30efc": {
+      "type": "dynamic-collection-list",
+      "blocks": {
+        "collection_rVYqDr": {
+          "type": "collection",
+          "settings": {
+            "collection": "portable-heater",
+            "image": "shopify://shop_images/Portable_Patio_Heater_Location.jpg",
+            "collection_label": "Portable Patio Heater",
+            "mobile_collection_label": "Portable Patio Heater",
+            "collection_description": ""
+          }
+        },
+        "collection_4fCJxM": {
+          "type": "collection",
+          "settings": {
+            "collection": "platinum",
+            "image": "shopify://shop_images/Platinum_500_Gas_Heater_with_Heat_Deflector_Ceiling_pole_mount.jpg",
+            "collection_label": "Platinum Gas",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "collection_d6TwA7": {
+          "type": "collection",
+          "settings": {
+            "collection": "bromic-tungsten-smart-heat-gas-series",
+            "image": "shopify://shop_images/Bromic_Tungsten_Gas_Heater_on_Pillar.jpg",
+            "collection_label": "Tungsten Gas",
+            "mobile_collection_label": "Tungsten Gas",
+            "collection_description": ""
+          }
+        },
+        "template--21841586258194__c261f222-a029-4f53-868e-682c96f30efc-collection-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "bromic-heating-accessories",
+            "image": "shopify://shop_images/12_1.png",
+            "collection_label": "Smart Controls",
+            "mobile_collection_label": "Smart Control",
+            "collection_description": ""
+          }
+        },
+        "template--21841586258194__c261f222-a029-4f53-868e-682c96f30efc-collection-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "bromic-tungsten-smart-heat-electric-series",
+            "image": "shopify://shop_images/Tungsten-Electric-White-Recessed-Residential-Patio_Ceiling.jpg",
+            "collection_label": "Tungsten Electric",
+            "mobile_collection_label": "Tungsten Electric",
+            "collection_description": ""
+          }
+        },
+        "template--21841586258194__c261f222-a029-4f53-868e-682c96f30efc-collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "eclipse-1",
+            "image": "shopify://shop_images/Collection-Eclipse_1.png",
+            "collection_label": "Eclipse Electric",
+            "mobile_collection_label": "Eclipse Electric",
+            "collection_description": ""
+          }
+        },
+        "template--21841586258194__c261f222-a029-4f53-868e-682c96f30efc-collection-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "bromic-tungsten-smart-heat™-electric-series",
+            "image": "shopify://shop_images/Bromic_Platinum_Electric_Black_-_Wall_mounted_Commercial_Heater.jpg",
+            "collection_label": "Platinum Electric",
+            "mobile_collection_label": "Platinum Electric",
+            "collection_description": ""
+          }
+        },
+        "collection_Y86hyb": {
+          "type": "collection",
+          "settings": {
+            "collection": "marine",
+            "image": "shopify://shop_images/Platinum-Electric-Marine-White-Radiant_Heater.jpg",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_rVYqDr",
+        "collection_4fCJxM",
+        "collection_d6TwA7",
+        "template--21841586258194__c261f222-a029-4f53-868e-682c96f30efc-collection-4",
+        "template--21841586258194__c261f222-a029-4f53-868e-682c96f30efc-collection-3",
+        "template--21841586258194__c261f222-a029-4f53-868e-682c96f30efc-collection-1",
+        "template--21841586258194__c261f222-a029-4f53-868e-682c96f30efc-collection-2",
+        "collection_Y86hyb"
+      ],
+      "settings": {
+        "title": "",
+        "use_overlay": true,
+        "overlay_opacity": 0.3,
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "view_all": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "label_style": "label-style-heading",
+        "text_alignment": "center",
+        "desktop_collections_per_row": 4,
+        "display_desktop_collections": "2",
+        "desktop_collection_width": "desktop-full-width",
+        "layout_collection_max_width": 1000,
+        "desktop_collection_max_width": 300,
+        "mobile_collections_per_row": 2,
+        "display_mobile_collections": "4",
+        "mobile_collection_width": "mobile-full-width",
+        "mobile_collection_max_width": 80
+      }
+    },
+    "dynamic_promo_grid_bAGyA4": {
+      "type": "dynamic-promo-grid",
+      "blocks": {
+        "promotion_NRn3dq": {
+          "type": "promotion",
+          "settings": {
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "title": "Grid",
+            "heading_color": "#4d4d4d",
+            "text": "<p>Use this section to welcome customers to your store, say a bit about your brand, or share news.</p>",
+            "text_color": "#4d4d4d",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "top-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "none",
+            "background": "",
+            "opacity": 50
+          }
+        },
+        "promotion_GrEPAY": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "title": "Grid",
+            "heading_color": "#4d4d4d",
+            "text": "<p>Use this section to welcome customers to your store, say a bit about your brand, or share news.</p>",
+            "text_color": "#4d4d4d",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "top-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "none",
+            "background": "",
+            "opacity": 50
+          }
+        },
+        "promotion_xnNMRP": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "title": "Grid",
+            "heading_color": "#4d4d4d",
+            "text": "<p>Use this section to welcome customers to your store, say a bit about your brand, or share news.</p>",
+            "text_color": "#4d4d4d",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "top-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "none",
+            "background": "",
+            "opacity": 50
+          }
+        },
+        "promotion_FRaQxi": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "title": "Grid",
+            "heading_color": "#4d4d4d",
+            "text": "<p>Use this section to welcome customers to your store, say a bit about your brand, or share news.</p>",
+            "text_color": "#4d4d4d",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "top-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "none",
+            "background": "",
+            "opacity": 50
+          }
+        }
+      },
+      "block_order": [
+        "promotion_NRn3dq",
+        "promotion_GrEPAY",
+        "promotion_xnNMRP",
+        "promotion_FRaQxi"
+      ],
+      "disabled": true,
+      "name": "Grid",
+      "settings": {
+        "title": "Bromic Heating",
+        "subheading": "<p>Family of Electric & Gas Heaters </p><p></p>",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "maintain_aspect_ratio": false,
+        "compress_blocks": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "editorify_section_widget",
+    "c261f222-a029-4f53-868e-682c96f30efc",
+    "dynamic_promo_grid_bAGyA4"
+  ]
+}

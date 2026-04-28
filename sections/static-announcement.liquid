@@ -1,0 +1,316 @@
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-index="{{ section.index }}"
+  data-section-type="static-announcement"
+></script>
+
+{% assign show_everywhere = false %}
+{% assign homepage_only = false %}
+
+{% if section.settings.show_announcement and section.settings.homepage_announcement == false %}
+  {% assign show_everywhere = true %}
+{% endif %}
+
+{% if section.settings.show_announcement and section.settings.homepage_announcement and template == 'index' %}
+  {% assign homepage_only = true %}
+{% endif %}
+
+{% if show_everywhere or homepage_only %}
+  {% if section.settings.announcement_text != blank or section.settings.announcement_text_mobile != blank %}
+    <div class="announcement-bar-outer" style="background: {{ section.settings.announcement_background }};">
+    <div
+      class="
+        announcement-bar
+        {% if section.settings.announcement_text == blank and section.settings.announcement_text_mobile != blank %}
+          only-mobile
+        {% endif %}
+      "
+      style="
+        color: {{ section.settings.announcement_color }};
+      "
+    >
+      {% if section.settings.announcement_link != blank %}
+        <a
+          class="announcement-bar-link"
+          href="{{ section.settings.announcement_link }}"
+        ></a>
+      {% endif %}
+
+      {% if section.settings.announcement_text != blank %}
+        <div class="announcement-bar-text ">
+         {% include 'icon-library', id: section.settings.right_icon %}
+          {{ section.settings.announcement_text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.announcement_left_text != blank %}
+        <div class="announcement-bar-text ">
+         {% include 'icon-library', id: section.settings.left_icon %}
+          {{ section.settings.announcement_left_text }}
+        </div>
+      {% endif %}
+
+      <div class="announcement-bar-text-mobile">
+        {% if section.settings.announcement_text_mobile != blank %}
+          {{ section.settings.announcement_text_mobile }}
+        {% else %}
+          {{ section.settings.announcement_text }}
+        {% endif %}
+      </div>
+    </div>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "site-announcement",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement"
+    },
+    {
+      "type": "checkbox",
+      "id": "homepage_announcement",
+      "label": "Show on home page only"
+    },
+    {
+      "id": "announcement_left_text",
+      "type": "textarea",
+      "label": "Left side Text"
+    },
+    {
+      "id": "left_icon",
+      "type": "select",
+      "label": "Left Text Icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "No icon"
+        },
+        {
+          "label": "Shield",
+          "value": "icon-shield"
+        },
+        {
+          "label": "Award",
+          "value": "icon-award"
+        },
+        {
+          "value": "icon-cell-phone",
+          "label": "Cellphone"
+        },
+        {
+          "value": "icon-chat",
+          "label": "Chat"
+        },
+        {
+          "value": "icon-chat-alternate",
+          "label": "Chat alternate"
+        },
+        {
+          "value": "icon-credit-card",
+          "label": "Credit card"
+        },
+        {
+          "value": "icon-delivery",
+          "label": "Delivery"
+        },
+        {
+          "value": "icon-delivery-alt",
+          "label": "Delivery alternate"
+        },
+        {
+          "value": "icon-email",
+          "label": "Email"
+        },
+        {
+          "value": "icon-envelope",
+          "label": "Envelope"
+        },
+        {
+          "value": "icon-gift-card",
+          "label": "Gift card"
+        },
+        {
+          "value": "icon-heart",
+          "label": "Heart"
+        },
+        {
+          "value": "icon-label-tag",
+          "label": "Label tag"
+        },
+        {
+          "value": "icon-lock-alternate",
+          "label": "Lock"
+        },
+        {
+          "value": "icon-people",
+          "label": "People"
+        },
+        {
+          "value": "icon-people-alternate",
+          "label": "People alternate"
+        },
+        {
+          "value": "icon-pin",
+          "label": "Pin"
+        },
+        {
+          "value": "icon-question-mark",
+          "label": "Question mark"
+        },
+        {
+          "value": "icon-smile",
+          "label": "Smile"
+        },
+        {
+          "value": "icon-store",
+          "label": "Store"
+        },
+        {
+          "value": "icon-transfer",
+          "label": "Transfer"
+        },
+        {
+          "value": "icon-wallet",
+          "label": "Wallet"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "id": "announcement_text",
+      "type": "textarea",
+      "label": "Right side Text"
+    },
+    {
+          "id": "right_icon",
+          "type": "select",
+          "label": "Right Text Icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "No icon"
+            },
+            {
+              "label": "Shield",
+              "value": "icon-shield"
+            },
+            {
+              "label": "Award",
+              "value": "icon-award"
+            },
+            {
+              "value": "icon-cell-phone",
+              "label": "Cellphone"
+            },
+            {
+              "value": "icon-chat",
+              "label": "Chat"
+            },
+            {
+              "value": "icon-chat-alternate",
+              "label": "Chat alternate"
+            },
+            {
+              "value": "icon-credit-card",
+              "label": "Credit card"
+            },
+            {
+              "value": "icon-delivery",
+              "label": "Delivery"
+            },
+            {
+              "value": "icon-delivery-alt",
+              "label": "Delivery alternate"
+            },
+            {
+              "value": "icon-email",
+              "label": "Email"
+            },
+            {
+              "value": "icon-envelope",
+              "label": "Envelope"
+            },
+            {
+              "value": "icon-gift-card",
+              "label": "Gift card"
+            },
+            {
+              "value": "icon-heart",
+              "label": "Heart"
+            },
+            {
+              "value": "icon-label-tag",
+              "label": "Label tag"
+            },
+            {
+              "value": "icon-lock-alternate",
+              "label": "Lock"
+            },
+            {
+              "value": "icon-people",
+              "label": "People"
+            },
+            {
+              "value": "icon-people-alternate",
+              "label": "People alternate"
+            },
+            {
+              "value": "icon-pin",
+              "label": "Pin"
+            },
+            {
+              "value": "icon-question-mark",
+              "label": "Question mark"
+            },
+            {
+              "value": "icon-smile",
+              "label": "Smile"
+            },
+            {
+              "value": "icon-store",
+              "label": "Store"
+            },
+            {
+              "value": "icon-transfer",
+              "label": "Transfer"
+            },
+            {
+              "value": "icon-wallet",
+              "label": "Wallet"
+            }
+          ],
+          "default": "none"
+        },
+    {
+      "id": "announcement_text_mobile",
+      "type": "textarea",
+      "label": "Alternate mobile text (optional)",
+      "info": "We recommend providing a shortened version of long announcements for smaller screens."
+    },
+    {
+      "id": "announcement_link",
+      "type": "url",
+      "label": "Link"
+    },
+    {
+      "id": "announcement_color",
+      "type": "color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "id": "announcement_background",
+      "type": "color",
+      "label": "Background color"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,157 @@
+{% comment %}
+  @param product {Product}
+    The product object in question
+
+  @param aspect_ratio {string}
+    This is the gallery aspect ratio, can be one of 'natural', 'short', 'square', 'long'
+
+  @param thumbnail_position {string}
+    This is the gallery thumbnail position, can be one of 'below', or 'left'
+
+  @param image_crop {boolean}
+    Whether to crop images
+
+  @param hover_zoom {String}
+    This is the hover zoom setting, which is either 'disabled', 'separate', or 'replace'
+
+  @param click_to_zoom {String}
+    This is the click to zoom setting, which is either 'disabled', 'mobile', 'desktop', or 'always'
+
+  @param onboarding {Bool}
+    True if no product is loaded
+{% endcomment %}
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+{% assign selected_media = product.featured_media %}
+
+{%- capture slider_classes -%}
+  product-gallery--slider
+  {% if product.media.size > 0 %}
+    product-gallery--has-images
+    product-gallery--style-{{ settings.product_slideshow_style }}
+  {% endif %}
+{%- endcapture -%}
+
+<div
+  class="
+    product-gallery
+    product-gallery--thumbs-{{ thumbnail_position }}
+    {% if hover_zoom != 'disabled' %}hover-zoom-enabled{% endif %}
+    {% if click_to_zoom != 'disabled' and click_to_zoom != 'mobile' %}click-to-zoom-enabled{% endif %}
+  "
+  data-product-gallery
+  {% if image_crop %}data-product-gallery-image-crop{% endif %}
+  data-product-gallery-aspect-ratio="{{ aspect_ratio }}"
+  data-product-gallery-thumbnails="{{ thumbnail_position }}"
+>
+  {% if thumbnail_position == 'left' %}
+    {%
+      include 'product-gallery-navigation'
+      product: product,
+      selected_media: selected_media,
+      aspect_ratio: aspect_ratio,
+      image_crop: image_crop,
+    %}
+  {% endif %}
+
+  {%
+    include 'product-gallery-viewer'
+    product: product,
+    selected_media: selected_media,
+    aspect_ratio: aspect_ratio,
+    image_crop: image_crop,
+    hover_zoom: hover_zoom,
+  %}
+
+  {% assign first_model = product.media | where: "media_type", "model" | first %}
+  {% if selected_media.media_type == 'model' %}
+    {% assign model = selected_media %}
+  {% else %}
+    {% assign model = first_model %}
+  {% endif %}
+  {% if model %}
+    <button
+      class="product-gallery--viewinyourspace"
+      data-default-model-id="{{ first_model.id }}"
+      data-shopify-xr
+      data-shopify-model3d-id="{{ model.id }}"
+      data-shopify-title="{{ product.title }}"
+      data-shopify-xr-hidden
+    >
+      {%
+        include 'icon-library',
+        id: 'icon-3D',
+      %}
+      {{ 'product.media.view_in_your_space' | t }}
+    </button>
+  {% endif %}
+
+  {% if thumbnail_position != 'left' %}
+    {%
+      include 'product-gallery-navigation'
+      product: product,
+      selected_media: selected_media,
+      aspect_ratio: aspect_ratio,
+      image_crop: image_crop,
+      hover_zoom: hover_zoom,
+    %}
+  {% endif %}
+</div>
+<script>
+document.addEventListener('click', function (event) {
+  var direction = null;
+  var button = event.target.closest('[data-product-gallery-previous], [data-product-gallery-next]');
+
+  if (!button) return;
+
+  direction = button.hasAttribute('data-product-gallery-next') ? 1 : -1;
+
+  var gallery = button.closest('[data-product-gallery]');
+  if (!gallery) return;
+
+  var figures = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-figure]'));
+  var thumbnails = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-thumbnail]'));
+  if (figures.length <= 1) return;
+
+  var selectedFigure = gallery.querySelector('[data-gallery-figure][data-gallery-selected="true"]');
+  var currentIndex = selectedFigure ? figures.indexOf(selectedFigure) : 0;
+  var nextIndex = (currentIndex + direction + figures.length) % figures.length;
+  var targetThumbnail = thumbnails[nextIndex];
+
+  if (targetThumbnail) {
+    targetThumbnail.click();
+  }
+});
+
+ProductGallery_createClass(ProductGallery, [{
+  key: "selectMediaByVariant",
+  value: function selectMediaByVariant(variant) {
+    if (!variant || !variant.featured_media) return;
+
+    const mediaId = String(variant.featured_media.id);
+
+    // Select the main slide
+    const slide = this.viewer.querySelector(`[data-media="${mediaId}"]`);
+    if (slide) this._selectMediaByEl(slide);
+
+    // Highlight the correct thumbnail
+    const currentActive = this.viewer.querySelector('.product-gallery--media-thumbnail--active');
+    if (currentActive) currentActive.classList.remove('product-gallery--media-thumbnail--active');
+
+    const thumbnail = this.viewer.querySelector(`[data-media="${mediaId}"]`);
+    if (thumbnail) thumbnail.classList.add('product-gallery--media-thumbnail--active');
+  }
+}, {
+  key: "resetGallery",
+  value: function resetGallery() {
+    const firstSlide = this.viewer.querySelector('[data-media]');
+    if (firstSlide) this._selectMediaByEl(firstSlide);
+
+    const thumbnails = this.viewer.querySelectorAll('.product-gallery--media-thumbnail--active');
+    thumbnails.forEach(t => t.classList.remove('product-gallery--media-thumbnail--active'));
+
+    const firstThumbnail = this.viewer.querySelector('[data-media]');
+    if (firstThumbnail) firstThumbnail.classList.add('product-gallery--media-thumbnail--active');
+  }
+}]);
+</script>

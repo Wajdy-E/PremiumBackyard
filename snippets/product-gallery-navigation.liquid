@@ -1,0 +1,144 @@
+{% comment %}
+  @param product {Product}
+    The product object in question
+
+  @param selected_media {Media}
+    The current selected media in the gallery
+
+  @param aspect_ratio {string}
+    The aspect ratio setting, which is either 'short', 'tall', or 'square'
+
+  @param image_crop {boolean}
+    Defines if the image should be cropped or not
+
+  @param hover_zoom {String}
+    This is the hover zoom setting, which is either 'disabled', 'separate', or 'replace'
+{% endcomment %}
+
+{% if product.media.size > 0 %}
+  {% assign thumb_dimensions = 'x75' %}
+  {% if image_crop %}
+    {% case aspect_ratio %}
+    {% when 'short' %}
+      {% assign thumb_dimensions = '100x75' %}
+    {% when 'tall' %}
+      {% assign thumb_dimensions = '50x75' %}
+    {% when 'square' %}
+      {% assign thumb_dimensions = '75x75' %}
+    {% endcase %}
+  {% endif %}
+
+  <div
+    class="product-gallery--navigation loading"
+    data-gallery-navigation
+  >
+    <button
+      class="gallery-navigation--scroll-button scroll-left"
+      aria-label="Scroll thumbnails left"
+      data-gallery-scroll-button
+    >
+      {% 
+        include 'icon-library', 
+        id: 'icon-chevron-down', 
+      %}
+    </button>
+    <button
+      class="gallery-navigation--scroll-button scroll-right"
+      aria-label="Scroll thumbnails right"
+      data-gallery-scroll-button
+    >
+      {% 
+        include 'icon-library', 
+        id: 'icon-chevron-down', 
+      %}
+    </button>
+    <div
+      class="gallery-navigation--scroller"
+      data-gallery-scroller
+    >
+    {% for media in product.media %}
+      <button
+        class="
+          product-gallery--media-thumbnail
+          product-gallery--{{ media.media_type }}-thumbnail
+        "
+        type="button"
+        tab-index="0"
+        aria-label="{{ media.alt }} {{ 'general.accessibility.nav_product_thumbnail' | t }}"
+        data-gallery-thumbnail
+        data-gallery-index="{{ forloop.index0 }}"
+        data-gallery-selected="{%- if selected_media.id == media.id -%}true{%- else -%}false{%- endif -%}"
+        data-media="{{ media.id }}"
+        data-media-type="{{ media.media_type }}"
+      >
+        {% if media.media_type == 'video' or media.media_type == 'external_video' %}
+          {% 
+            include 'icon-library', 
+            id: 'icon-play-thumb', 
+          %}
+        {% elsif media.media_type == 'model' %}
+          {% 
+            include 'icon-library', 
+            id: 'icon-model-thumb', 
+          %}
+        {% endif %}
+        {%
+          include 'rimg',
+          class: 'product-gallery--media-thumbnail-img',
+          img: media.preview_image,
+          size: thumb_dimensions,
+          crop: 'center',
+        %}
+      </button>
+    {% endfor %}
+    </div>
+  </div>
+{% comment %}
+  This checks if the metafield for a product video exists and is not empty.
+  If it has a value, it will display the video.
+{% endcomment %}
+
+{%- liquid
+  assign video_url = product.metafields.custom.product_video.value
+-%}
+
+{% if video_url != blank %}
+  <div class="video-container" style="position:relative; width:100%; height:0; padding-bottom:56.25%;">
+    <iframe src="{{ video_url | replace: 'watch?v=', 'embed/' }}?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+  </div>
+{% endif %}
+  <script>
+ProductGallery_createClass(ProductGallery, [{
+  key: "selectMediaByVariant",
+  value: function selectMediaByVariant(variant) {
+    if (!variant || !variant.featured_media) return;
+
+    const mediaId = String(variant.featured_media.id);
+
+    // Select the main slide
+    const slide = this.viewer.querySelector(`[data-media="${mediaId}"]`);
+    if (slide) this._selectMediaByEl(slide);
+
+    // Highlight the correct thumbnail
+    const currentActive = this.viewer.querySelector('.product-gallery--media-thumbnail--active');
+    if (currentActive) currentActive.classList.remove('product-gallery--media-thumbnail--active');
+
+    const thumbnail = this.viewer.querySelector(`[data-media="${mediaId}"]`);
+    if (thumbnail) thumbnail.classList.add('product-gallery--media-thumbnail--active');
+  }
+}, {
+  key: "resetGallery",
+  value: function resetGallery() {
+    const firstSlide = this.viewer.querySelector('[data-media]');
+    if (firstSlide) this._selectMediaByEl(firstSlide);
+
+    const thumbnails = this.viewer.querySelectorAll('.product-gallery--media-thumbnail--active');
+    thumbnails.forEach(t => t.classList.remove('product-gallery--media-thumbnail--active'));
+
+    const firstThumbnail = this.viewer.querySelector('[data-media]');
+    if (firstThumbnail) firstThumbnail.classList.add('product-gallery--media-thumbnail--active');
+  }
+}]);
+</script>
+
+{% endif %}

@@ -1,0 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "static-footer",
+      "blocks": {
+        "rich_text_jxWim7": {
+          "type": "rich_text",
+          "settings": {
+            "logo": "shopify://shop_images/logo_final-02.png",
+            "title": "",
+            "text": "<p>Enhancing Canadian homes and businesses since 2023. Unlock your property potential today.</p>"
+          }
+        },
+        "1556673029169": {
+          "type": "menu",
+          "settings": {
+            "menu": "shop"
+          }
+        },
+        "1554840343056": {
+          "type": "menu",
+          "settings": {
+            "menu": "info"
+          }
+        },
+        "static-footer-0": {
+          "type": "menu",
+          "disabled": true,
+          "settings": {
+            "menu": ""
+          }
+        },
+        "newsletter_X3bWGK": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Subscribe",
+            "text": "<p>Sign up to be the first to know about promotions and new product releases!</p>",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_jxWim7",
+        "1556673029169",
+        "1554840343056",
+        "static-footer-0",
+        "newsletter_X3bWGK"
+      ],
+      "custom_css": [
+        ".site-footer-block-newsletter .rte {max-width: 85%;}"
+      ],
+      "settings": {
+        "mobile_alignment": "centered",
+        "show_follow_on_shop": true,
+        "show_locale_selector": true,
+        "show_currency_selector": false,
+        "payment_icons": true,
+        "additional_menu": "small-footer-menu",
+        "small_text": ""
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-cart",
+      "settings": {
+        "enable_order_notes": false,
+        "enable_shipping_calc": true,
+        "shipping_calc_default_country": "Canada",
+        "title_1": "Free Shipping",
+        "subtitle_1": "On orders over $500",
+        "title_2": "Secure Payment",
+        "subtitle_2": "100% secure transaction",
+        "title_3": "Canadian Company",
+        "subtitle_3": "Based in Ontario"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

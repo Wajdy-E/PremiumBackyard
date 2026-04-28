@@ -1,0 +1,138 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-page",
+      "settings": {}
+    },
+    "editorify_section_widget": {
+      "type": "editorify_section_widget",
+      "disabled": true,
+      "settings": {}
+    },
+    "dynamic_collection_list_caiXhH": {
+      "type": "dynamic-collection-list",
+      "blocks": {
+        "collection_PakwRB": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "collection_hKkYjT": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "collection_zTdpjQ": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "collection_aqC6eU": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "collection_jdEaTY": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "collection_N6CQia": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "collection_d4wefw": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "collection_BJy4bf": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_PakwRB",
+        "collection_hKkYjT",
+        "collection_zTdpjQ",
+        "collection_aqC6eU",
+        "collection_jdEaTY",
+        "collection_N6CQia",
+        "collection_d4wefw",
+        "collection_BJy4bf"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Bromic Heating",
+        "use_overlay": false,
+        "overlay_opacity": 0.7,
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "view_all": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "label_style": "label-style-heading",
+        "text_alignment": "center",
+        "desktop_collections_per_row": 3,
+        "display_desktop_collections": "2",
+        "desktop_collection_width": "desktop-full-width",
+        "layout_collection_max_width": 1000,
+        "desktop_collection_max_width": 300,
+        "mobile_collections_per_row": 3,
+        "display_mobile_collections": "2",
+        "mobile_collection_width": "mobile-full-width",
+        "mobile_collection_max_width": 80
+      }
+    }
+  },
+  "order": [
+    "main",
+    "editorify_section_widget",
+    "dynamic_collection_list_caiXhH"
+  ]
+}

@@ -1,0 +1,120 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement-bar": {
+      "type": "static-announcement",
+      "custom_css": [
+        ".announcement-bar-outer {border-bottom: 1px solid white;}"
+      ],
+      "settings": {
+        "show_announcement": true,
+        "homepage_announcement": true,
+        "announcement_left_text": "Proudly Canadian - Serving Canada only",
+        "left_icon": "icon-shield",
+        "announcement_text": "Free Shipping on Select Products",
+        "right_icon": "icon-delivery",
+        "announcement_text_mobile": "Free Shipping on Select Products",
+        "announcement_link": "",
+        "announcement_color": "#ffffff",
+        "announcement_background": "#111827"
+      }
+    },
+    "utility-bar": {
+      "type": "static-utility-bar",
+      "settings": {
+        "enable": false,
+        "use_full_width": false,
+        "background_color": "#1b175d",
+        "link_color": "#ffffff",
+        "link_hover_color": "#ffffff",
+        "left_menu": "",
+        "show_left_menu_mobile": true,
+        "right_menu": "",
+        "show_right_menu_mobile": true,
+        "mobile_layout": "below"
+      }
+    },
+    "header": {
+      "type": "static-header",
+      "blocks": {
+        "meganav_images_8jpGFd": {
+          "type": "meganav_images",
+          "disabled": true,
+          "settings": {
+            "meganav_trigger": "LAWN",
+            "image_1": "shopify://shop_images/X20_Rolux_Reel_Mower_without_grass_catcher.jpg",
+            "text_1": "",
+            "link_1": "",
+            "position_1": "first",
+            "size_1": "small",
+            "text_2": "",
+            "link_2": "",
+            "position_2": "first",
+            "size_2": "small"
+          }
+        },
+        "meganav-1": {
+          "type": "meganav_images",
+          "settings": {
+            "meganav_trigger": "patio",
+            "image_1": "shopify://shop_images/DavisVantage2PlusWeatherStation.jpg",
+            "text_1": "",
+            "link_1": "",
+            "position_1": "last",
+            "size_1": "small",
+            "image_2": "shopify://shop_images/FoldingMuskokaPortableComfortBundle_93ff9648-c8ed-417e-95b5-8c68c215cd5f.jpg",
+            "text_2": "",
+            "link_2": "",
+            "position_2": "first",
+            "size_2": "small"
+          }
+        }
+      },
+      "block_order": [
+        "meganav_images_8jpGFd",
+        "meganav-1"
+      ],
+      "custom_css": [
+        ".navmenu.navmenu-depth-1 > li.navmenu-item:hover {background-color: #111827;}",
+        ".small-promo-content a {padding: 0;}",
+        "svg {color: white;}",
+        ".navmenu-meganav-items img {border-radius: 10px;}"
+      ],
+      "settings": {
+        "sticky_header": false,
+        "full_width_header": false,
+        "desktop_logo": "shopify://shop_images/logo_final-02.png",
+        "desktop_logo_height": 46,
+        "mobile_logo_height": 28,
+        "border_enabled": true,
+        "border_width": 1,
+        "border_color": "#ffffff",
+        "enable_live_search": true,
+        "search_quick_links": "",
+        "menu": "new-menu-copy",
+        "small_promo_heading": "Call +1 (888) 851-8852",
+        "small_promo_text": "<p><a href=\"mailto:sales@premiumbackyard.ca\" target=\"_blank\"><strong>sales@premiumbackyard.ca</strong></a></p>",
+        "small_promo_text_mobile": "",
+        "small_promo_link": "tel:1-888-851-8852",
+        "small_promo_icon": "icon-chat-alternate",
+        "color_smallpromo_text": "#ffffff",
+        "color_smallpromo_icon": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "utility-bar",
+    "header"
+  ]
+}

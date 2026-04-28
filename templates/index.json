@@ -1,0 +1,1158 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_custom_liquid_4pGaX3": {
+      "type": "dynamic-custom-liquid",
+      "disabled": true,
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<script>\n(function(){\n  var N=5,cur=0,timer=null,DELAY=5000;\n  var tr=document.getElementById('tr');\n  var dotsEl=document.getElementById('dots');\n  var ctr=document.getElementById('ctr');\n  var prog=document.getElementById('prog');\n\n  for(var i=0;i<N;i++){\n    var d=document.createElement('button');\n    d.className='dot'+(i===0?' on':'');\n    d.setAttribute('data-i',i);\n    d.onclick=function(){goTo(+this.getAttribute('data-i'));reset();};\n    dotsEl.appendChild(d);\n  }\n\n  function goTo(n){\n    cur=(n+N)%N;\n    tr.style.transform='translateX(-'+(cur*100)+'%)';\n    dotsEl.querySelectorAll('.dot').forEach(function(d,i){d.className='dot'+(i===cur?' on':'');});\n    ctr.innerHTML='<strong>'+(cur+1)+'</strong> / '+N;\n    prog.style.transition='none';prog.style.width='0%';\n    setTimeout(function(){prog.style.transition='width '+DELAY+'ms linear';prog.style.width='100%';},30);\n  }\n\n  function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},DELAY);}\n\n  document.getElementById('prev').onclick=function(){goTo(cur-1);reset();};\n  document.getElementById('next').onclick=function(){goTo(cur+1);reset();};\n\n  var tx=null;\n  tr.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});\n  tr.addEventListener('touchend',function(e){\n    if(tx===null)return;\n    var d=tx-e.changedTouches[0].clientX;\n    if(Math.abs(d)>40){goTo(cur+(d>0?1:-1));reset();}\n    tx=null;\n  },{passive:true});\n\n  goTo(0);\n  reset();\n})();\n</script>\n\n<style>\n*{box-sizing:border-box;margin:0;padding:0}\n@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap');\n\n:root{\n  --red:#D42E25;\n  --black:#0a0a0a;\n  --white:#fff;\n  --trans:0.6s cubic-bezier(0.77,0,0.18,1);\n}\n\n.wrap{\n  width:100%;\n  background:var(--black);\n  border-radius:8px;\n  overflow:hidden;\n  position:relative;\n  font-family:'Source Sans 3',sans-serif;\n}\n\n.track{\n  display:flex;\n  transition:transform var(--trans);\n}\n\n.slide{\n  min-width:100%;\n  height:400px;\n  position:relative;\n  overflow:hidden;\n  flex-shrink:0;\n  display:flex;\n  align-items:center;\n}\n\n/* Slide colour themes */\n.s1{background:linear-gradient(135deg,#1a1a1a 0%,#2a1a1a 100%);}\n.s2{background:#0e0e0e;}\n.s3{background:linear-gradient(135deg,#1a1208 0%,#2a1f0a 100%);}\n.s4{background:linear-gradient(135deg,#0d1a12 0%,#1a2a1a 100%);}\n.s5{background:#f2f2f0;}\n\n/* Decorative bg pattern */\n.bg-pattern{\n  position:absolute;inset:0;\n  opacity:0.04;\n  background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);\n  background-size:20px 20px;\n}\n\n/* Right side image placeholder */\n.img-area{\n  position:absolute;\n  right:0;top:0;bottom:0;\n  width:52%;\n  display:flex;\n  align-items:center;\n  justify-content:center;\n  z-index:1;\n}\n\n.img-block{\n  width:72%;\n  height:65%;\n  border-radius:6px;\n  display:flex;\n  flex-direction:column;\n  align-items:center;\n  justify-content:center;\n  gap:8px;\n  color:rgba(255,255,255,0.2);\n  font-size:12px;\n  letter-spacing:0.5px;\n}\n\n.img-block img {\n  max-width: 100%;\n  max-height: 100%;\n  width: auto;\n  height: auto;\n  object-fit: contain;\n}\n\n/* Split layout */\n.split-area{\n  position:absolute;\n  right:0;top:0;bottom:0;\n  width:52%;\n  display:flex;\n  z-index:1;\n}\n.split-half{\n  flex:1;\n  display:flex;\n  flex-direction:column;\n  align-items:center;\n  justify-content:center;\n  gap:10px;\n  border-left:1px solid rgba(255,255,255,0.06);\n  padding:20px 12px;\n}\n.split-half:first-child{border-left:none;}\n\n.split-img{\n  width:78%;\n  height:160px;\n  border:1.5px dashed rgba(255,255,255,0.13);\n  border-radius:6px;\n  display:flex;\n  align-items:center;\n  justify-content:center;\n  flex-direction:column;\n  gap:6px;\n  color:rgba(255,255,255,0.2);\n  font-size:11px;\n}\n\n.split-tag{\n  font-family:'Oswald',sans-serif;\n  font-size:10px;\n  letter-spacing:2px;\n  text-transform:uppercase;\n  color:rgba(255,255,255,0.3);\n  text-align:center;\n}\n.split-tag span{\n  display:block;\n  font-size:14px;\n  letter-spacing:0;\n  color:rgba(255,255,255,0.65);\n  margin-top:2px;\n}\n\n.split-divider{\n  position:absolute;\n  top:15%;bottom:15%;\n  left:50%;\n  width:1px;\n  background:linear-gradient(to bottom,transparent,rgba(212,46,37,0.5),transparent);\n  transform:translateX(-50%);\n}\n\n/* Left content */\n.content{\n  position:relative;\n  z-index:2;\n  padding:0 44px;\n  max-width:50%;\n}\n\n.badge{\n  display:inline-block;\n  background:var(--red);\n  color:#fff;\n  font-size:9px;\n  font-weight:700;\n  letter-spacing:1.5px;\n  text-transform:uppercase;\n  padding:3px 9px;\n  border-radius:2px;\n  margin-bottom:10px;\n}\n\n.eyebrow{\n  display:flex;\n  align-items:center;\n  gap:8px;\n  font-size:10px;\n  font-weight:600;\n  letter-spacing:2.5px;\n  text-transform:uppercase;\n  color:var(--red);\n  margin-bottom:8px;\n}\n.eyebrow::before{\n  content:'';\n  width:18px;height:2px;\n  background:var(--red);\n  display:block;flex-shrink:0;\n}\n\n.headline{\n  font-family:'Oswald',sans-serif;\n  font-size:clamp(26px,3.2vw,42px);\n  font-weight:700;\n  line-height:1.05;\n  color:#fff;\n  text-transform:uppercase;\n  margin-bottom:12px;\n}\n.headline em{color:var(--red);font-style:normal;}\n.headline--dark{color:var(--black);}\n.headline--dark em{color:var(--red);}\n\n.body{\n  font-size:14px;\n  line-height:1.6;\n  color:rgba(255,255,255,0.7);\n  margin-bottom:20px;\n  max-width:340px;\n}\n.body--dark{color:rgba(0,0,0,0.6);}\n\n.cta-row{display:flex;gap:10px;flex-wrap:wrap;}\n\n.btn{\n  font-family:'Source Sans 3',sans-serif;\n  font-size:12px;\n  font-weight:600;\n  padding:10px 18px;\n  border-radius:3px;\n  text-decoration:none;\n  cursor:pointer;\n  border:none;\n  letter-spacing:0.3px;\n}\n.btn--red{background:var(--red);color:#fff;}\n.btn--outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.4);}\n.btn--outline-dark{background:transparent;color:var(--black);border:1.5px solid rgba(0,0,0,0.25);}\n\n/* Nav */\n.nav{\n  position:absolute;\n  top:50%;transform:translateY(-50%);\n  width:40px;height:40px;\n  background:rgba(255,255,255,0.09);\n  border:1px solid rgba(255,255,255,0.14);\n  color:#fff;font-size:22px;\n  display:flex;align-items:center;justify-content:center;\n  cursor:pointer;z-index:20;border-radius:2px;\n  padding:0;line-height:1;\n  transition:background 0.2s;\n}\n.nav:hover{background:var(--red);border-color:transparent;}\n.nav--prev{left:14px;}\n.nav--next{right:14px;}\n\n/* Dots */\n.dots{\n  position:absolute;\n  bottom:16px;left:50%;\n  transform:translateX(-50%);\n  display:flex;gap:7px;align-items:center;z-index:20;\n}\n.dot{\n  width:6px;height:6px;border-radius:3px;\n  background:rgba(255,255,255,0.25);\n  border:none;cursor:pointer;padding:0;\n  transition:width 0.3s,background 0.3s;\n}\n.dot.on{width:22px;background:var(--red);}\n\n/* Progress */\n.progress{\n  position:absolute;bottom:0;left:0;\n  height:3px;background:var(--red);z-index:20;\n}\n\n/* Counter */\n.counter{\n  position:absolute;bottom:18px;right:16px;\n  font-family:'Oswald',sans-serif;font-size:11px;\n  color:rgba(255,255,255,0.3);z-index:20;letter-spacing:1px;\n}\n.counter strong{color:rgba(255,255,255,0.6);}\n\n/* Slide label overlay */\n.slide-num{\n  position:absolute;top:16px;left:16px;\n  font-family:'Oswald',sans-serif;\n  font-size:10px;letter-spacing:2px;\n  text-transform:uppercase;\n  color:rgba(255,255,255,0.18);\n  z-index:3;\n}\n.slide-num--dark{color:rgba(0,0,0,0.18);}\n</style>\n<div class=\"wrap\" id=\"w\">\n  <div class=\"track\" id=\"tr\" style=\"transform: translateX(-400%);\">\n\n    <!-- S1: Rolux S-Series -->\n    <div class=\"slide s1\" data-i=\"0\">\n      <div class=\"bg-pattern\"></div>\n      <div class=\"slide-num\">Slide 1 of 5</div>\n      <div class=\"img-area\">\n        <div class=\"img-block\">\n          <svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"1.5\"><rect x=\"2\" y=\"7\" width=\"20\" height=\"10\" rx=\"2\"></rect><path d=\"M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2\"></path><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"12.01\"></line></svg>\n          rolux_s_lifestyle.jpg\n        </div>\n      </div>\n      <div class=\"content\">\n        <div class=\"badge\">In Stock \u2014 Free Shipping $500+</div>\n        <div class=\"eyebrow\">Rolux Reel Mowers</div>\n        <div class=\"headline\">The Lawn You've<br>Always <em>Wanted.</em></div>\n        <div class=\"body\">Precision-cut reel mowing for Canadian homeowners. S-Series \u2014 entry-level price, professional results.</div>\n        <div class=\"cta-row\">\n          <span class=\"btn btn--red\">Shop S-Series</span>\n          <span class=\"btn btn--outline\">Mowing Guide</span>\n        </div>\n      </div>\n    </div>\n\n    <!-- S2: Z-Series Split -->\n    <div class=\"slide s2\" data-i=\"1\">\n      <div class=\"bg-pattern\"></div>\n      <div class=\"slide-num\">Slide 2 of 5</div>\n      <div class=\"split-area\">\n        <div class=\"split-divider\"></div>\n        <div class=\"split-half\">\n          <div class=\"split-img\">\n            <svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"1.5\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 8v4l3 3\"></path></svg>\n            z20_gas.jpg\n          </div>\n          <div class=\"split-tag\">Powerplant<span>Gas \u2014 Z20</span></div>\n        </div>\n        <div class=\"split-half\">\n          <div class=\"split-img\">\n            <svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"1.5\"><path d=\"M13 2L3 14h9l-1 8 10-12h-9l1-8z\"></path></svg>\n            ze20_electric.jpg\n          </div>\n          <div class=\"split-tag\">Powerplant<span>Electric \u2014 ZE-20</span></div>\n        </div>\n      </div>\n      <div class=\"content\">\n        <div class=\"badge\">New 2026 \u2014 Arriving April</div>\n        <div class=\"eyebrow\">Rolux Z-Series</div>\n        <div class=\"headline\">Gas or<br><em>Electric.</em><br>You Choose.</div>\n        <div class=\"body\">Professional-grade cutting, two powertrains. Built for serious Canadian lawns.</div>\n        <div class=\"cta-row\">\n          <span class=\"btn btn--red\">Explore Z-Series</span>\n        </div>\n      </div>\n    </div>\n\n    <!-- S3: Bromic -->\n    <div class=\"slide s3\" data-i=\"2\">\n      <div class=\"bg-pattern\"></div>\n      <div class=\"slide-num\">Slide 3 of 5</div>\n      <div class=\"img-area\">\n        <div class=\"img-block\">\n          <svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"1.5\"><path d=\"M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z\"></path><circle cx=\"12\" cy=\"9\" r=\"2.5\"></circle></svg>\n          bromic_lifestyle.jpg\n        </div>\n      </div>\n      <div class=\"content\">\n        <div class=\"badge\">3-Season Patio Heating</div>\n        <div class=\"eyebrow\">Bromic Heating</div>\n        <div class=\"headline\">Extend Your<br><em>Season.</em></div>\n        <div class=\"body\">Bromic Smart-Heat\u2122 patio heaters \u2014 engineered for Canadian outdoor living.</div>\n        <div class=\"cta-row\">\n          <span class=\"btn btn--red\">Shop Bromic</span>\n          <span class=\"btn btn--outline\">Find Your Heater</span>\n        </div>\n      </div>\n    </div>\n\n    <!-- S4: Muskoka -->\n    <div class=\"slide s4\" data-i=\"3\">\n      <div class=\"bg-pattern\"></div>\n      <div class=\"slide-num\">Slide 4 of 5</div>\n      <div class=\"img-area\">\n        <div class=\"img-block\">\n          <svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"1.5\"><path d=\"M20 9V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2\"></path><path d=\"M2 11l2 9h16l2-9H2z\"></path><path d=\"M12 11v9\"></path></svg>\n          muskoka_lifestyle.jpg\n        </div>\n      </div>\n      <div class=\"content\">\n        <div class=\"badge\">Handcrafted in Canada</div>\n        <div class=\"eyebrow\">DFC Woodworks</div>\n        <div class=\"headline\">Built to Last<br><em>Decades.</em></div>\n        <div class=\"body\">Cedar, mahogany, and pine. Muskoka chairs with a lifetime warranty \u2014 for your deck, dock, or backyard.</div>\n        <div class=\"cta-row\">\n          <span class=\"btn btn--red\">Shop Muskoka Chairs</span>\n        </div>\n      </div>\n    </div>\n\n    <!-- S5: ACON -->\n    <div class=\"slide s5\" data-i=\"4\">\n      <div class=\"slide-num slide-num--dark\">Slide 5 of 5</div>\n      <div class=\"img-area\">\n        <div class=\"img-block img-block--light\" style=\"border-color:rgba(0,0,0,0.12);color:rgba(0,0,0,0.3);\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/9293/4930/files/ACONXFreestyleTrampolineMat_2_49d540ef-0071-475c-a687-86fbe96d77b6.jpg?v=1777237347\" />\n        </div>\n      </div>\n      <div class=\"content\">\n        <div class=\"badge\">Ships to Canada</div>\n        <div class=\"eyebrow\" style=\"color:var(--red);\">ACON Trampolines</div>\n        <div class=\"headline headline--dark\">Built for<br><em>Serious</em> Bounce.</div>\n        <div class=\"body body--dark\">Competition-grade rectangular trampolines \u2014 the ACON X series. Pro-level performance, backyard ready.</div>\n        <div class=\"cta-row\">\n          <span class=\"btn btn--red\">Shop ACON</span>\n          <span class=\"btn btn--outline-dark\">Find Your Trampoline</span>\n        </div>\n      </div>\n    </div>\n\n  </div><!-- /track -->\n\n  <button class=\"nav nav--prev\" id=\"prev\">\u2039</button>\n  <button class=\"nav nav--next\" id=\"next\">\u203a</button>\n  <div class=\"dots\" id=\"dots\"><button class=\"dot\" data-i=\"0\"></button><button class=\"dot\" data-i=\"1\"></button><button class=\"dot\" data-i=\"2\"></button><button class=\"dot\" data-i=\"3\"></button><button class=\"dot on\" data-i=\"4\"></button></div>\n  <div class=\"counter\" id=\"ctr\"><strong>5</strong> / 5</div>\n  <div class=\"progress\" id=\"prog\" style=\"transition: width 5000ms linear; width: 100%;\"></div>\n</div>",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0
+      }
+    },
+    "hero_slider_main": {
+      "type": "dynamic-hero-slider",
+      "disabled": true,
+      "blocks": {
+        "rolux_s_series": {
+          "type": "slide",
+          "settings": {
+            "badge": "In Stock - Free Shipping $500+",
+            "eyebrow": "Rolux Reel Mowers",
+            "heading": "The Lawn You've Always",
+            "heading_highlight": "Wanted.",
+            "text": "<p>Precision-cut reel mowing for Canadian homeowners. S-Series - entry-level price, professional results.</p>",
+            "primary_button_label": "Shop S-Series",
+            "primary_button_link": "shopify://collections/rolux-reel-mowers",
+            "secondary_button_label": "Mowing Guide",
+            "secondary_button_link": "shopify://pages/rolux-guide",
+            "layout": "image-right",
+            "image_url": "",
+            "image_alt": "Rolux S-Series reel mower lifestyle image",
+            "image_placeholder": "rolux_s_lifestyle.jpg",
+            "image_caption": "Rolux Reel Mowers",
+            "image_caption_detail": "S-Series",
+            "secondary_image_url": "",
+            "secondary_image_alt": "",
+            "secondary_image_placeholder": "",
+            "secondary_image_caption": "",
+            "secondary_image_caption_detail": "",
+            "image_fit": "contain",
+            "background_color": "#1a1a1a",
+            "text_color": "#ffffff",
+            "muted_text_color": "#BDBDBD",
+            "accent_color": "#D42E25",
+            "badge_text_color": "#ffffff",
+            "button_text_color": "#ffffff",
+            "secondary_button_color": "#ffffff",
+            "secondary_button_border_color": "#ffffff",
+            "media_background_color": "#1f1f1f",
+            "media_border_color": "#4D4D4D",
+            "show_pattern": true
+          }
+        },
+        "rolux_z_series": {
+          "type": "slide",
+          "settings": {
+            "badge": "New 2026 - Arriving April",
+            "eyebrow": "Rolux Z-Series",
+            "heading": "Gas or Electric. You",
+            "heading_highlight": "Choose.",
+            "text": "<p>Professional-grade cutting, two powertrains. Built for serious Canadian lawns.</p>",
+            "primary_button_label": "Explore Z-Series",
+            "primary_button_link": "shopify://collections/rolux-reel-mowers",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "layout": "split",
+            "image_url": "",
+            "image_alt": "Rolux Z20 gas reel mower",
+            "image_placeholder": "z20_gas.jpg",
+            "image_caption": "Powerplant",
+            "image_caption_detail": "Gas - Z20",
+            "secondary_image_url": "",
+            "secondary_image_alt": "Rolux ZE-20 electric reel mower",
+            "secondary_image_placeholder": "ze20_electric.jpg",
+            "secondary_image_caption": "Powerplant",
+            "secondary_image_caption_detail": "Electric - ZE-20",
+            "image_fit": "contain",
+            "background_color": "#0e0e0e",
+            "text_color": "#ffffff",
+            "muted_text_color": "#BDBDBD",
+            "accent_color": "#D42E25",
+            "badge_text_color": "#ffffff",
+            "button_text_color": "#ffffff",
+            "secondary_button_color": "#ffffff",
+            "secondary_button_border_color": "#ffffff",
+            "media_background_color": "#171717",
+            "media_border_color": "#4D4D4D",
+            "show_pattern": true
+          }
+        },
+        "bromic_heating": {
+          "type": "slide",
+          "settings": {
+            "badge": "3-Season Patio Heating",
+            "eyebrow": "Bromic Heating",
+            "heading": "Extend Your",
+            "heading_highlight": "Season.",
+            "text": "<p>Bromic Smart-Heat patio heaters - engineered for Canadian outdoor living.</p>",
+            "primary_button_label": "Shop Bromic",
+            "primary_button_link": "shopify://collections/portable-heater",
+            "secondary_button_label": "Find Your Heater",
+            "secondary_button_link": "shopify://pages/bromic-quiz",
+            "layout": "image-right",
+            "image_url": "",
+            "image_alt": "Bromic patio heater lifestyle image",
+            "image_placeholder": "bromic_lifestyle.jpg",
+            "image_caption": "Bromic Heating",
+            "image_caption_detail": "Smart-Heat",
+            "secondary_image_url": "",
+            "secondary_image_alt": "",
+            "secondary_image_placeholder": "",
+            "secondary_image_caption": "",
+            "secondary_image_caption_detail": "",
+            "image_fit": "contain",
+            "background_color": "#1a1208",
+            "text_color": "#ffffff",
+            "muted_text_color": "#BDBDBD",
+            "accent_color": "#D42E25",
+            "badge_text_color": "#ffffff",
+            "button_text_color": "#ffffff",
+            "secondary_button_color": "#ffffff",
+            "secondary_button_border_color": "#ffffff",
+            "media_background_color": "#22180f",
+            "media_border_color": "#5A3A20",
+            "show_pattern": true
+          }
+        },
+        "dfc_woodworks": {
+          "type": "slide",
+          "settings": {
+            "badge": "Handcrafted in Canada",
+            "eyebrow": "DFC Woodworks",
+            "heading": "Built to Last",
+            "heading_highlight": "Decades.",
+            "text": "<p>Cedar, mahogany, and pine. Muskoka chairs with a lifetime warranty - for your deck, dock, or backyard.</p>",
+            "primary_button_label": "Shop Muskoka Chairs",
+            "primary_button_link": "shopify://collections/made-in-canada-outdoor-furniture",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "layout": "image-right",
+            "image_url": "",
+            "image_alt": "Muskoka chair lifestyle image",
+            "image_placeholder": "muskoka_lifestyle.jpg",
+            "image_caption": "DFC Woodworks",
+            "image_caption_detail": "Muskoka Chairs",
+            "secondary_image_url": "",
+            "secondary_image_alt": "",
+            "secondary_image_placeholder": "",
+            "secondary_image_caption": "",
+            "secondary_image_caption_detail": "",
+            "image_fit": "contain",
+            "background_color": "#0d1a12",
+            "text_color": "#ffffff",
+            "muted_text_color": "#BDBDBD",
+            "accent_color": "#D42E25",
+            "badge_text_color": "#ffffff",
+            "button_text_color": "#ffffff",
+            "secondary_button_color": "#ffffff",
+            "secondary_button_border_color": "#ffffff",
+            "media_background_color": "#142118",
+            "media_border_color": "#35513D",
+            "show_pattern": true
+          }
+        },
+        "acon_trampolines": {
+          "type": "slide",
+          "settings": {
+            "badge": "Ships to Canada",
+            "eyebrow": "ACON Trampolines",
+            "heading": "Built for Serious",
+            "heading_highlight": "Bounce.",
+            "text": "<p>Competition-grade rectangular trampolines - the ACON X series. Pro-level performance, backyard ready.</p>",
+            "primary_button_label": "Shop ACON",
+            "primary_button_link": "shopify://collections/acon-performance-trampolines",
+            "secondary_button_label": "Find Your Trampoline",
+            "secondary_button_link": "shopify://pages/acon-quiz",
+            "layout": "image-right",
+            "image_url": "https://cdn.shopify.com/s/files/1/0686/9293/4930/files/ACONXFreestyleTrampolineMat_2_49d540ef-0071-475c-a687-86fbe96d77b6.jpg?v=1777237347",
+            "image_alt": "ACON X freestyle trampoline mat",
+            "image_placeholder": "",
+            "image_caption": "ACON Trampolines",
+            "image_caption_detail": "X Series",
+            "secondary_image_url": "",
+            "secondary_image_alt": "",
+            "secondary_image_placeholder": "",
+            "secondary_image_caption": "",
+            "secondary_image_caption_detail": "",
+            "image_fit": "contain",
+            "background_color": "#f2f2f0",
+            "text_color": "#0a0a0a",
+            "muted_text_color": "#555555",
+            "accent_color": "#D42E25",
+            "badge_text_color": "#ffffff",
+            "button_text_color": "#ffffff",
+            "secondary_button_color": "#0a0a0a",
+            "secondary_button_border_color": "#8C8C8C",
+            "media_background_color": "#ffffff",
+            "media_border_color": "#D8D8D8",
+            "show_pattern": false
+          }
+        }
+      },
+      "block_order": [
+        "rolux_s_series",
+        "rolux_z_series",
+        "bromic_heating",
+        "dfc_woodworks",
+        "acon_trampolines"
+      ],
+      "settings": {
+        "accessibility_label": "Featured backyard products",
+        "enable_autoplay": true,
+        "autoplay_duration": 5,
+        "show_arrows": true,
+        "show_dots": true,
+        "show_counter": true,
+        "show_progress": true,
+        "max_width": "full",
+        "desktop_height": 420,
+        "mobile_height": 640,
+        "border_radius": 8,
+        "accent_color": "#D42E25",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0
+      }
+    },
+    "grid": {
+      "type": "dynamic-promo-grid",
+      "blocks": {
+        "grid-1": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/IHomeGrow_Backyard_Oasis_Hero.jpg",
+            "preheading": "IHomeGrow is now PremiumBackyard.ca",
+            "preheading_color": "#f6f6f6",
+            "title": "Unlock YOUR Property Potential!",
+            "heading_color": "#f6f6f6",
+            "text": "",
+            "text_color": "#f6f6f6",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#666666",
+            "text_alignment": "top-left",
+            "promo_width": "full-width",
+            "desktop_height": 440,
+            "mobile_height": 570,
+            "overlay_style": "gradient",
+            "background": "#000000",
+            "opacity": 51
+          }
+        },
+        "grid-2": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "preheading": "Preheading",
+            "preheading_color": "#ffffff",
+            "title": "Grid",
+            "heading_color": "#ffffff",
+            "text": "<p>Use this section to welcome customers to your store, say a bit about your brand, or share news.</p>",
+            "text_color": "#ffffff",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "bottom-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "none",
+            "background": "#000000",
+            "opacity": 40
+          }
+        }
+      },
+      "block_order": [
+        "grid-1",
+        "grid-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#212121",
+        "subheading_color": "#212121",
+        "background_color": "#f6f6f6",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "maintain_aspect_ratio": true,
+        "compress_blocks": false
+      }
+    },
+    "13cfaca4-1823-413e-8b0f-ddbe39feba01": {
+      "type": "dynamic-collection-list",
+      "blocks": {
+        "template--17706857562386__13cfaca4-1823-413e-8b0f-ddbe39feba01-collection-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "rolux-reel-mowers",
+            "image": "shopify://shop_images/3_1774913425_S17_Reel_Mower_9_blade_with_Flat_Roller_no_grass_catcher.jpg",
+            "collection_label": "Reel Mower",
+            "mobile_collection_label": "",
+            "collection_description": "Precision Grass cutting"
+          }
+        },
+        "72160e38-e71d-4ae0-b0bb-ea835136a870": {
+          "type": "collection",
+          "settings": {
+            "collection": "made-in-canada-outdoor-furniture",
+            "image": "shopify://shop_images/pending-walker-edison-chair-acacia-wood-outdoor-patio-adirondack-chair-available-in-2-colours-28776995586110_453x454_c3e1f811-6d9c-4b58-b0db-4172fffa9b4e.jpg",
+            "collection_label": "Hand-made Outdoor Furniture",
+            "mobile_collection_label": "Made In Canada",
+            "collection_description": "Premium Canadian Outdoor Furniture"
+          }
+        },
+        "template--17706857562386__13cfaca4-1823-413e-8b0f-ddbe39feba01-collection-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "portable-heater",
+            "image": "shopify://shop_images/ComfortableLoungeBundle_1_d6969689-35b0-4f23-af27-ffdac2b97fb2.jpg",
+            "collection_label": "Portable Patio Heater",
+            "mobile_collection_label": "Portable Patio Heater",
+            "collection_description": "Custom Patio Heat Solutions"
+          }
+        },
+        "77b5e9ec-a1cb-4e96-ad07-09f9be0c3f35": {
+          "type": "collection",
+          "settings": {
+            "collection": "acon-performance-trampolines",
+            "collection_label": "ACON Performance Trampolines",
+            "mobile_collection_label": "ACON Trampolines",
+            "collection_description": "High performance Trampolines & Mats"
+          }
+        },
+        "template--17706857562386__13cfaca4-1823-413e-8b0f-ddbe39feba01-collection-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "outdoor-smart-tech",
+            "image": "shopify://shop_images/Vantage_Pro_2_-_Lifestyle_3_600x600_1.jpg",
+            "collection_label": "Outdoor Tech",
+            "mobile_collection_label": "Outdoor Tech",
+            "collection_description": "Smart technology for outdoors"
+          }
+        },
+        "eb2ea86c-169e-4266-b660-ac20b33e18a9": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "rainwater-harvest",
+            "image": "shopify://shop_images/residential_rainwater_harvest.jpg",
+            "collection_label": "Rainwater Harvest",
+            "mobile_collection_label": "Rainwater Harvest",
+            "collection_description": ""
+          }
+        },
+        "collection_tyNgXb": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "pond-and-lake",
+            "image": "shopify://shop_images/Floating_Island_Base.jpg",
+            "collection_label": "",
+            "mobile_collection_label": "",
+            "collection_description": ""
+          }
+        },
+        "template--17706857562386__13cfaca4-1823-413e-8b0f-ddbe39feba01-collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "vertical-gardens",
+            "image": "shopify://shop_images/4_1774913360_FarmwallOutdoors.jpg",
+            "collection_label": "Vertical Garden",
+            "mobile_collection_label": "",
+            "collection_description": "Space saving garden solutions"
+          }
+        },
+        "collection_6nPzAJ": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "premium-bundle",
+            "image": "shopify://shop_images/Premium_Bundle.jpg",
+            "collection_label": "Premium Comfort Bundles",
+            "mobile_collection_label": "Premium Comfort Bundles",
+            "collection_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17706857562386__13cfaca4-1823-413e-8b0f-ddbe39feba01-collection-2",
+        "72160e38-e71d-4ae0-b0bb-ea835136a870",
+        "template--17706857562386__13cfaca4-1823-413e-8b0f-ddbe39feba01-collection-3",
+        "77b5e9ec-a1cb-4e96-ad07-09f9be0c3f35",
+        "template--17706857562386__13cfaca4-1823-413e-8b0f-ddbe39feba01-collection-4",
+        "eb2ea86c-169e-4266-b660-ac20b33e18a9",
+        "collection_tyNgXb",
+        "template--17706857562386__13cfaca4-1823-413e-8b0f-ddbe39feba01-collection-1",
+        "collection_6nPzAJ"
+      ],
+      "custom_css": [
+        "img {aspect-ratio: 4/3;}"
+      ],
+      "settings": {
+        "title": "Shop by Category",
+        "use_overlay": true,
+        "overlay_opacity": 0.4,
+        "subheading": "",
+        "heading_color": "#292929",
+        "subheading_color": "#5c5c5c",
+        "background_color": "",
+        "view_all": "shopify://collections",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 21,
+        "label_style": "label-style-heading",
+        "text_alignment": "center",
+        "desktop_collections_per_row": 3,
+        "display_desktop_collections": "2",
+        "desktop_collection_width": "desktop-full-width",
+        "layout_collection_max_width": 1000,
+        "desktop_collection_max_width": 300,
+        "mobile_collections_per_row": 1,
+        "display_mobile_collections": "0",
+        "mobile_collection_width": "mobile-full-width",
+        "mobile_collection_max_width": 80
+      }
+    },
+    "shop_the_look_AApDxr": {
+      "type": "shop-the-look",
+      "blocks": {
+        "image_8d6gkr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/RoluxX25-25ReelStyleLawnMower_1.jpg",
+            "product_1": "rolux-reel-mowers-s-series",
+            "collection_1": "",
+            "hotspot_1_horizontal": 40,
+            "hotspot_1_vertical": 50,
+            "product_2": "",
+            "collection_2": "",
+            "hotspot_2_horizontal": 50,
+            "hotspot_2_vertical": 50,
+            "product_3": "",
+            "collection_3": "",
+            "hotspot_3_horizontal": 70,
+            "hotspot_3_vertical": 70
+          }
+        },
+        "image_pTrgak": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/FoldingMuskokaPortableComfortBundle_93ff9648-c8ed-417e-95b5-8c68c215cd5f.jpg",
+            "product_1": "bromic-tungsten-portable-gas-heater",
+            "collection_1": "",
+            "hotspot_1_horizontal": 81,
+            "hotspot_1_vertical": 63,
+            "product_2": "",
+            "collection_2": "",
+            "hotspot_2_horizontal": 50,
+            "hotspot_2_vertical": 50,
+            "product_3": "",
+            "collection_3": "",
+            "hotspot_3_horizontal": 70,
+            "hotspot_3_vertical": 70
+          }
+        },
+        "image_MkJmJ6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AconX__Basic_Potrait_2_1.jpg",
+            "product_1": "",
+            "collection_1": "",
+            "hotspot_1_horizontal": 50,
+            "hotspot_1_vertical": 50,
+            "product_2": "acon-13-hd-rectangular-trampoline-with-net-and-ladder",
+            "collection_2": "",
+            "hotspot_2_horizontal": 50,
+            "hotspot_2_vertical": 50,
+            "product_3": "",
+            "collection_3": "",
+            "hotspot_3_horizontal": 70,
+            "hotspot_3_vertical": 70
+          }
+        }
+      },
+      "block_order": [
+        "image_8d6gkr",
+        "image_pTrgak",
+        "image_MkJmJ6"
+      ],
+      "disabled": true,
+      "name": "Shop the Look",
+      "settings": {
+        "images_per_row": 3,
+        "images_per_row_mobile": 2,
+        "aspect_ratio": "100%",
+        "grid_gap": 16,
+        "hotspot_color": "#d63932",
+        "icon_color": "#ffffff",
+        "icon_dim": 11,
+        "hotspot_dim": 26
+      }
+    },
+    "dynamic_featured_collections_tXVQjL": {
+      "type": "dynamic-featured-collections",
+      "blocks": {
+        "collection_Q7XnYX": {
+          "type": "collection",
+          "settings": {
+            "collection": "porch-swing-comfort-bundle",
+            "image": "shopify://shop_images/PorchSwingComfortBundle_6_52087685-a9a1-4a7f-aae0-ce359f459f6b.jpg",
+            "title": "Porch Swing Comfort Bundle",
+            "title_mobile": "Porch Swing Comfort Bundle"
+          }
+        },
+        "collection_bEwytw": {
+          "type": "collection",
+          "settings": {
+            "collection": "portable-comfort-bundle",
+            "image": "shopify://shop_images/FoldingMuskokaChairComfortBundle_20.jpg",
+            "title": "Folding Muskoka Chair Comfort Bundle",
+            "title_mobile": "Folding Muskoka Chair Comfort Bundle"
+          }
+        },
+        "collection_4pQXG4": {
+          "type": "collection",
+          "settings": {
+            "collection": "bistro-set-comfort-bundle",
+            "image": "shopify://shop_images/BistroSetComfortBundle.jpg",
+            "title": "Bistro Set Comfort Bundle",
+            "title_mobile": "Bistro Set Comfort Bundle"
+          }
+        },
+        "collection_gL7djC": {
+          "type": "collection",
+          "settings": {
+            "collection": "premium-bundle-1",
+            "image": "shopify://shop_images/ComfortableLoungeBundle_1_d6969689-35b0-4f23-af27-ffdac2b97fb2.jpg",
+            "title": "Comfortable Lounge Bundle",
+            "title_mobile": "Comfortable Lounge Bundle"
+          }
+        }
+      },
+      "block_order": [
+        "collection_Q7XnYX",
+        "collection_bEwytw",
+        "collection_4pQXG4",
+        "collection_gL7djC"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".promo-block-mosaic--button {margin-top: 0;}"
+      ],
+      "name": "Featured collections",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "rgba(0,0,0,0)",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 18,
+        "image": "shopify://shop_images/Premium_Bundle.jpg",
+        "promo_title": "Premium Comfort Bundles",
+        "text": "<p>Portable Heater + Furniture Options</p>",
+        "color": "#ffffff",
+        "block_link": "shopify://collections/premium-bundle",
+        "button_text": "Shop Now",
+        "button_style": "primary_icon",
+        "text_alignment": "top-left",
+        "overlay_style": "none",
+        "overlay_color": "#000000",
+        "opacity": 50,
+        "collection_label_style": "heading",
+        "collection_text_alignment": "left"
+      }
+    },
+    "dynamic_featured_collection_4VWUYL": {
+      "type": "dynamic-featured-collection",
+      "blocks": {
+        "title_card_kVcDWX": {
+          "type": "title_card",
+          "settings": {
+            "banner_position": "first",
+            "banner_preheading": "Shop",
+            "banner_heading": "Bromic Tungsten",
+            "banner_preheading_color": "#ffffff",
+            "banner_heading_color": "#ffffff",
+            "banner_overlay_color": "#1f2937",
+            "banner_overlay_opacity": 22,
+            "banner_image": "shopify://shop_images/Tungsten_Heaters.png"
+          }
+        }
+      },
+      "block_order": [
+        "title_card_kVcDWX"
+      ],
+      "custom_css": [
+        ".productgrid--item {border-radius: 10px; border: 1px solid lightgray; overflow: hidden;}",
+        ".productitem--image {border-radius: 0;}",
+        ".productitem--info {padding: 0.83rem; margin-inline: 0;}"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "title": "Featured collection",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "#ffffff",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 36,
+        "collection": "bromic-tungsten-smart-heat-electric-series",
+        "product_count": 10,
+        "product_layout": "slideshow",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "#ffffff",
+        "background_overlay_opacity": 100
+      }
+    },
+    "dynamic_image_with_text_eyVBP7": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_qrdGbW": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/PorchSwingComfortBundle_6_52087685-a9a1-4a7f-aae0-ce359f459f6b.jpg",
+            "img_position_desktop": "left",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#ffffff",
+            "preheading": "",
+            "preheading_color": "#4d4d4d",
+            "heading": "Porch Swing Comfort Bundle",
+            "heading_color": "#4d4d4d",
+            "heading_size": "large",
+            "text_content": "<h4>Create a relaxing outdoor escape with the porch swing comfort bundle.</h4><p><br/>Handcrafted with precision and designed for all-day comfort, this swing is ideal for peaceful mornings, cozy evenings, and laughter-filled moments with friends and family.</p>",
+            "text_content_color": "#4d4d4d",
+            "button_link": "shopify://products/porch-swing-comfort-bundle",
+            "button_text": "Shop Here",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "",
+            "overlay_heading": "Heading",
+            "overlay_heading_color": "#4d4d4d",
+            "overlay_text_content": "<p>Short description</p>",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "center"
+          }
+        },
+        "image_with_text_Em7dMM": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/FoldingMuskokaChairComfortBundle_20.jpg",
+            "img_position_desktop": "right",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#ffffff",
+            "preheading": "",
+            "preheading_color": "#4d4d4d",
+            "heading": "Folding Muskoka Chair Comfort Bundle",
+            "heading_color": "#4d4d4d",
+            "heading_size": "large",
+            "text_content": "<h4>Stay cozy outdoors with the folding muskoka chair heating bundle.</h4><p>Featuring our handcrafted, ergonomic Muskoka chair paired with the Bromic Tungsten Portable Gas Heater, this set delivers the perfect blend of comfort, warmth, and style for any outdoor space.</p>",
+            "text_content_color": "#4d4d4d",
+            "button_link": "shopify://products/folding-muskoka-chair-comfort-bundle",
+            "button_text": "Shop Here",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "",
+            "overlay_heading": "Heading",
+            "overlay_heading_color": "#4d4d4d",
+            "overlay_text_content": "<p>Short description</p>",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "center"
+          }
+        },
+        "image_with_text_aW7fDC": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/BistroSetComfortBundle.jpg",
+            "img_position_desktop": "left",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#ffffff",
+            "preheading": "",
+            "preheading_color": "#4d4d4d",
+            "heading": "Bistro Set Comfort Bundle",
+            "heading_color": "#4d4d4d",
+            "heading_size": "large",
+            "text_content": "<h4>Enhance your patio experience with cozy seating and heating.</h4><p>This bundle pairs beautifully handcrafted bistro chairs and table with the Bromic Tungsten Portable Gas Heater\u2014giving you unmatched comfort, style, and warmth all year round. Perfect for patios, balconies, and backyard spaces, it\u2019s designed for Canadians who want to relax, dine, and stay warm outdoors.\u00a0</p>",
+            "text_content_color": "#4d4d4d",
+            "button_link": "shopify://products/bistro-set-comfort-bundle",
+            "button_text": "Shop Here",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "",
+            "overlay_heading": "Heading",
+            "overlay_heading_color": "#4d4d4d",
+            "overlay_text_content": "<p>Short description</p>",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_qrdGbW",
+        "image_with_text_Em7dMM",
+        "image_with_text_aW7fDC"
+      ],
+      "disabled": true,
+      "name": "Image with text",
+      "settings": {
+        "heading": "Premium Bundle",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    },
+    "newsletter": {
+      "type": "dynamic-newsletter",
+      "disabled": true,
+      "settings": {
+        "title": "Newsletter",
+        "subheading": "<p>Get the latest details available straight to your Inbox</p>",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "background_color": "#f6f6f6",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 50,
+        "desktop_alignment": "left",
+        "mobile_alignment": "top"
+      }
+    },
+    "dynamic_image_with_text_UHWdRJ": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_XkLRmp": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/i-want-a-view-from-the-sky.png",
+            "img_position_desktop": "right",
+            "img_width_desktop": 40,
+            "img_height_desktop": "custom",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 615,
+            "content_background_color": "#ffffff",
+            "preheading": "",
+            "preheading_color": "#4d4d4d",
+            "heading": "Creating Homes, Building Relationships",
+            "heading_color": "#4d4d4d",
+            "heading_size": "large",
+            "text_content": "<p>Thank you for choosing <strong>PremiumBackyard.ca</strong>, where we're dedicated to enhancing your Home and Business experiences. At PremiumBackyard.ca, we understand the unique needs of Canadian Home and Business owners. We value the importance of creating a comfortable and enjoyable Home or Business space for their families, friends and/or customers.</p><p>Founded in the Spring of 2023 by\u00a0<strong>Dan Schafer</strong>, an avid, Alberta-based e-commerce entrepreneur, who shares your passion for unique, quality products that contribute to your Home or Business. Recognizing the diverse lifestyles of our customers, we aim to provide not just products but modern solutions that align with your aspirations.</p>",
+            "text_content_color": "#4d4d4d",
+            "button_link": "shopify://pages/about-us",
+            "button_text": "Learn Our Story",
+            "button_style": "primary_with_icon",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "#d63932",
+            "overlay_heading": "2023",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "<p>Founded in Alberta</p>",
+            "overlay_text_content_color": "#ffffff",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "top",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_XkLRmp"
+      ],
+      "custom_css": [
+        ".image-mobile,.image-desktop {box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); border-radius: 10px;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_promo_mosaic_JCBU8c": {
+      "type": "dynamic-promo-mosaic",
+      "blocks": {
+        "promotion_UxGAP6": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/x-trampoline-semi-inground.webp",
+            "title": "Elevate Every Jump",
+            "text": "<p>From family fun to elite performance \u2014 experience the ACON difference.</p>",
+            "color": "#ffffff",
+            "block_link": "shopify://pages/acon-x17",
+            "button_text": "Shop Trampolines",
+            "button_style": "secondary",
+            "overlay_style": "gradient",
+            "background": "#111827",
+            "opacity": 76
+          }
+        },
+        "promotion_Mrckqw": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/reel.webp",
+            "title": "Precision Lawn Care",
+            "text": "<p>Clean cuts. Zero emissions. A better way to care for your lawn.</p>",
+            "color": "#ffffff",
+            "block_link": "shopify://pages/rolux-series",
+            "button_text": "Shop Reel Mowers",
+            "button_style": "secondary",
+            "overlay_style": "gradient",
+            "background": "#111827",
+            "opacity": 100
+          }
+        },
+        "promotion_qYiymp": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_2.png",
+            "title": "Outdoor Living, Elevated",
+            "text": "<p>Designed for comfort, built to last \u2014 create your perfect outdoor space.</p>",
+            "color": "#ffffff",
+            "block_link": "shopify://collections/made-in-canada-outdoor-furniture",
+            "button_text": "Explore Furniture",
+            "button_style": "secondary",
+            "overlay_style": "gradient",
+            "background": "#111827",
+            "opacity": 100
+          }
+        }
+      },
+      "block_order": [
+        "promotion_UxGAP6",
+        "promotion_Mrckqw",
+        "promotion_qYiymp"
+      ],
+      "name": "Mosaic",
+      "settings": {
+        "title": "Upgrade Your Outdoors",
+        "subheading": "<p>Whats's Popular Right Now</p>",
+        "section_height": "medium",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 30,
+        "text_alignment": "top-left",
+        "maintain_aspect_ratio": true,
+        "compress_blocks": false
+      }
+    },
+    "dynamic_rich_text_aiWH6g": {
+      "type": "dynamic-rich-text",
+      "blocks": {
+        "text_3mXFy6": {
+          "type": "text",
+          "settings": {
+            "title": "Why Choose Premium Backyard?",
+            "text": "<p>Join our extended Canadian family and unlock your property potential</p>",
+            "heading_size": "large",
+            "text_alignment": "center",
+            "block_link": "",
+            "button_text": "Button",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "text_3mXFy6"
+      ],
+      "custom_css": [
+        "h2 {font-size: calc(var(--font-size-heading-1) + 10px);}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "width": "max-width",
+        "background_color": "",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 36
+      }
+    },
+    "highlights-banner": {
+      "type": "dynamic-highlights-banners",
+      "blocks": {
+        "highlight_BC4h6y": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-award",
+            "title": "Canadian Expertise",
+            "text": "<p>Founded by a fellow Canadian and e-commerce entrepreneur who understands your needs</p>",
+            "link": ""
+          }
+        },
+        "highlight_FAgaqn": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-heart",
+            "title": "Passion for Quality",
+            "text": "<p>We share your passion for unique, quality products that enhance your lifestyle</p>",
+            "link": ""
+          }
+        },
+        "highlight-1": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-pin",
+            "title": "Proudly Canadian",
+            "text": "<p>Serving homes and businesses nationwide with products suited for Canadian climates</p>",
+            "link": "shopify://pages/price-match-guarantee"
+          }
+        },
+        "highlight-2": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-delivery",
+            "title": "Free Shipping",
+            "text": "<p>Complimentary shipping on all orders over $500 across Canada</p>",
+            "link": ""
+          }
+        },
+        "highlight-3": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-shield",
+            "title": "Quality Guarantee",
+            "text": "<p>Premium products backed by our commitment to integrity and excellence</p>",
+            "link": ""
+          }
+        },
+        "highlight_NJqRpM": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-chat-alternate",
+            "title": "Exceptional Service",
+            "text": "<p>Dedicated support team ready to deliver the WOW factor to your experience</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "highlight_BC4h6y",
+        "highlight_FAgaqn",
+        "highlight-1",
+        "highlight-2",
+        "highlight-3",
+        "highlight_NJqRpM"
+      ],
+      "custom_css": [
+        "p {font-size: calc(var(--font-size-body-smaller) - 10%);}",
+        "svg {width: 24px; height: 24px;}"
+      ],
+      "settings": {
+        "background_color": "rgba(0,0,0,0)",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 16,
+        "text_alignment": "left",
+        "columns": 3,
+        "heading_color": "#000000",
+        "color": "#494848",
+        "icon_background": "#fee2e2",
+        "icon_color": "#d63932",
+        "dividers_color": "rgba(0,0,0,0)",
+        "inner_background_color": "rgba(0,0,0,0)"
+      }
+    },
+    "dynamic_featured_collections_BawrMG": {
+      "type": "dynamic-featured-collections",
+      "blocks": {
+        "collection_QDzgN7": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "",
+            "title_mobile": ""
+          }
+        },
+        "collection_XdYzKf": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "",
+            "title_mobile": ""
+          }
+        },
+        "collection_qFRDnf": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "",
+            "title_mobile": ""
+          }
+        },
+        "collection_4QhUar": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "",
+            "title_mobile": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_QDzgN7",
+        "collection_XdYzKf",
+        "collection_qFRDnf",
+        "collection_4QhUar"
+      ],
+      "disabled": true,
+      "name": "Featured collections",
+      "settings": {
+        "title": "Featured collections",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "promo_title": "Promotion",
+        "text": "<p>Use this section to promote a group of collections.</p>",
+        "color": "#4d4d4d",
+        "block_link": "",
+        "button_text": "Button",
+        "button_style": "primary",
+        "text_alignment": "bottom-left",
+        "overlay_style": "none",
+        "overlay_color": "#000000",
+        "opacity": 50,
+        "collection_label_style": "heading",
+        "collection_text_alignment": "left"
+      }
+    },
+    "dynamic_rich_text_PAMUDH": {
+      "type": "dynamic-rich-text",
+      "blocks": {
+        "text_NYGVnF": {
+          "type": "text",
+          "settings": {
+            "title": "Your Home, Your Oasis",
+            "text": "<p>Thank you for being a part of our extended Canadian family. Together, let's make your home a haven that reflects your unique lifestyle and aspirations.</p>",
+            "heading_size": "large",
+            "text_alignment": "center",
+            "block_link": "",
+            "button_text": "Button",
+            "button_style": "primary"
+          }
+        },
+        "text_BGqwyW": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "text": "<p>Shop with confidence, shop with Premium Backyard!</p>",
+            "heading_size": "medium",
+            "text_alignment": "center",
+            "block_link": "shopify://collections",
+            "button_text": "Start Shopping",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "text_NYGVnF",
+        "text_BGqwyW"
+      ],
+      "custom_css": [
+        ".rich-text-block {margin: 0.75rem 0; color: white;}",
+        ".rich-text-content p {max-width: 80%; margin: auto;}",
+        ".rich-text-heading {color: white;}",
+        ".rich-text--inner-container {padding: 3rem;}",
+        "@media screen and (max-width: 720px) {.rich-text--inner-container {padding: 1rem; }}",
+        "a {text-transform: none; margin-top: 1rem;}",
+        "@media screen and (min-width: 720px) {.rich-text-heading-large {font-size: 2.5rem; } .rich-text-content {font-size: 1.25rem; }}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "width": "max-width",
+        "background_color": "#d63932",
+        "section_spacing_desktop": 30,
+        "section_spacing_mobile": 36
+      }
+    }
+  },
+  "order": [
+    "dynamic_custom_liquid_4pGaX3",
+    "hero_slider_main",
+    "grid",
+    "13cfaca4-1823-413e-8b0f-ddbe39feba01",
+    "shop_the_look_AApDxr",
+    "dynamic_featured_collections_tXVQjL",
+    "dynamic_featured_collection_4VWUYL",
+    "dynamic_image_with_text_eyVBP7",
+    "newsletter",
+    "dynamic_image_with_text_UHWdRJ",
+    "dynamic_promo_mosaic_JCBU8c",
+    "dynamic_rich_text_aiWH6g",
+    "highlights-banner",
+    "dynamic_featured_collections_BawrMG",
+    "dynamic_rich_text_PAMUDH"
+  ]
+}

@@ -1,0 +1,215 @@
+{% schema %}
+{
+  "name": "Trampoline Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find Your Perfect Match"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "From backyard fun to elite training, we have the right configuration for you"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_desktop",
+      "label": "Desktop section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_mobile",
+      "label": "Mobile section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Plan Card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Performance" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Family" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$1,299" },
+        {
+          "type": "textarea",
+          "id": "features",
+          "label": "Features (one per line)",
+          "default": "14ft rectangular design\nPremium bounce quality\nSafety enclosure included\nWeather-resistant materials\n5-year warranty"
+        },
+        { "type": "text", "id": "button_text", "label": "Button Text", "default": "View Configuration" },
+        { "type": "url", "id": "button_link", "label": "Button Link" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Product feature highlights",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section class="comparison-section">
+  <div class="page-width">
+    
+    <div class="comparison-header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="comparison-grid">
+      {% for block in section.blocks %}
+        <div class="comparison-card" {{ block.shopify_attributes }}>
+          <div class="comparison--top">
+          <h3>{{ block.settings.title }}</h3>
+          <p class="subtitle">{{ block.settings.subtitle }}</p>
+          <p class="price">{{ block.settings.price }}</p>
+
+          <ul>
+            {% assign features = block.settings.features | newline_to_br | split: '<br />' %}
+            {% for feature in features %}
+              <li>✔ {{ feature }}</li>
+            {% endfor %}
+          </ul>
+          </div>
+
+          {% if block.settings.button_text != blank %}
+            <a href="{{ block.settings.button_link }}" class="comparison-btn">
+              {{ block.settings.button_text }}
+            </a>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% style %}
+  #shopify-section-{{section.id}} .comparison-section {
+    padding-top: {{ section.settings.section_spacing_mobile }}px;
+    padding-bottom: {{ section.settings.section_spacing_mobile }}px;
+  }
+@media screen and (min-width: 720px) {
+    #shopify-section-{{section.id}} .comparison-section {
+      padding-top: {{ section.settings.section_spacing_desktop }}px;
+      padding-bottom: {{ section.settings.section_spacing_desktop }}px;
+    }
+  }
+.comparison-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.comparison-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.comparison-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.comparison-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1.5px solid #e5e5e5;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.comparison-card:hover {
+  border-color: #111;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transform: translateY(-6px);
+}
+
+.comparison-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.comparison-card .subtitle {
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.comparison-card .price {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.comparison-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.comparison-card li {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.comparison-btn {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border: 2px solid {{ settings.color_buttons_secondary_button_background }};
+  border-radius: 8px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.comparison-btn:hover {
+  background: {{ settings.color_buttons_secondary_button_background }};
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 990px) {
+  .comparison-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+{% endstyle %}

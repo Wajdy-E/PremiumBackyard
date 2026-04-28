@@ -1,0 +1,517 @@
+{% doc %}
+  @prompt
+    Create a customizable "Free Shipping" badge that can be displayed on product cards and product pages. The badge should be visually appealing with customizable colors, positioning, and text. Include options to show the badge on specific products or all products from certain suppliers/vendors. The badge should work well with the Superstore theme design and be responsive across different screen sizes.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% liquid
+  assign show_badge = false
+  
+  if block.settings.display_type == 'all_products'
+    assign show_badge = true
+  elsif block.settings.display_type == 'specific_vendors' and block.settings.vendor_list != blank
+    assign vendor_names = block.settings.vendor_list | split: ','
+    for vendor_name in vendor_names
+      assign trimmed_vendor = vendor_name | strip | downcase
+      if product.vendor and product.vendor != blank
+        assign product_vendor = product.vendor | downcase
+        if product_vendor == trimmed_vendor
+          assign show_badge = true
+          break
+        endif
+      endif
+    endfor
+  elsif block.settings.display_type == 'specific_products' and block.settings.product_list != blank
+    for selected_product in block.settings.product_list
+      if selected_product.id == product.id
+        assign show_badge = true
+        break
+      endif
+    endfor
+  endif
+%}
+
+{% style %}
+  .ai-free-shipping-badge-{{ ai_gen_id }} {
+    position: {{ block.settings.position_type }};
+    {% if block.settings.position_type == 'absolute' %}
+      {% case block.settings.badge_position %}
+        {% when 'top-left' %}
+          top: {{ block.settings.offset_vertical }}px;
+          left: {{ block.settings.offset_horizontal }}px;
+        {% when 'top-right' %}
+          top: {{ block.settings.offset_vertical }}px;
+          right: {{ block.settings.offset_horizontal }}px;
+        {% when 'bottom-left' %}
+          bottom: {{ block.settings.offset_vertical }}px;
+          left: {{ block.settings.offset_horizontal }}px;
+        {% when 'bottom-right' %}
+          bottom: {{ block.settings.offset_vertical }}px;
+          right: {{ block.settings.offset_horizontal }}px;
+      {% endcase %}
+    {% endif %}
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    background-color: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    text-transform: {% if block.settings.text_uppercase %}uppercase{% else %}none{% endif %};
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+    box-shadow: {% if block.settings.enable_shadow %}0 2px 4px rgba(0, 0, 0, 0.1){% else %}none{% endif %};
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ai-free-shipping-badge-{{ ai_gen_id }}:hover {
+    {% if block.settings.hover_background_color != blank %}
+      background-color: {{ block.settings.hover_background_color }};
+    {% endif %}
+    {% if block.settings.hover_text_color != blank %}
+      color: {{ block.settings.hover_text_color }};
+    {% endif %}
+    {% if block.settings.enable_hover_scale %}
+      transform: scale(1.05);
+    {% endif %}
+  }
+
+  .ai-free-shipping-badge-{{ ai_gen_id }}--shape-pill {
+    border-radius: 50px;
+  }
+
+  .ai-free-shipping-badge-{{ ai_gen_id }}--shape-square {
+    border-radius: 0;
+  }
+
+  .ai-free-shipping-badge-{{ ai_gen_id }}--shape-rounded {
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-free-shipping-badge-{{ ai_gen_id }}--gradient {
+    background: linear-gradient(135deg, {{ block.settings.background_color }}, {{ block.settings.gradient_end_color | default: block.settings.background_color }});
+  }
+
+  .ai-free-shipping-badge-{{ ai_gen_id }}__icon {
+    margin-right: 6px;
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-free-shipping-badge-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.9 }}px;
+      padding: {{ block.settings.padding_vertical | times: 0.8 }}px {{ block.settings.padding_horizontal | times: 0.8 }}px;
+    }
+
+    .ai-free-shipping-badge-{{ ai_gen_id }}__icon {
+      width: {{ block.settings.icon_size | times: 0.9 }}px;
+      height: {{ block.settings.icon_size | times: 0.9 }}px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .ai-free-shipping-badge-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.8 }}px;
+      padding: {{ block.settings.padding_vertical | times: 0.7 }}px {{ block.settings.padding_horizontal | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+{% if show_badge %}
+  <div 
+    class="ai-free-shipping-badge-{{ ai_gen_id }} ai-free-shipping-badge-{{ ai_gen_id }}--shape-{{ block.settings.badge_shape }}{% if block.settings.enable_gradient %} ai-free-shipping-badge-{{ ai_gen_id }}--gradient{% endif %}"
+    {{ block.shopify_attributes }}
+  >
+    {% if block.settings.show_icon %}
+      <svg 
+        class="ai-free-shipping-badge-{{ ai_gen_id }}__icon"
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+      >
+        {% case block.settings.icon_type %}
+          {% when 'truck' %}
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16,8 20,8 23,11 23,16 16,16"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          {% when 'package' %}
+            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27,6.96 12,12.01 20.73,6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          {% when 'gift' %}
+            <polyline points="20,12 20,22 4,22 4,12"></polyline>
+            <rect x="2" y="7" width="20" height="5"></rect>
+            <line x1="12" y1="22" x2="12" y2="7"></line>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+          {% else %}
+            <path d="M5 12l5 5l10-10"></path>
+        {% endcase %}
+      </svg>
+    {% endif %}
+    {{ block.settings.badge_text }}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Free shipping badge",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Free Shipping"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "icon_type",
+      "label": "Icon type",
+      "options": [
+        {
+          "value": "truck",
+          "label": "Truck"
+        },
+        {
+          "value": "package",
+          "label": "Package"
+        },
+        {
+          "value": "gift",
+          "label": "Gift"
+        },
+        {
+          "value": "checkmark",
+          "label": "Checkmark"
+        }
+      ],
+      "default": "truck"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Display rules"
+    },
+    {
+      "type": "select",
+      "id": "display_type",
+      "label": "Show badge on",
+      "options": [
+        {
+          "value": "all_products",
+          "label": "All products"
+        },
+        {
+          "value": "specific_vendors",
+          "label": "Specific vendors"
+        },
+        {
+          "value": "specific_products",
+          "label": "Specific products"
+        }
+      ],
+      "default": "all_products"
+    },
+    {
+      "type": "textarea",
+      "id": "vendor_list",
+      "label": "Vendor names",
+      "info": "Enter vendor names separated by commas. Example: Nike, Adidas, Puma"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Specific products",
+      "limit": 50
+    },
+    {
+      "type": "header",
+      "content": "Position"
+    },
+    {
+      "type": "select",
+      "id": "position_type",
+      "label": "Position type",
+      "options": [
+        {
+          "value": "relative",
+          "label": "Inline"
+        },
+        {
+          "value": "absolute",
+          "label": "Overlay"
+        }
+      ],
+      "default": "relative"
+    },
+    {
+      "type": "select",
+      "id": "badge_position",
+      "label": "Badge position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top left"
+        },
+        {
+          "value": "top-right",
+          "label": "Top right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "top-left",
+      "info": "Only applies when position type is set to overlay"
+    },
+    {
+      "type": "range",
+      "id": "offset_horizontal",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Horizontal offset",
+      "default": 10,
+      "info": "Distance from edge when using overlay position"
+    },
+    {
+      "type": "range",
+      "id": "offset_vertical",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical offset",
+      "default": 10,
+      "info": "Distance from edge when using overlay position"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "select",
+      "id": "badge_shape",
+      "label": "Badge shape",
+      "options": [
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        },
+        {
+          "value": "pill",
+          "label": "Pill"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "rounded"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#008060"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#008060"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable gradient background",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "gradient_end_color",
+      "label": "Gradient end color",
+      "default": "#00a86b"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shadow",
+      "label": "Enable shadow",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "checkbox",
+      "id": "text_uppercase",
+      "label": "Uppercase text",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "unit": "px",
+      "label": "Letter spacing",
+      "default": 0.5
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Hover effects"
+    },
+    {
+      "type": "color",
+      "id": "hover_background_color",
+      "label": "Hover background color",
+      "default": "#00704a"
+    },
+    {
+      "type": "color",
+      "id": "hover_text_color",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover_scale",
+      "label": "Enable hover scale effect",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Free shipping badge"
+    }
+  ]
+}
+{% endschema %}

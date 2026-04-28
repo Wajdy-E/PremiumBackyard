@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-page",
+      "settings": {}
+    },
+    "editorify_section_widget": {
+      "type": "editorify_section_widget",
+      "disabled": true,
+      "settings": {}
+    },
+    "17631598581288b0dd": {
+      "type": "apps",
+      "blocks": {
+        "revenuehunt_recommender_quiz_v2_inline_quiz_8hXLLq": {
+          "type": "shopify://apps/revenuehunt-recommender-quiz/blocks/v2-inline-quiz/672f3d48-fd3b-4227-8778-c6e58c4f8a98",
+          "settings": {
+            "quiz_height": 500,
+            "quiz_height_unit": "px",
+            "quiz_fixed_height": false,
+            "quiz_full_width": false,
+            "quiz_retake_autoscroll": "disabled",
+            "quiz_question_autoscroll": "disabled",
+            "quiz_id": "GhhN0K"
+          }
+        }
+      },
+      "block_order": [
+        "revenuehunt_recommender_quiz_v2_inline_quiz_8hXLLq"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "editorify_section_widget",
+    "17631598581288b0dd"
+  ]
+}

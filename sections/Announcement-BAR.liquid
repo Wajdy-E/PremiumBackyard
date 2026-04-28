@@ -1,0 +1,275 @@
+{% if section.settings.enabled %}
+  <script>
+    window.onload = function() {
+      if (typeof jQuery === 'undefined') {
+          return;
+      }
+
+      mwAnnouncementBar.init();
+    }
+
+    var mwAnnouncementBar = (function() {
+      var ID = 'mw-announcement-bar', 
+          TEXT = '{{ section.settings.text }}', 
+          LINK = '{{ section.settings.banner_link }}', 
+          BACKGROUND_COLOR = '{{ section.settings.background_color }}', 
+          TEXT_COLOR = '{{ section.settings.text_color }}', 
+          TOP_MARGIN = {{ section.settings.top_margin }},
+          COUNTDOWN_TIMER_ENABLED = {{ section.settings.timer_enabled }}, 
+          COUNTDOWN_TIMER_DATE = {{ section.settings.timer_date | json }}, 
+          $timer,
+          $bar;
+
+      function buildBar() {
+        var $textContent = $('<div class="mw-announcement-bar__text" />');
+        $textContent.html(TEXT);
+
+        $bar = $('<div id="' + ID + '" />')
+        .css({
+          'background': BACKGROUND_COLOR,
+          'color': TEXT_COLOR,
+          'margin-top': TOP_MARGIN + 'px'
+        })
+          .append($textContent);
+
+        if (COUNTDOWN_TIMER_ENABLED &&
+            new Date(COUNTDOWN_TIMER_DATE) instanceof Date &&
+            !isNaN(new Date(COUNTDOWN_TIMER_DATE))) {
+          $timer = $('<div class="mw-announcement-bar__timer"/>');
+          $bar.append($timer);
+
+          var timer = buildTimer($timer);
+
+          if (timer === false) {
+            return;
+          }
+        }
+
+        $('body').prepend($bar);
+
+        if (LINK.length) {
+          $bar.wrap('<a href="' + LINK + '" class="mw-announcement-bar__link" />');
+        }
+      }
+
+      function buildTimer($timer) {
+        var today = new Date().getTime();
+        var endTime = new Date(COUNTDOWN_TIMER_DATE).setHours(0, 0, 0, 0);
+        var diff = endTime - today;
+
+        if (diff > 0) {
+          var timer = setInterval((function tick() {
+            var now = new Date().getTime(),
+                distance = (endTime - now),
+                days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                hours = ('00' + Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).slice(-2),
+                minutes = ('00' + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).slice(-2),
+                seconds = ('00' + Math.floor((distance % (1000 * 60)) / 1000)).slice(-2);
+
+            if (distance < 0) {
+              clearInterval(timer);
+
+              return null;
+            }
+
+            $timer.html(
+                        '<span class="mw-announcement-bar__timer__value">' + 
+                              '<span class="mw-announcement-bar__timer__digit">' + days + '</span>' + 
+                              '<span class="mw-announcement-bar__timer__label">{{ section.settings.timer_days_label }}</span>' + 
+                        '</span>' + 
+                        '<span class="mw-announcement-bar__timer__value">' + 
+                              '<span class="mw-announcement-bar__timer__digit">' + hours + '</span>' + 
+                              '<span class="mw-announcement-bar__timer__label">{{ section.settings.timer_hours_label }}</span>' + 
+                        '</span>' + 
+                        '<span class="mw-announcement-bar__timer__value">' + 
+                              '<span class="mw-announcement-bar__timer__digit">' + minutes + '</span>' + 
+                              '<span class="mw-announcement-bar__timer__label">{{ section.settings.timer_minutes_label }}</span>' +
+                        '</span>' + 
+                        '<span class="mw-announcement-bar__timer__value">' + 
+                              '<span class="mw-announcement-bar__timer__digit">' + seconds + '</span>' + 
+                              '<span class="mw-announcement-bar__timer__label">{{ section.settings.timer_seconds_label }}</span>' + 
+                        '</span>'
+                      );
+
+            return tick;
+          })(), 1000);
+        } else {
+          return false;
+        }
+      }
+
+      function init() {
+        buildBar();
+      }
+
+      return {
+        init: init
+      }
+    })();
+  </script>
+
+  <style>
+    #mw-announcement-bar {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      line-height: 1.5;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+    }
+
+    .mw-announcement-bar__link {
+      text-decoration: none;
+      color: {{ section.settings.text_color }};
+    }
+
+    .mw-announcement-bar__text {
+      width: 100%;
+    }
+
+    .mw-announcement-bar__text a:link,
+    .mw-announcement-bar__text a:visited {
+      text-decoration: underline;
+      color: {{ section.settings.text_color }};
+    }
+
+    .mw-announcement-bar__timer {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      margin-left: 15px;
+    }
+
+    .mw-announcement-bar__timer__value {
+      padding: 5px;
+      border-radius: 3px;
+      background: {{ section.settings.background_color | color_darken: 10 }};
+    }
+
+    .mw-announcement-bar__timer__value:not(:last-child) {
+      margin-right: 5px;
+    }
+
+    .mw-announcement-bar__timer__digit {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .mw-announcement-bar__timer__label {
+      display: block;
+      font-size: 12px;
+      font-weight: light;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    @media screen and (max-width: 749px) {
+      #mw-announcement-bar {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+      }
+
+      .mw-announcement-bar__timer {
+        margin-top: 10px;
+        margin-left: 0;
+      }
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Announcement bar",
+    "tag": "section",
+    "settings": [
+      {
+         "type": "checkbox",
+         "id": "enabled",
+         "default": false,
+         "label": "Enable announcement bar"
+      },
+      {
+         "type": "textarea",
+         "id": "text",
+         "default": "Hello",
+         "label": "Text"
+      },
+      {
+         "type": "color",
+         "id": "background_color",
+         "label": "Background color",
+         "default": "#d62020"
+      },
+      {
+         "type": "color",
+         "id": "text_color",
+         "label": "Text color",
+         "default": "#ffffff"
+      },
+	  {
+        "id": "banner_link",
+        "type": "url",
+        "label": "Banner link"
+      },
+	  {
+         "type": "number",
+         "id": "top_margin",
+         "default": 0,
+         "label": "Top margin (px)"
+      },
+	  {
+         "type": "header",
+         "content": "Countdown timer"
+      },
+	  {
+         "type": "checkbox",
+         "id": "timer_enabled",
+         "default": false,
+         "label": "Enable countdown timer"
+      },
+      {
+         "type": "text",
+         "id": "timer_date",
+         "label": "Expiration date",
+		 "info": "Format: YYYY-MM-DD"
+      },
+      {
+         "type": "text",
+         "id": "timer_days_label",
+         "label": "Days label",
+		 "default": "Days"
+      },
+      {
+         "type": "text",
+         "id": "timer_hours_label",
+         "label": "Hours label",
+		 "default": "Hours"
+      },
+      {
+         "type": "text",
+         "id": "timer_minutes_label",
+         "label": "Minutes label",
+		 "default": "Minutes"
+      },
+      {
+         "type": "text",
+         "id": "timer_seconds_label",
+         "label": "Seconds label",
+		 "default": "Seconds"
+      }
+    ]
+  }
+{% endschema %}

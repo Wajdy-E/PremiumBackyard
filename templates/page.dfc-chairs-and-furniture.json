@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_image_with_text_MDgDrD": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_crRtbd": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/Rolux_Z-series_in_9BL_White.jpg",
+            "img_position_desktop": "right",
+            "img_width_desktop": 40,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#ffffff",
+            "preheading": "Precision Lawn Care",
+            "preheading_color": "#4d4d4d",
+            "heading": "Starts with Rolux",
+            "heading_color": "#d63932",
+            "heading_size": "xlarge",
+            "text_content": "<p>Discover our complete line of premium lawn mowers designed for every need. From compact residential models to professional zero-turn machines.</p>",
+            "text_content_color": "#4a5565",
+            "button_link": "",
+            "button_text": "Explore Series",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "bottom-right",
+            "overlay_background": "#d63932",
+            "overlay_heading": "Precision in Every Pass",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "<p>Built to perform</p>",
+            "overlay_text_content_color": "#ffffff",
+            "signpost_color": "#ffffff",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_crRtbd"
+      ],
+      "custom_css": [
+        ".alt-img-with-text--content .alt-img-with-text--text .heading.xlarge {font-size: 2.1rem;}",
+        ".preheading, .text-content {font-size: 1.3rem;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "#1f2937",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    },
+    "main": {
+      "type": "static-page",
+      "disabled": true,
+      "custom_css": [
+        "img {border-radius: 10px;}"
+      ],
+      "settings": {}
+    },
+    "dynamic_image_with_text_6Ft4ma": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_g96thH": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/RoluxX20-20ReelStyleLawnMower.jpg",
+            "img_position_desktop": "left",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#1f2937",
+            "preheading": "",
+            "preheading_color": "#ffffff",
+            "heading": "Rolux X Series",
+            "heading_color": "#ffffff",
+            "heading_size": "xlarge",
+            "text_content": "<p>Perfect for small to medium lawns. The X Series combines compact design with powerful performance, making lawn care effortless. Ideal for homeowners seeking reliability and precision.</p>",
+            "text_content_color": "#ffffff",
+            "button_link": "",
+            "button_text": "Shop The X Series",
+            "button_style": "primary",
+            "feature_text_1": "Compact & maneuverable design",
+            "feature_text_2": "20-inch cutting width",
+            "feature_text_3": "5-position height adjustment",
+            "feature_text_4": "Easy-start engine technology",
+            "overlay_position": "left",
+            "overlay_background": "#d63932",
+            "overlay_heading": "X Series",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_g96thH"
+      ],
+      "custom_css": [
+        "svg {stroke-width: 2; fill: #f79c9c; fill-opacity: 0.3;}",
+        ".feature-content-wrapper {color: white;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_featured_collection_ygXRGf": {
+      "type": "dynamic-featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "collection": "rolux-x-series",
+        "product_count": 4,
+        "product_layout": "grid",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    },
+    "dynamic_image_with_text_NDdBxy": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_XjcFCx": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/RoluxX20-20ReelStyleLawnMower.jpg",
+            "img_position_desktop": "right",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#1f2937",
+            "preheading": "",
+            "preheading_color": "#ffffff",
+            "heading": "Rolux S Series",
+            "heading_color": "#ffffff",
+            "heading_size": "xlarge",
+            "text_content": "<p>Perfect for small to medium lawns. The X Series combines compact design with powerful performance, making lawn care effortless. Ideal for homeowners seeking reliability and precision.</p>",
+            "text_content_color": "#ffffff",
+            "button_link": "",
+            "button_text": "Shop The S Series",
+            "button_style": "primary",
+            "feature_text_1": "Compact & maneuverable design",
+            "feature_text_2": "20-inch cutting width",
+            "feature_text_3": "5-position height adjustment",
+            "feature_text_4": "Easy-start engine technology",
+            "overlay_position": "right",
+            "overlay_background": "#d63932",
+            "overlay_heading": "S Series",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_XjcFCx"
+      ],
+      "custom_css": [
+        "svg {stroke-width: 2; fill: #f79c9c; fill-opacity: 0.3;}",
+        ".feature-content-wrapper {color: white;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_featured_collection_rh7GTR": {
+      "type": "dynamic-featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "collection": "rolux-s-series",
+        "product_count": 4,
+        "product_layout": "grid",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    },
+    "dynamic_image_with_text_EjFddX": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_Njgd6U": {
+          "type": "image_with_text",
+          "settings": {
+            "img_desktop": "shopify://shop_images/RoluxX20-20ReelStyleLawnMower.jpg",
+            "img_position_desktop": "left",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#111827",
+            "preheading": "",
+            "preheading_color": "#ffffff",
+            "heading": "Rolux Z Series",
+            "heading_color": "#ffffff",
+            "heading_size": "xlarge",
+            "text_content": "<p>Perfect for small to medium lawns. The X Series combines compact design with powerful performance, making lawn care effortless. Ideal for homeowners seeking reliability and precision.</p>",
+            "text_content_color": "#ffffff",
+            "button_link": "",
+            "button_text": "Shop The Z Series",
+            "button_style": "primary",
+            "feature_text_1": "Compact & maneuverable design",
+            "feature_text_2": "20-inch cutting width",
+            "feature_text_3": "5-position height adjustment",
+            "feature_text_4": "Easy-start engine technology",
+            "overlay_position": "left",
+            "overlay_background": "#d63932",
+            "overlay_heading": "Z Series",
+            "overlay_heading_color": "#ffffff",
+            "overlay_text_content": "",
+            "overlay_text_content_color": "#ffffff",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_Njgd6U"
+      ],
+      "custom_css": [
+        "svg {stroke-width: 2; fill: #f79c9c; fill-opacity: 0.3;}",
+        ".feature-content-wrapper {color: white;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_featured_collection_wKLPJV": {
+      "type": "dynamic-featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 0,
+        "collection": "rolux-z-series",
+        "product_count": 4,
+        "product_layout": "grid",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    }
+  },
+  "order": [
+    "dynamic_image_with_text_MDgDrD",
+    "main",
+    "dynamic_image_with_text_6Ft4ma",
+    "dynamic_featured_collection_ygXRGf",
+    "dynamic_image_with_text_NDdBxy",
+    "dynamic_featured_collection_rh7GTR",
+    "dynamic_image_with_text_EjFddX",
+    "dynamic_featured_collection_wKLPJV"
+  ]
+}

@@ -1,0 +1,275 @@
+{% style %}
+  #shopify-section-{{ section.id }} .product-description-panel {
+    max-width: {{ settings.layout_max_width | append: 'px' }};
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: {{ section.settings.section_spacing_mobile }}px;
+    padding-bottom: {{ section.settings.section_spacing_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__inner {
+    padding: 22px;
+    border: 1px solid {{ section.settings.border_color }};
+    border-radius: {{ section.settings.border_radius }}px;
+    background: {{ section.settings.background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__eyebrow {
+    margin: 0 0 8px;
+    color: {{ section.settings.accent_color }};
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__heading {
+    margin: 0;
+    color: {{ section.settings.heading_color }};
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__summary {
+    max-width: 720px;
+    margin-top: 10px;
+    color: {{ section.settings.text_color }};
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__summary p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__content {
+    margin-top: 22px;
+    color: {{ section.settings.text_color }};
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__content > *:first-child {
+    margin-top: 0;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__content > *:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__content h2,
+  #shopify-section-{{ section.id }} .product-description-panel__content h3,
+  #shopify-section-{{ section.id }} .product-description-panel__content h4 {
+    margin-top: 1.6em;
+    margin-bottom: 0.55em;
+    color: {{ section.settings.heading_color }};
+    line-height: 1.25;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__content ul,
+  #shopify-section-{{ section.id }} .product-description-panel__content ol {
+    padding-left: 1.25rem;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__content li + li {
+    margin-top: 0.45rem;
+  }
+
+  #shopify-section-{{ section.id }} .product-description-panel__empty {
+    margin: 0;
+    color: {{ section.settings.text_color }};
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  @media screen and (min-width: 720px) {
+    #shopify-section-{{ section.id }} .product-description-panel {
+      padding-right: {{ settings.type_size_base | times: 1.75 | divided_by: 16.0 | append: 'rem' }};
+      padding-left: {{ settings.type_size_base | times: 1.75 | divided_by: 16.0 | append: 'rem' }};
+      padding-top: {{ section.settings.section_spacing_desktop }}px;
+      padding-bottom: {{ section.settings.section_spacing_desktop }}px;
+    }
+
+    #shopify-section-{{ section.id }} .product-description-panel__inner {
+      padding: 34px 38px;
+    }
+
+    {% if section.settings.two_column_desktop %}
+      #shopify-section-{{ section.id }} .product-description-panel__content {
+        column-count: 2;
+        column-gap: 48px;
+      }
+
+      #shopify-section-{{ section.id }} .product-description-panel__content h2,
+      #shopify-section-{{ section.id }} .product-description-panel__content h3,
+      #shopify-section-{{ section.id }} .product-description-panel__content h4,
+      #shopify-section-{{ section.id }} .product-description-panel__content table,
+      #shopify-section-{{ section.id }} .product-description-panel__content img,
+      #shopify-section-{{ section.id }} .product-description-panel__content iframe {
+        break-inside: avoid;
+      }
+    {% endif %}
+  }
+
+  @media screen and (min-width: 1080px) {
+    #shopify-section-{{ section.id }} .product-description-panel {
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+  }
+
+  @media screen and (max-width: 719px) {
+    #shopify-section-{{ section.id }} .product-description-panel__inner {
+      border-right: 0;
+      border-left: 0;
+      border-radius: 0;
+    }
+  }
+{% endstyle %}
+
+<script
+  type="application/json"
+  data-section-type="dynamic-product-description"
+  data-section-id="{{ section.id }}"
+  data-section-index="{{ section.index }}"
+></script>
+
+<section class="product-description-panel" aria-labelledby="product-description-heading-{{ section.id }}">
+  <div class="product-description-panel__inner">
+    {% if section.settings.eyebrow != blank %}
+      <p class="product-description-panel__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {% endif %}
+
+    <h2 id="product-description-heading-{{ section.id }}" class="product-description-panel__heading">
+      {{ section.settings.heading | escape }}
+    </h2>
+
+    {% if section.settings.summary != blank %}
+      <div class="product-description-panel__summary rte" data-rte>
+        {{ section.settings.summary }}
+      </div>
+    {% endif %}
+
+    {% if product.description != blank %}
+      <div class="product-description-panel__content rte" data-rte>
+        {{ product.description }}
+      </div>
+    {% else %}
+      <p class="product-description-panel__empty">
+        {{ section.settings.empty_text | escape }}
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product description",
+  "class": "product-description-panel--section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Product details"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Description"
+    },
+    {
+      "type": "richtext",
+      "id": "summary",
+      "label": "Optional intro text"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "Empty description text",
+      "default": "Product details will be available soon."
+    },
+    {
+      "type": "checkbox",
+      "id": "two_column_desktop",
+      "label": "Use two columns on desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#e1e1e1"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#D42E25"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#212121"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#4D4D4D"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_desktop",
+      "label": "Desktop section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_mobile",
+      "label": "Mobile section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product description",
+      "category": "Product"
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  }
+}
+{% endschema %}

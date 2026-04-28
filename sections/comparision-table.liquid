@@ -1,0 +1,460 @@
+{% comment %}
+  sections/comparison-table.liquid
+{% endcomment %}
+
+{%- liquid
+  assign col_1 = section.settings.col_1
+  assign col_2 = section.settings.col_2
+  assign col_3 = section.settings.col_3
+  assign col_4 = section.settings.col_4
+  assign col_5 = section.settings.col_5
+
+  assign col_count = 0
+  if col_1 != blank
+    assign col_count = col_count | plus: 1
+  endif
+  if col_2 != blank
+    assign col_count = col_count | plus: 1
+  endif
+  if col_3 != blank
+    assign col_count = col_count | plus: 1
+  endif
+  if col_4 != blank
+    assign col_count = col_count | plus: 1
+  endif
+  if col_5 != blank
+    assign col_count = col_count | plus: 1
+  endif
+
+  assign primary_color = settings.color_buttons_primary_button_background
+  assign primary_color_light = primary_color | color_lighten: 10
+  assign primary_color_text = settings.color_buttons_primary_button_text
+-%}
+
+<section class="comparison-table" id="section-{{ section.id }}">
+
+  <style>
+    #section-{{ section.id }} .comparison-table__table thead th.col-highlight {
+      background-color: {{ primary_color }};
+    }
+    #section-{{ section.id }} .comparison-table__table tbody td.col-highlight {
+      background-color: {{ primary_color_light }};
+      color: {{  primary_color_text }};
+    }
+    #section-{{ section.id }} .comparison-table__table tbody tr:hover td.col-highlight {
+      background-color: {{ primary_color | color_lighten: 20 }};
+    }
+    #section-{{ section.id }} .comparison-table__table tbody td.cell-primary-text {
+      color: {{ primary_color }};
+      font-weight: bold;
+    }
+  </style>
+
+  {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+    <div class="comparison-table__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="comparison-table__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="comparison-table__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if col_count > 0 and section.blocks.size > 0 -%}
+    <div class="comparison-table__scroll">
+      <div class="comparison-table__wrap">
+        <table class="comparison-table__table">
+
+          <thead>
+            <tr>
+              {%- if col_1 != blank -%}
+                <th{% if section.settings.col_1_highlight %} class="col-highlight"{% endif %}>{{ col_1 }}</th>
+              {%- endif -%}
+              {%- if col_2 != blank -%}
+                <th{% if section.settings.col_2_highlight %} class="col-highlight"{% endif %}>{{ col_2 }}</th>
+              {%- endif -%}
+              {%- if col_3 != blank -%}
+                <th{% if section.settings.col_3_highlight %} class="col-highlight"{% endif %}>{{ col_3 }}</th>
+              {%- endif -%}
+              {%- if col_4 != blank -%}
+                <th{% if section.settings.col_4_highlight %} class="col-highlight"{% endif %}>{{ col_4 }}</th>
+              {%- endif -%}
+              {%- if col_5 != blank -%}
+                <th{% if section.settings.col_5_highlight %} class="col-highlight"{% endif %}>{{ col_5 }}</th>
+              {%- endif -%}
+            </tr>
+          </thead>
+
+          <tbody>
+            {%- for block in section.blocks -%}
+              <tr {{ block.shopify_attributes }}>
+                {%- if col_1 != blank -%}
+                  {%- assign td_1_classes = '' -%}
+                  {%- if section.settings.col_1_highlight -%}{%- assign td_1_classes = td_1_classes | append: ' col-highlight' -%}{%- endif -%}
+                  {%- if block.settings.cell_1_primary_text -%}{%- assign td_1_classes = td_1_classes | append: ' cell-primary-text' -%}{%- endif -%}
+                  <td{% if td_1_classes != '' %} class="{{ td_1_classes | strip }}"{% endif %}>{{ block.settings.cell_1 }}</td>
+                {%- endif -%}
+                {%- if col_2 != blank -%}
+                  {%- assign td_2_classes = '' -%}
+                  {%- if section.settings.col_2_highlight -%}{%- assign td_2_classes = td_2_classes | append: ' col-highlight' -%}{%- endif -%}
+                  {%- if block.settings.cell_2_primary_text -%}{%- assign td_2_classes = td_2_classes | append: ' cell-primary-text' -%}{%- endif -%}
+                  <td{% if td_2_classes != '' %} class="{{ td_2_classes | strip }}"{% endif %}>{{ block.settings.cell_2 }}</td>
+                {%- endif -%}
+                {%- if col_3 != blank -%}
+                  {%- assign td_3_classes = '' -%}
+                  {%- if section.settings.col_3_highlight -%}{%- assign td_3_classes = td_3_classes | append: ' col-highlight' -%}{%- endif -%}
+                  {%- if block.settings.cell_3_primary_text -%}{%- assign td_3_classes = td_3_classes | append: ' cell-primary-text' -%}{%- endif -%}
+                  <td{% if td_3_classes != '' %} class="{{ td_3_classes | strip }}"{% endif %}>{{ block.settings.cell_3 }}</td>
+                {%- endif -%}
+                {%- if col_4 != blank -%}
+                  {%- assign td_4_classes = '' -%}
+                  {%- if section.settings.col_4_highlight -%}{%- assign td_4_classes = td_4_classes | append: ' col-highlight' -%}{%- endif -%}
+                  {%- if block.settings.cell_4_primary_text -%}{%- assign td_4_classes = td_4_classes | append: ' cell-primary-text' -%}{%- endif -%}
+                  <td{% if td_4_classes != '' %} class="{{ td_4_classes | strip }}"{% endif %}>{{ block.settings.cell_4 }}</td>
+                {%- endif -%}
+                {%- if col_5 != blank -%}
+                  {%- assign td_5_classes = '' -%}
+                  {%- if section.settings.col_5_highlight -%}{%- assign td_5_classes = td_5_classes | append: ' col-highlight' -%}{%- endif -%}
+                  {%- if block.settings.cell_5_primary_text -%}{%- assign td_5_classes = td_5_classes | append: ' cell-primary-text' -%}{%- endif -%}
+                  <td{% if td_5_classes != '' %} class="{{ td_5_classes | strip }}"{% endif %}>{{ block.settings.cell_5 }}</td>
+                {%- endif -%}
+              </tr>
+            {%- endfor -%}
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% style %}
+  .comparison-table__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .comparison-table__heading {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .comparison-table__subheading {
+    margin-top: 10px;
+    color: #888;
+    font-size: 1rem;
+  }
+
+  .comparison-table__scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+  }
+
+  #shopify-section-{{section.id}} .comparison-table {
+    padding-top: {{ section.settings.section_spacing_mobile }}px;
+    padding-bottom: {{ section.settings.section_spacing_mobile }}px;
+  }
+
+  @media screen and (min-width: 720px) {
+    #shopify-section-{{section.id}} .comparison-table {
+      padding-top: {{ section.settings.section_spacing_desktop }}px;
+      padding-bottom: {{ section.settings.section_spacing_desktop }}px;
+    }
+
+  
+  }
+
+  .comparison-table__wrap {
+    border-radius: 12px;
+    border: 1px solid #e0ddd9;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+    margin: 0 auto;
+  }
+
+  .comparison-table__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+  }
+
+  .comparison-table__table thead tr {
+    background: {{ section.settings.header_color}};
+  }
+
+  .comparison-table__table thead th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 18px 20px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .comparison-table__table thead th + th,
+  .comparison-table__table tbody td + td {
+    border-left: 1px solid #e0ddd9;
+  }
+
+  .comparison-table__table tbody tr {
+    border-bottom: 1px solid #e0ddd9;
+    transition: background 0.12s;
+  }
+
+  .comparison-table__table tbody tr:nth-child(even) {
+    background: #faf9f7;
+  }
+
+  .comparison-table__table tbody tr:hover {
+    background: #fff3f2;
+  }
+
+  .comparison-table__table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .comparison-table__table tbody td {
+    padding: 18px 20px;
+    font-size: 0.9rem;
+    vertical-align: middle;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "tag": "section",
+  "class": "section-comparison-table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Compare Every Model"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "header_color",
+      "label": "Header color"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_desktop",
+      "label": "Desktop section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_mobile",
+      "label": "Mobile section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "text",
+      "id": "col_1",
+      "label": "Column 1 header",
+      "default": "Model"
+    },
+    {
+      "type": "checkbox",
+      "id": "col_1_highlight",
+      "label": "Use primary background color",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "text",
+      "id": "col_2",
+      "label": "Column 2 header",
+      "default": "Price"
+    },
+    {
+      "type": "checkbox",
+      "id": "col_2_highlight",
+      "label": "Use primary background color",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "text",
+      "id": "col_3",
+      "label": "Column 3 header"
+    },
+    {
+      "type": "checkbox",
+      "id": "col_3_highlight",
+      "label": "Use primary background color",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Column 4"
+    },
+    {
+      "type": "text",
+      "id": "col_4",
+      "label": "Column 4 header"
+    },
+    {
+      "type": "checkbox",
+      "id": "col_4_highlight",
+      "label": "Use primary background color",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Column 5"
+    },
+    {
+      "type": "text",
+      "id": "col_5",
+      "label": "Column 5 header"
+    },
+    {
+      "type": "checkbox",
+      "id": "col_5_highlight",
+      "label": "Use primary background color",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Table Row",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Cell 1"
+        },
+        {
+          "type": "text",
+          "id": "cell_1",
+          "label": "Value"
+        },
+        {
+          "type": "checkbox",
+          "id": "cell_1_primary_text",
+          "label": "Use primary text color",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Cell 2"
+        },
+        {
+          "type": "text",
+          "id": "cell_2",
+          "label": "Value"
+        },
+        {
+          "type": "checkbox",
+          "id": "cell_2_primary_text",
+          "label": "Use primary text color",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Cell 3"
+        },
+        {
+          "type": "text",
+          "id": "cell_3",
+          "label": "Value"
+        },
+        {
+          "type": "checkbox",
+          "id": "cell_3_primary_text",
+          "label": "Use primary text color",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Cell 4"
+        },
+        {
+          "type": "text",
+          "id": "cell_4",
+          "label": "Value"
+        },
+        {
+          "type": "checkbox",
+          "id": "cell_4_primary_text",
+          "label": "Use primary text color",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Cell 5"
+        },
+        {
+          "type": "text",
+          "id": "cell_5",
+          "label": "Value"
+        },
+        {
+          "type": "checkbox",
+          "id": "cell_5_primary_text",
+          "label": "Use primary text color",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Table",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "cell_1": "X-100 Compact",
+            "cell_2": "$299"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "cell_1": "X-200 Electric",
+            "cell_2": "$449"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "cell_1": "Y-500 Self-Propelled",
+            "cell_2": "$799"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,132 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_featured_collection_qw84eP": {
+      "type": "dynamic-featured-collection",
+      "custom_css": [
+        ".productgrid--item {border-radius: 10px; border: 1px solid lightgray; overflow: hidden;}",
+        ".productitem--image {border-radius: 0;}",
+        ".productitem--info {padding: 0.83rem; margin-inline: 0;}"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 12,
+        "section_spacing_mobile": 15,
+        "collection": "canadian-outdoor-furniture-best-sellers",
+        "product_count": 4,
+        "product_layout": "grid",
+        "cta_text": "",
+        "cta_button_style": "primary",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    },
+    "main": {
+      "type": "static-collection",
+      "custom_css": [],
+      "settings": {
+        "show_breadcrumbs": false,
+        "show_collection_image": false,
+        "enable_image_overlay": false,
+        "overlay_opacity": 0.4,
+        "atc_overlay": true,
+        "products_per_page_range": 24,
+        "pagination": "click_to_load",
+        "sort_by": true,
+        "grid_list": true,
+        "menu_depth_range": 1
+      }
+    },
+    "static-recently-viewed": {
+      "type": "static-recently-viewed",
+      "settings": {
+        "enable_recently_viewed_products": false
+      }
+    },
+    "static-collection-promo-grid": {
+      "type": "static-collection-promo-grid",
+      "blocks": {
+        "grid-tile-1": {
+          "type": "promotion",
+          "settings": {
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "title": "Grid",
+            "heading_color": "#4d4d4d",
+            "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
+            "text_color": "#4d4d4d",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "top-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "none",
+            "background": "",
+            "opacity": 50
+          }
+        },
+        "grid-tile-2": {
+          "type": "promotion",
+          "settings": {
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "title": "Grid",
+            "heading_color": "#4d4d4d",
+            "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
+            "text_color": "#4d4d4d",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "signpost_color": "#4d4d4d",
+            "text_alignment": "top-left",
+            "promo_width": "half-width",
+            "desktop_height": 380,
+            "mobile_height": 270,
+            "overlay_style": "none",
+            "background": "",
+            "opacity": 50
+          }
+        }
+      },
+      "block_order": [
+        "grid-tile-1",
+        "grid-tile-2"
+      ],
+      "settings": {
+        "enable": false,
+        "title": "Grid",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "maintain_aspect_ratio": false,
+        "compress_blocks": false
+      }
+    }
+  },
+  "order": [
+    "dynamic_featured_collection_qw84eP",
+    "main",
+    "static-recently-viewed",
+    "static-collection-promo-grid"
+  ]
+}

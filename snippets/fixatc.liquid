@@ -1,0 +1,19 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.theme && window.theme.Product) {
+    var originalUpdate = window.theme.Product.prototype._updateButton;
+
+    window.theme.Product.prototype._updateButton = function(variant) {
+      console.log('Variant stock:', variant.inventory_quantity, 'Available:', variant.available);
+
+      if (variant && (variant.available || variant.inventory_quantity > 0)) {
+        this.$productAtcButton.text(this.context.product_available);
+        this.$productAtcButton.removeClass('disabled').prop('disabled', false);
+      } else {
+        this.$productAtcButton.text(this.context.product_unavailable);
+        this.$productAtcButton.addClass('disabled').prop('disabled', true);
+      }
+    };
+  }
+});
+</script>

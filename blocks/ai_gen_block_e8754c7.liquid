@@ -1,0 +1,538 @@
+{% doc %}
+  @prompt
+    Create a customizable "Free Shipping" badge that can be displayed on product cards and product pages. The badge should be visually appealing with customizable colors, positioning, and text. Include options to show the badge on specific products or all products from certain suppliers/vendors. The badge should work well with the Superstore theme design and be responsive across different screen sizes.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-shipping-badge-{{ ai_gen_id }} {
+    position: {{ block.settings.position_type }};
+    {% if block.settings.position_type == 'absolute' %}
+      {% case block.settings.badge_position %}
+        {% when 'top-left' %}
+          top: {{ block.settings.offset_distance }}px;
+          left: {{ block.settings.offset_distance }}px;
+        {% when 'top-right' %}
+          top: {{ block.settings.offset_distance }}px;
+          right: {{ block.settings.offset_distance }}px;
+        {% when 'bottom-left' %}
+          bottom: {{ block.settings.offset_distance }}px;
+          left: {{ block.settings.offset_distance }}px;
+        {% when 'bottom-right' %}
+          bottom: {{ block.settings.offset_distance }}px;
+          right: {{ block.settings.offset_distance }}px;
+      {% endcase %}
+    {% endif %}
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    background-color: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    border-radius: {{ block.settings.border_radius }}px;
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    text-transform: {% if block.settings.text_uppercase %}uppercase{% else %}none{% endif %};
+    letter-spacing: {% if block.settings.text_uppercase %}0.5px{% else %}0{% endif %};
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+
+  .ai-shipping-badge-{{ ai_gen_id }}:hover {
+    transform: {% if block.settings.hover_effect %}scale(1.05){% else %}none{% endif %};
+  }
+
+  .ai-shipping-badge-{{ ai_gen_id }}--shape-rounded {
+    border-radius: 50px;
+  }
+
+  .ai-shipping-badge-{{ ai_gen_id }}--shape-pill {
+    border-radius: 25px;
+  }
+
+  .ai-shipping-badge-{{ ai_gen_id }}--shape-square {
+    border-radius: 0;
+  }
+
+  .ai-shipping-badge-{{ ai_gen_id }}--size-small {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .ai-shipping-badge-{{ ai_gen_id }}--size-medium {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .ai-shipping-badge-{{ ai_gen_id }}--size-large {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+
+  .ai-shipping-badge-{{ ai_gen_id }}__icon {
+    margin-right: 4px;
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-shipping-badge-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.9 }}px;
+      padding: {{ block.settings.padding_vertical | times: 0.8 }}px {{ block.settings.padding_horizontal | times: 0.8 }}px;
+    }
+
+    .ai-shipping-badge-{{ ai_gen_id }}__icon {
+      width: {{ block.settings.icon_size | times: 0.8 }}px;
+      height: {{ block.settings.icon_size | times: 0.8 }}px;
+    }
+
+    {% if block.settings.position_type == 'absolute' %}
+      .ai-shipping-badge-{{ ai_gen_id }} {
+        {% case block.settings.badge_position %}
+          {% when 'top-left' %}
+            top: {{ block.settings.offset_distance | times: 0.7 }}px;
+            left: {{ block.settings.offset_distance | times: 0.7 }}px;
+          {% when 'top-right' %}
+            top: {{ block.settings.offset_distance | times: 0.7 }}px;
+            right: {{ block.settings.offset_distance | times: 0.7 }}px;
+          {% when 'bottom-left' %}
+            bottom: {{ block.settings.offset_distance | times: 0.7 }}px;
+            left: {{ block.settings.offset_distance | times: 0.7 }}px;
+          {% when 'bottom-right' %}
+            bottom: {{ block.settings.offset_distance | times: 0.7 }}px;
+            right: {{ block.settings.offset_distance | times: 0.7 }}px;
+        {% endcase %}
+      }
+    {% endif %}
+  }
+{% endstyle %}
+
+<shipping-badge-{{ ai_gen_id }} {{ block.shopify_attributes }}>
+  {% liquid
+    assign show_badge = false
+    assign current_product = product
+    if block.settings.display_condition == 'all_products'
+      assign show_badge = true
+    elsif block.settings.display_condition == 'specific_vendors'
+      if block.settings.vendor_list != blank
+        assign vendor_names = block.settings.vendor_list | split: ','
+        for vendor_name in vendor_names
+          assign clean_vendor = vendor_name | strip | downcase
+          assign product_vendor = current_product.vendor | downcase
+          if product_vendor == clean_vendor
+            assign show_badge = true
+            break
+          endif
+        endfor
+      endif
+    elsif block.settings.display_condition == 'specific_products'
+      if block.settings.product_list != blank
+        for selected_product in block.settings.product_list
+          if selected_product.id == current_product.id
+            assign show_badge = true
+            break
+          endif
+        endfor
+      endif
+    elsif block.settings.display_condition == 'price_threshold'
+      if current_product.price >= block.settings.price_threshold_amount
+        assign show_badge = true
+      endif
+    endif
+
+    if block.settings.hide_on_sale and current_product.compare_at_price > current_product.price
+      assign show_badge = false
+    endif
+  %}
+
+  {% if show_badge %}
+    <div class="ai-shipping-badge-{{ ai_gen_id }} ai-shipping-badge-{{ ai_gen_id }}--shape-{{ block.settings.badge_shape }} ai-shipping-badge-{{ ai_gen_id }}--size-{{ block.settings.badge_size }}">
+      {% if block.settings.show_icon %}
+        <svg class="ai-shipping-badge-{{ ai_gen_id }}__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          {% case block.settings.icon_type %}
+            {% when 'truck' %}
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16,8 20,8 23,11 23,16 16,16"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            {% when 'package' %}
+              <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27,6.96 12,12.01 20.73,6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            {% when 'gift' %}
+              <polyline points="20,12 20,22 4,22 4,12"></polyline>
+              <rect x="2" y="7" width="20" height="5"></rect>
+              <line x1="12" y1="22" x2="12" y2="7"></line>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+            {% when 'check' %}
+              <polyline points="20,6 9,17 4,12"></polyline>
+          {% endcase %}
+        </svg>
+      {% endif %}
+      {{ block.settings.badge_text }}
+    </div>
+  {% endif %}
+</shipping-badge-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ShippingBadge{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupBadgeVisibility();
+      }
+
+      setupBadgeVisibility() {
+        const badge = this.querySelector('.ai-shipping-badge-{{ ai_gen_id }}');
+        if (badge) {
+          badge.style.opacity = '0';
+          badge.style.transform = 'translateY(10px)';
+          
+          setTimeout(() => {
+            badge.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            badge.style.opacity = '1';
+            badge.style.transform = 'translateY(0)';
+          }, 100);
+        }
+      }
+    }
+
+    customElements.define('shipping-badge-{{ ai_gen_id }}', ShippingBadge{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Free shipping badge",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Free Shipping"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "icon_type",
+      "label": "Icon type",
+      "options": [
+        {
+          "value": "truck",
+          "label": "Truck"
+        },
+        {
+          "value": "package",
+          "label": "Package"
+        },
+        {
+          "value": "gift",
+          "label": "Gift"
+        },
+        {
+          "value": "check",
+          "label": "Check mark"
+        }
+      ],
+      "default": "truck"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Display conditions"
+    },
+    {
+      "type": "select",
+      "id": "display_condition",
+      "label": "Show badge on",
+      "options": [
+        {
+          "value": "all_products",
+          "label": "All products"
+        },
+        {
+          "value": "specific_vendors",
+          "label": "Specific vendors"
+        },
+        {
+          "value": "specific_products",
+          "label": "Specific products"
+        },
+        {
+          "value": "price_threshold",
+          "label": "Products above price threshold"
+        }
+      ],
+      "default": "all_products"
+    },
+    {
+      "type": "textarea",
+      "id": "vendor_list",
+      "label": "Vendor names",
+      "info": "Enter vendor names separated by commas (e.g., Nike, Adidas, Puma)"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Select products",
+      "limit": 50
+    },
+    {
+      "type": "range",
+      "id": "price_threshold_amount",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "unit": "$",
+      "label": "Minimum price for free shipping",
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_sale",
+      "label": "Hide badge on sale products",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Badge style"
+    },
+    {
+      "type": "select",
+      "id": "badge_size",
+      "label": "Badge size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "badge_shape",
+      "label": "Badge shape",
+      "options": [
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        },
+        {
+          "value": "pill",
+          "label": "Pill"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "rounded"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "checkbox",
+      "id": "text_uppercase",
+      "label": "Uppercase text",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 6,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "hover_effect",
+      "label": "Enable hover effect",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Badge colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#008060"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#008060"
+    },
+    {
+      "type": "header",
+      "content": "Badge positioning"
+    },
+    {
+      "type": "select",
+      "id": "position_type",
+      "label": "Position type",
+      "options": [
+        {
+          "value": "relative",
+          "label": "Inline with content"
+        },
+        {
+          "value": "absolute",
+          "label": "Overlay on content"
+        }
+      ],
+      "default": "relative"
+    },
+    {
+      "type": "select",
+      "id": "badge_position",
+      "label": "Badge position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top left"
+        },
+        {
+          "value": "top-right",
+          "label": "Top right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "top-right",
+      "info": "Only applies when position type is set to 'Overlay on content'"
+    },
+    {
+      "type": "range",
+      "id": "offset_distance",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "label": "Distance from edge",
+      "default": 10,
+      "info": "Only applies when position type is set to 'Overlay on content'"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Free shipping badge"
+    }
+  ]
+}
+{% endschema %}

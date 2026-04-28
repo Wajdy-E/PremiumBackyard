@@ -1,0 +1,111 @@
+{% assign block_id = "now" | date: "%N" %}
+{% assign block_id = "block-" | append: block_id %}
+<style>
+  #{{ block_id }}.featured-icons__list {
+      display: flex;
+      margin-top: {{ block.settings.margin_top }}px;
+      margin-bottom: {{ block.settings.margin_bottom }}px;
+      margin-inline: auto;
+      flex-wrap: wrap;
+      list-style-type: none;
+      align-items: stretch;
+      justify-content: center;
+      gap: clamp(10px, 2vw, {{ block.settings.row_gap }}px);
+      background-color: {{ block.settings.bg_color | default: 'inherit' }};
+      padding-top: {{ block.settings.padding_top }}px;
+      padding-bottom: {{ block.settings.padding_bottom }}px;
+      padding-left: {{ block.settings.padding_left }}px;
+      padding-right: {{ block.settings.padding_right }}px;
+      border-radius: {{ block.settings.border_radius }}px;
+  }
+  #{{ block_id }} .featured-icons__item {
+      display: flex;
+      flex: 1 1 min({{ block.settings.item_width }}{{ block.settings.item_width_type }}, 46%);
+      {% if block.settings.text_position == 'right' %}
+        flex-direction: row;
+      {% else %}
+        flex-direction: column;
+      {% endif %};
+      min-width: 118px;
+      margin: 0;
+      padding: 14px 10px;
+      align-items: center;
+      border: 1px solid rgba(212, 46, 37, 0.14);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 248, 248, 0.96));
+      {% if block.settings.text_position == 'right' %}
+          {% if block.settings.left_alignment == true %}
+              justify-content: left;
+          {% else %}
+              justify-content: center;
+          {% endif %}
+      {% endif %}
+  }
+  #{{ block_id }} .featured-icons__icon {
+      line-height: 0;
+      width: calc({{ block.settings.icon_size }}px + 16px);
+      height: calc({{ block.settings.icon_size }}px + 16px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(212, 46, 37, 0.09);
+      color: {{ block.settings.icon_color | default: '#D42E25' }};
+      {% if block.settings.text_position == 'bottom' %}
+        margin-bottom: 10px;
+      {% elsif block.settings.text_position == 'right' %}
+        margin-right: {{ block.settings.icon_margin_right }}px;
+      {% endif %}
+  }
+  #{{ block_id }} .featured-icons__icon :is(img, svg) {
+      max-width: {{ block.settings.icon_size }}px;
+      height: auto;
+  }
+  #{{ block_id }} .featured-icons__icon svg {
+      color: {{ block.settings.icon_color | default: 'inherit' }};
+  }
+  #{{ block_id }} .featured-icons__title {
+      font-size: {{ block.settings.font_size }}px;
+      color: {{ block.settings.text_color | default: 'inherit' }};
+      text-transform: {{ block.settings.letter_casing }};
+      font-weight: {{ block.settings.font_weight }};
+      text-align: {% if block.settings.text_position == 'right' %}left{% else %}center{% endif %};
+      line-height: 1.35em;
+      letter-spacing: 0.01em;
+  }
+  @media screen and (max-width: 719px) {
+      #{{ block_id }}.featured-icons__list {
+          gap: 10px;
+      }
+      #{{ block_id }} .featured-icons__item {
+          flex-basis: calc(50% - 5px);
+          min-width: 0;
+          padding: 12px 8px;
+      }
+  }
+</style>
+<ul id="{{ block_id }}" class="featured-icons__list">
+  {% for i in (1..block.settings.number_of_items) %}
+    {% assign icon_id = "icon_" | append: i %}
+    {% assign image_id = "image_" | append: i %}
+    {% assign title_id = "title_" | append: i %}
+      <li class="featured-icons__item">
+        {% if block.settings[image_id] != blank %}
+          <div class="featured-icons__icon">
+              <img src="{{ block.settings[image_id] | image_url }}" alt="{{ block.settings[title_id] }}" loading="lazy" width="{{ block.settings.icon_size }}" height="{{ block.settings.icon_size }}" />
+          </div>
+        {% elsif block.settings[icon_id] != blank %}
+          <div class="featured-icons__icon">
+              {% render 'icon-library', id: block.settings[icon_id] %}
+          </div>
+        {% else %}
+          <div class="featured-icons__icon">
+              {% render 'icon-library', id: 'icon-checkmark' %}
+          </div>
+        {% endif %}
+          <div class="featured-icons__title">
+              {{- block.settings[title_id] }}
+          </div>
+      </li>
+  {% endfor %}
+</ul>

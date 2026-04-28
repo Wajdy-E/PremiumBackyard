@@ -1,0 +1,304 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_custom_liquid_qVyrg9": {
+      "type": "dynamic-custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"pb-reel-guide-wrap\">\n  <div class=\"pb-reel-guide-container\">\n\n    <!-- Hero -->\n    <div class=\"pb-reel-guide-hero\">\n      <h1>THE CANADIAN HOMEOWNER'S<br>REEL MOWING GUIDE</h1>\n      <p>Featuring the Rolux Reel Mower</p>\n      <div class=\"pb-reel-guide-hero-italic\">Unlock YOUR Property Potential</div>\n    </div>\n\n    <!-- Section 1 -->\n    <div class=\"pb-reel-guide-section\">\n      <h2 class=\"pb-reel-guide-h2\">What Makes Reel Mowing Different?</h2>\n      <p class=\"pb-reel-guide-p\">Reel mowing delivers a noticeably cleaner, healthier cut compared to a rotary mower.</p>\n      <p class=\"pb-reel-guide-p\">Instead of hacking or tearing the grass like a rotary mower, a reel mower shears each blade cleanly, the same way scissors work.</p>\n\n      <div class=\"pb-reel-guide-feature\">\n        <p class=\"pb-reel-guide-feature-title\">Thicker, greener lawn over time</p>\n        <p class=\"pb-reel-guide-feature-sub\">Clean cuts promote healthy growth</p>\n      </div>\n\n      <div class=\"pb-reel-guide-feature\">\n        <p class=\"pb-reel-guide-feature-title\">Less stress on the grass</p>\n        <p class=\"pb-reel-guide-feature-sub\">No torn edges that turn brown</p>\n      </div>\n\n      <div class=\"pb-reel-guide-feature\">\n        <p class=\"pb-reel-guide-feature-title\">Better overall turf health</p>\n        <p class=\"pb-reel-guide-feature-sub\">Stronger root systems develop naturally</p>\n      </div>\n\n      <div class=\"pb-reel-guide-feature\">\n        <p class=\"pb-reel-guide-feature-title\">Cleaner lines and professional results</p>\n        <p class=\"pb-reel-guide-feature-sub\">Create the stripes you've always admired</p>\n      </div>\n\n      <div class=\"pb-reel-guide-callout\">\n        <p>\n          If you've ever admired sports fields or golf fairway stripes, reel mowing is what creates that finish.\n          <strong class=\"pb-reel-guide-strong\">For homeowners who switch to reel mowing, this difference is clear.</strong>\n        </p>\n      </div>\n    </div>\n\n    <div class=\"pb-reel-guide-divider\"></div>\n\n    <!-- Section 2 -->\n    <div class=\"pb-reel-guide-section-alt\">\n      <h2 class=\"pb-reel-guide-h2\">Is Your Lawn a Good Fit?</h2>\n      <p class=\"pb-reel-guide-p\">Not every lawn is ideal for reel mowing. Here's a quick checklist to see if your property qualifies:</p>\n\n      <div class=\"pb-reel-guide-fit good\">\n        <div class=\"pb-reel-guide-fit-title\">✓ You're a Good Fit If:</div>\n        <div class=\"pb-reel-guide-li\">• Your lawn is mostly level or has gentle slopes</div>\n        <div class=\"pb-reel-guide-li\">• You're comfortable mowing 2 times per week for best results</div>\n        <div class=\"pb-reel-guide-li\">• You have one of these grass types:</div>\n        <div class=\"pb-reel-guide-subli\">- Kentucky Bluegrass</div>\n        <div class=\"pb-reel-guide-subli\">- Perennial Ryegrass</div>\n        <div class=\"pb-reel-guide-subli\" style=\"margin:0;\">- Fine Fescue</div>\n      </div>\n\n      <div class=\"pb-reel-guide-fit bad\">\n        <div class=\"pb-reel-guide-fit-title\">⊗ You May NOT Be a Good Fit If:</div>\n        <div class=\"pb-reel-guide-li\">• Your lawn is mostly Tall Fescue or prairie/native grasses</div>\n        <div class=\"pb-reel-guide-li\">• You only mow once every 7 to 10 days</div>\n        <div class=\"pb-reel-guide-li\">• Your yard has bumps, dips, or uneven grading</div>\n        <div class=\"pb-reel-guide-li\" style=\"margin:0;\">• Your lawn is heavily thatched or neglected</div>\n      </div>\n\n      <div class=\"pb-reel-guide-goodnews\">\n        <h3 class=\"pb-reel-guide-h3\">Good News for Canadian Homeowners</h3>\n        <p class=\"pb-reel-guide-p\" style=\"margin:0;\">\n          Most Canadian suburban and acreage lawns qualify, especially Bluegrass and Ryegrass blends common in BC, Ontario, Alberta, and to a lesser extent, the Prairies.\n        </p>\n      </div>\n    </div>\n\n    <div class=\"pb-reel-guide-divider\"></div>\n\n    <!-- Section 3 -->\n    <div class=\"pb-reel-guide-section\">\n      <h2 class=\"pb-reel-guide-h2\">What to Expect with a Reel Mower</h2>\n      <p class=\"pb-reel-guide-p\">A reel mower gives you a different mowing experience, lighter, quieter, and more precise.</p>\n\n      <h3 class=\"pb-reel-guide-h3\">What Homeowners Typically Notice:</h3>\n\n      <div class=\"pb-reel-guide-feature\">\n        <p class=\"pb-reel-guide-feature-title\">Cleaner cut and fewer yellow tips</p>\n        <p class=\"pb-reel-guide-feature-sub\">No more ragged, brown blade edges</p>\n      </div>\n\n      <div class=\"pb-reel-guide-feature\">\n        <p class=\"pb-reel-guide-feature-title\">More defined stripes</p>\n        <p class=\"pb-reel-guide-feature-sub\">That professional sports field look</p>\n      </div>\n\n      <div class=\"pb-reel-guide-feature\">\n        <p class=\"pb-reel-guide-feature-title\">A lawn that thickens with consistent mowing</p>\n        <p class=\"pb-reel-guide-feature-sub\">Regular cutting encourages lateral growth</p>\n      </div>\n\n      <div class=\"pb-reel-guide-feature\">\n        <p class=\"pb-reel-guide-feature-title\">A more enjoyable, almost relaxing routine</p>\n        <p class=\"pb-reel-guide-feature-sub\">Once you switch, you'll enjoy the sounds of birds and nature instead of engine noise</p>\n      </div>\n\n      <div class=\"pb-reel-guide-darkbox\">\n        <h3>The Rolux Advantage</h3>\n        <p>\n          The Rolux Z-Series represents the culmination of more than two years of focused development aimed at refining the homeowner reel mower.\n          By listening to reel mower owners across the market, Rolux identified common pain points and reworked key systems to make the mower more precise, more durable, and easier to live with.\n        </p>\n        <p class=\"pb-reel-guide-strong\">The result is professional-grade performance with homeowner-friendly usability.</p>\n      </div>\n\n      <div class=\"pb-reel-guide-bullets\">\n        <h3 class=\"pb-reel-guide-h3\">What to Keep in Mind:</h3>\n        <div class=\"pb-reel-guide-li\">• Reel mowers work best when grass is not too long</div>\n        <div class=\"pb-reel-guide-li\">• Regular mowing (2 to 3 times per week) gives the best results</div>\n        <div class=\"pb-reel-guide-li\">• Clearing debris before mowing is important for smooth operation</div>\n      </div>\n\n      <div class=\"pb-reel-guide-callout\">\n        <p>\n          <strong class=\"pb-reel-guide-strong\">\n            If you want a lawn that looks more like a sports field than a typical suburban yard, reel mowing is the path to get there.\n          </strong>\n        </p>\n      </div>\n    </div>\n\n    <div class=\"pb-reel-guide-divider\"></div>\n\n    <!-- Section 4 -->\n    <div class=\"pb-reel-guide-section-alt\">\n      <h2 class=\"pb-reel-guide-h2\">Choosing Your Rolux Model</h2>\n      <p class=\"pb-reel-guide-p\">The size of your property and frequency of cut will influence your selection of mower width and blade count on the reel.</p>\n\n      <div class=\"pb-reel-guide-rec-title\">Recommended by Property Size</div>\n\n      <!-- S17 -->\n      <div class=\"pb-reel-guide-card\">\n        <div class=\"pb-reel-guide-card-head\">\n          <h3>S17</h3>\n          <p>17&quot; Wide Cut</p>\n        </div>\n        <div class=\"pb-reel-guide-card-img\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/9293/4930/files/RoluxS17-17ReelStyleLawnMower_1.jpg?v=1761291505\" alt=\"Rolux S17\">\n        </div>\n        <div class=\"pb-reel-guide-card-body\">\n          <p><strong class=\"pb-reel-guide-strong\">Best for:</strong> Yards 3,000 ft2 or less</p>\n          <p class=\"pb-reel-guide-card-subtext\">\n            Entry-level homeowner reel mower with reliable Briggs and Stratton engine. Perfect for smaller properties and those new to reel mowing.\n          </p>\n        </div>\n      </div>\n\n      <!-- S20 -->\n      <div class=\"pb-reel-guide-card\">\n        <div class=\"pb-reel-guide-card-head\">\n          <h3>S20</h3>\n          <p>20&quot; Wide Cut</p>\n        </div>\n        <div class=\"pb-reel-guide-card-body\" style=\"padding-top:20px;\">\n          <p><strong class=\"pb-reel-guide-strong\">Best for:</strong> Yards 2,500 to 7,500 ft2</p>\n          <p class=\"pb-reel-guide-card-subtext\">\n            Value-focused option with Honda engine. Excellent choice for mid-sized properties seeking quality performance.\n          </p>\n        </div>\n      </div>\n\n      <!-- Z20 -->\n      <div class=\"pb-reel-guide-card premium\">\n        <div class=\"pb-reel-guide-card-head dark\">\n          <div class=\"pb-reel-guide-premium-tag\">PREMIUM Z-SERIES</div>\n          <h3>Z20</h3>\n          <p>20&quot; Wide Cut</p>\n        </div>\n        <div class=\"pb-reel-guide-card-img\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/9293/4930/files/Rolux_Z-Series_9Blade_Metallic_2.jpg?v=1767415036\" alt=\"Rolux Z20\">\n        </div>\n        <div class=\"pb-reel-guide-card-body\">\n          <p><strong class=\"pb-reel-guide-strong\">Best for:</strong> Yards 2,500 to 7,500 ft2</p>\n          <p class=\"pb-reel-guide-card-subtext\">\n            Premium Z-Series build with enhanced features and durability. Choose this for the ultimate mid-sized lawn experience. Available in grey or white.\n          </p>\n        </div>\n      </div>\n\n      <!-- Z25 -->\n      <div class=\"pb-reel-guide-card premium\">\n        <div class=\"pb-reel-guide-card-head dark\">\n          <div class=\"pb-reel-guide-premium-tag\">PREMIUM Z-SERIES</div>\n          <h3>Z25</h3>\n          <p>25&quot; Wide Cut</p>\n        </div>\n        <div class=\"pb-reel-guide-card-body\" style=\"padding-top:20px;\">\n<div class=\"pb-reel-guide-card-img\">\n<img src=\"https://cdn.shopify.com/s/files/1/0686/9293/4930/files/Rolux_Z-series_9Blade_Metallic_Grey.jpg?v=1767415036\" alt=\"Z25 rolux\" />\n</div>\n          <p><strong class=\"pb-reel-guide-strong\">Best for:</strong> Yards 7,500 ft2 or more</p>\n          <p class=\"pb-reel-guide-card-subtext\">\n            Premium Z-Series construction for serious homeowners. Professional-grade performance for larger lawns. Available in grey or white.\n          </p>\n        </div>\n      </div>\n\n      <!-- Z30 Mention -->\n      <div class=\"pb-reel-guide-note\">\n        <p class=\"pb-reel-guide-p\" style=\"margin:0;\">\n          <strong class=\"pb-reel-guide-strong\">For larger estates or specialty applications:</strong>\n          The Z30 (30&quot; cut) features a precision 12-blade reel and Honda GX200 engine, ideal for tennis courts, bowls greens, or properties requiring ultimate cutting performance. Available in grey or white.\n        </p>\n      </div>\n\n      <!-- Reel Selection -->\n      <div class=\"pb-reel-guide-reelbox\">\n        <h3 class=\"pb-reel-guide-h3\">Choosing the Right Reel:</h3>\n\n        <div class=\"pb-reel-guide-reel-label\">6-Blade Reel:</div>\n        <div class=\"pb-reel-guide-reel-item\">• Ideal if you mow 2 times per week</div>\n        <div class=\"pb-reel-guide-reel-item\">• Perfect for typical Canadian lawns</div>\n        <div class=\"pb-reel-guide-reel-item\">• Available on select models like the S20</div>\n\n        <div style=\"height:20px;\"></div>\n\n        <div class=\"pb-reel-guide-reel-label\">9-Blade Reel:</div>\n        <div class=\"pb-reel-guide-reel-item\">• Choose if you mow 3 times or more per week</div>\n        <div class=\"pb-reel-guide-reel-item\">• Best for short, fine turf and the smoothest cut</div>\n        <div class=\"pb-reel-guide-reel-item\">• Creates a golf green appearance</div>\n        <div class=\"pb-reel-guide-reel-item last\">• Standard or optional depending on model</div>\n      </div>\n    </div>\n\n    <div class=\"pb-reel-guide-divider\"></div>\n\n    <!-- Electric Coming Soon -->\n    <div class=\"pb-reel-guide-electric-outer\">\n      <div class=\"pb-reel-guide-electric-box\">\n        <div class=\"pb-reel-guide-electric-title\">Coming Soon: Electric Reel Mowing</div>\n\n        <p class=\"pb-reel-guide-electric-text\">\n          <strong class=\"pb-reel-guide-strong\">Rolux has partnered with EGO commercial electric power solutions</strong>\n          to bring electric-powered reel mowing to Canadian homeowners.\n        </p>\n\n        <div class=\"pb-reel-guide-electric-item\">\n          ✓ <strong class=\"pb-reel-guide-strong\">Zero emissions</strong> – Better for the environment\n        </div>\n\n        <div class=\"pb-reel-guide-electric-item\">\n          ✓ <strong class=\"pb-reel-guide-strong\">Ultra-quiet operation</strong> – Even quieter than gas-powered reels\n        </div>\n\n        <div class=\"pb-reel-guide-electric-item\">\n          ✓ <strong class=\"pb-reel-guide-strong\">Lower maintenance</strong> – No oil changes, spark plugs, or winterization\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36
+      }
+    },
+    "dynamic_rich_text_iFFQdb": {
+      "type": "dynamic-rich-text",
+      "blocks": {
+        "text_h4NWQn": {
+          "type": "text",
+          "settings": {
+            "title": "Rich text",
+            "text": "<p>Use this section to welcome customers to your store, say a bit about your brand, or share news and seasonal promotions.</p>",
+            "heading_size": "large",
+            "text_alignment": "center",
+            "block_link": "shopify://pages/contact",
+            "button_text": "Contact Sales",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "text_h4NWQn"
+      ],
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "width": "regular",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36
+      }
+    },
+    "main": {
+      "type": "static-page",
+      "disabled": true,
+      "custom_css": [
+        "img {border-radius: 10px;}"
+      ],
+      "settings": {}
+    },
+    "editorify_section_widget": {
+      "type": "editorify_section_widget",
+      "disabled": true,
+      "settings": {}
+    },
+    "dynamic_image_with_text_6Ft4ma": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_g96thH": {
+          "type": "image_with_text",
+          "settings": {
+            "img_position_desktop": "left",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#ffffff",
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "heading": "Heading",
+            "heading_color": "#4d4d4d",
+            "heading_size": "large",
+            "text_content": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_content_color": "#4d4d4d",
+            "button_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "",
+            "overlay_heading": "Heading",
+            "overlay_heading_color": "#4d4d4d",
+            "overlay_text_content": "<p>Short description</p>",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_g96thH"
+      ],
+      "disabled": true,
+      "name": "Image with text",
+      "settings": {
+        "heading": "Image with text",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_featured_product_hxQ7iA": {
+      "type": "dynamic-featured-product",
+      "blocks": {
+        "title_rE6nrH": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor_axfUef": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "rating_L8AfQt": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price_YDwc6d": {
+          "type": "price",
+          "settings": {}
+        },
+        "form_pTAArg": {
+          "type": "form",
+          "settings": {}
+        },
+        "view_product_link_WXQarj": {
+          "type": "view-product-link",
+          "settings": {
+            "text": "View full details"
+          }
+        },
+        "share_G4NQMY": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_rE6nrH",
+        "vendor_axfUef",
+        "rating_L8AfQt",
+        "price_YDwc6d",
+        "form_pTAArg",
+        "view_product_link_WXQarj",
+        "share_G4NQMY"
+      ],
+      "disabled": true,
+      "name": "Featured product",
+      "settings": {
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "product": "rolux-reel-mowers-s-series",
+        "show_dcb": true,
+        "product_cart_redirect": false,
+        "gallery_aspect_ratio": "natural",
+        "gallery_image_crop": false,
+        "gallery_thumbnail_position": "below",
+        "gallery_video_autoplay": true,
+        "gallery_video_looping": true,
+        "gallery_hover_zoom": "disabled"
+      }
+    },
+    "dynamic_image_with_text_MJLUKU": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_pXLMrb": {
+          "type": "image_with_text",
+          "settings": {
+            "img_position_desktop": "right",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#ffffff",
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "heading": "Heading",
+            "heading_color": "#4d4d4d",
+            "heading_size": "large",
+            "text_content": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_content_color": "#4d4d4d",
+            "button_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "",
+            "overlay_heading": "Heading",
+            "overlay_heading_color": "#4d4d4d",
+            "overlay_text_content": "<p>Short description</p>",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_pXLMrb"
+      ],
+      "disabled": true,
+      "name": "Image with text",
+      "settings": {
+        "heading": "Image with text",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    },
+    "dynamic_image_with_text_JjNk3G": {
+      "type": "dynamic-image-with-text",
+      "blocks": {
+        "image_with_text_UkVq3G": {
+          "type": "image_with_text",
+          "settings": {
+            "img_position_desktop": "left",
+            "img_width_desktop": 50,
+            "img_height_desktop": "natural",
+            "custom_height_desktop": 500,
+            "img_position_mobile": "top",
+            "img_height_mobile": "natural",
+            "custom_height_mobile": 500,
+            "content_background_color": "#ffffff",
+            "preheading": "Preheading",
+            "preheading_color": "#4d4d4d",
+            "heading": "Heading",
+            "heading_color": "#4d4d4d",
+            "heading_size": "large",
+            "text_content": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_content_color": "#4d4d4d",
+            "button_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "feature_text_1": "",
+            "feature_text_2": "",
+            "feature_text_3": "",
+            "feature_text_4": "",
+            "overlay_position": "left",
+            "overlay_background": "",
+            "overlay_heading": "Heading",
+            "overlay_heading_color": "#4d4d4d",
+            "overlay_text_content": "<p>Short description</p>",
+            "overlay_text_content_color": "#4d4d4d",
+            "signpost_color": "#111111",
+            "block_link": false,
+            "text_vertical_position": "middle",
+            "text_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_UkVq3G"
+      ],
+      "disabled": true,
+      "name": "Image with text",
+      "settings": {
+        "heading": "Image with text",
+        "subheading": "",
+        "background_color": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "content_spacing": 0
+      }
+    }
+  },
+  "order": [
+    "dynamic_custom_liquid_qVyrg9",
+    "dynamic_rich_text_iFFQdb",
+    "main",
+    "editorify_section_widget",
+    "dynamic_image_with_text_6Ft4ma",
+    "dynamic_featured_product_hxQ7iA",
+    "dynamic_image_with_text_MJLUKU",
+    "dynamic_image_with_text_JjNk3G"
+  ]
+}

@@ -1,0 +1,193 @@
+<style>
+  #shopify-section-{{ section.id }} .product-trust-cta {
+    margin-top: 18px;
+    padding: 18px;
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    background:
+      linear-gradient(135deg, {{ block.settings.background_color }} 0%, {{ block.settings.background_gradient_color }} 100%);
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__eyebrow {
+    margin: 0 0 6px;
+    color: {{ block.settings.accent_color }};
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__heading {
+    margin: 0;
+    color: {{ block.settings.heading_color }};
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__text {
+    margin-top: 8px;
+    color: {{ block.settings.text_color }};
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__text p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 16px;
+    border-radius: {{ settings.button_border_radius | default: 3 }}px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__button--primary {
+    background: {{ block.settings.accent_color }};
+    color: {{ block.settings.primary_button_text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__button--secondary {
+    border: 1px solid {{ block.settings.secondary_button_border_color }};
+    color: {{ block.settings.secondary_button_text_color }};
+    background: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__proof {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__proof-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: {{ block.settings.proof_text_color }};
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__proof-icon {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: {{ block.settings.icon_background_color }};
+    color: {{ block.settings.accent_color }};
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__proof-icon svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid {{ block.settings.divider_color }};
+    color: {{ block.settings.footer_text_color }};
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .product-trust-cta__footer svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+  }
+
+  @media screen and (min-width: 480px) {
+    #shopify-section-{{ section.id }} .product-trust-cta__proof {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    #shopify-section-{{ section.id }} .product-trust-cta__actions {
+      flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .product-trust-cta__button {
+      width: 100%;
+    }
+  }
+</style>
+
+<aside class="product-trust-cta" aria-label="{{ block.settings.heading | escape }}">
+  {% if block.settings.eyebrow != blank %}
+    <p class="product-trust-cta__eyebrow">{{ block.settings.eyebrow | escape }}</p>
+  {% endif %}
+
+  {% if block.settings.heading != blank %}
+    <h2 class="product-trust-cta__heading">{{ block.settings.heading | escape }}</h2>
+  {% endif %}
+
+  {% if block.settings.text != blank %}
+    <div class="product-trust-cta__text rte" data-rte>
+      {{ block.settings.text }}
+    </div>
+  {% endif %}
+
+  {% if block.settings.primary_button_label != blank or block.settings.secondary_button_label != blank %}
+    <div class="product-trust-cta__actions">
+      {% if block.settings.primary_button_label != blank and block.settings.primary_button_link != blank %}
+        <a class="product-trust-cta__button product-trust-cta__button--primary" href="{{ block.settings.primary_button_link }}">
+          {{ block.settings.primary_button_label | escape }}
+        </a>
+      {% endif %}
+
+      {% if block.settings.secondary_button_label != blank and block.settings.secondary_button_link != blank %}
+        <a class="product-trust-cta__button product-trust-cta__button--secondary" href="{{ block.settings.secondary_button_link }}">
+          {{ block.settings.secondary_button_label | escape }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <ul class="product-trust-cta__proof">
+    {% for i in (1..3) %}
+      {% assign proof_text_id = 'proof_text_' | append: i %}
+      {% if block.settings[proof_text_id] != blank %}
+        <li class="product-trust-cta__proof-item">
+          <span class="product-trust-cta__proof-icon">
+            {% render 'icon-library', id: 'icon-checkmark' %}
+          </span>
+          <span>{{ block.settings[proof_text_id] | escape }}</span>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  {% if block.settings.footer_text != blank %}
+    <div class="product-trust-cta__footer">
+      {% render 'icon-library', id: 'icon-checkout-lock' %}
+      <span>{{ block.settings.footer_text | escape }}</span>
+    </div>
+  {% endif %}
+</aside>

@@ -1,0 +1,239 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_XqR86W": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_VLJRaR": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "<link href=\"https://assets.calendly.com/assets/external/widget.css\" rel=\"stylesheet\">\n<script src=\"https://assets.calendly.com/assets/external/widget.js\" type=\"text/javascript\" async></script>\n<a href=\"#\" onclick=\"Calendly.initPopupWidget({url: 'https://calendly.com/ihomegrow/15min'}); return false;\" class=\"calendly-btn\">Book a Call</a>"
+          }
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "show_gift_card_recipient_form": false
+          }
+        },
+        "selleasy_lb_upsell_addon_block_QgQdCj": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-addon-block/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "trust_icons_ADGGVd": {
+          "type": "trust-icons",
+          "settings": {
+            "number_of_items": 4,
+            "icon_1": "none",
+            "image_1": "shopify://shop_images/noun-warranty-6416650.svg",
+            "title_1": "Warranty",
+            "icon_2": "none",
+            "image_2": "shopify://shop_images/noun-deliver-Truck_svg.svg",
+            "title_2": "Shipping",
+            "icon_3": "none",
+            "image_3": "shopify://shop_images/noun-customer-support-_svg.svg",
+            "title_3": "Support",
+            "icon_4": "none",
+            "image_4": "shopify://shop_images/noun-best-price-5865750.svg",
+            "title_4": "Best Price",
+            "text_position": "bottom",
+            "icon_margin_right": 10,
+            "left_alignment": false,
+            "item_width_type": "px",
+            "item_width": 125,
+            "item_margin_right": 3,
+            "icon_size": 45,
+            "icon_color": "",
+            "text_color": "",
+            "letter_casing": "uppercase",
+            "font_weight": 600,
+            "font_size": 12,
+            "margin_top": 25,
+            "margin_bottom": 0,
+            "padding_top": 15,
+            "padding_bottom": 15,
+            "padding_left": 0,
+            "padding_right": 0,
+            "border_radius": 0,
+            "bg_color": "rgba(0,0,0,0)",
+            "row_gap": 25
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "judge_me_reviews_preview_badge_XqR86W",
+        "rating",
+        "price",
+        "custom_liquid_VLJRaR",
+        "share",
+        "description",
+        "form",
+        "selleasy_lb_upsell_addon_block_QgQdCj",
+        "trust_icons_ADGGVd"
+      ],
+      "settings": {
+        "show_breadcrumbs": true,
+        "layout": "layout--two-col-medium",
+        "show_dcb": false,
+        "product_cart_redirect": false,
+        "gallery_aspect_ratio": "natural",
+        "gallery_image_crop": true,
+        "gallery_thumbnail_position": "below",
+        "gallery_video_autoplay": true,
+        "gallery_video_looping": true,
+        "gallery_hover_zoom": "disabled",
+        "gallery_click_to_zoom": "always"
+      }
+    },
+    "dynamic_custom_liquid_FYGXcE": {
+      "type": "dynamic-custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<script>\n  document.addEventListener(\"DOMContentLoaded\", function () {\n    const descriptionTab = document.querySelector('.tab-container .tab-content #tab-description, .Product__Tabs .Tabs__Panel');\n    if (descriptionTab) {\n      const firstH2 = descriptionTab.querySelector(\"h2\");\n      if (firstH2) {\n        const newHeading = firstH2.cloneNode(true);\n        \n        // Insert it before the tabs\n        const tabsWrapper = document.querySelector(\".tab-container, .Product__Tabs\");\n        if (tabsWrapper && tabsWrapper.parentNode) {\n          tabsWrapper.parentNode.insertBefore(newHeading, tabsWrapper);\n        }\n      }\n    }\n  });\n</script>",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 30
+      }
+    },
+    "custom_tabs_tnBbnT": {
+      "type": "custom-tabs",
+      "blocks": {
+        "tab_QdkGEa": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "{{ product.metafields.custom.tab_1_title.value }}",
+            "tab_content": "{{ product.metafields.custom.tab_1_describe | metafield_tag }}"
+          }
+        },
+        "tab_haAYtA": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "{{ product.metafields.custom.tab_2_title.value }}",
+            "tab_content": "{{ product.metafields.custom.tab_2_includes | metafield_tag }}"
+          }
+        },
+        "tab_xnBgj7": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "{{ product.metafields.custom.tab_3_title.value }}",
+            "tab_content": "{{ product.metafields.custom.tab_3_specs | metafield_tag }}"
+          }
+        },
+        "tab_H6MRiY": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "{{ product.metafields.custom.tab_warranty.value }}",
+            "tab_content": "{{ product.metafields.custom.tab_4_warranty_input | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "tab_QdkGEa",
+        "tab_haAYtA",
+        "tab_xnBgj7",
+        "tab_H6MRiY"
+      ],
+      "custom_css": [
+        ".productView-description {padding-left: 20px; padding-right: 20px;}"
+      ],
+      "name": "Tabs",
+      "settings": {}
+    },
+    "dynamic_custom_liquid_pGiiQw": {
+      "type": "dynamic-custom-liquid",
+      "custom_css": [
+        ".custom-liquid {margin: 0 auto;}"
+      ],
+      "settings": {
+        "custom_liquid": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36
+      }
+    },
+    "recommendations": {
+      "type": "static-product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like"
+      }
+    },
+    "product-reviews": {
+      "type": "static-product-reviews",
+      "settings": {}
+    },
+    "recently-viewed": {
+      "type": "static-recently-viewed",
+      "settings": {
+        "enable_recently_viewed_products": false
+      }
+    },
+    "1750982109d3ba78cd": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_feGgtz": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_feGgtz"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "dynamic_custom_liquid_FYGXcE",
+    "custom_tabs_tnBbnT",
+    "dynamic_custom_liquid_pGiiQw",
+    "recommendations",
+    "product-reviews",
+    "recently-viewed",
+    "1750982109d3ba78cd"
+  ]
+}
