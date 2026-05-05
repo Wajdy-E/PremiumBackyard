@@ -232,7 +232,9 @@
     .utils-sortby {
       padding: 0 0.125rem;
     }
-    .form-field-select, .utils-viewtoggle {
+    /* Scope to collection toolbar only — unscoped .form-field-select broke product quickshop & other modals */
+    nav.productgrid--utils .form-field-select,
+    nav.productgrid--utils .utils-viewtoggle {
       border: 0 !important;
       border-radius: 0;
       {% comment %} margin-left: 0; {% endcomment %}
@@ -240,7 +242,7 @@
       padding-inline: 0;
       background: transparent;
     }
-    .utils-viewtoggle button {
+    nav.productgrid--utils .utils-viewtoggle button {
       height: 30px;
       padding: 10px;
       display: flex;

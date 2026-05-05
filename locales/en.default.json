@@ -182,6 +182,9 @@
         "submit": "Subscribe",
         "success": "Thanks for subscribing!"
       }
+    },
+    "image_marquee": {
+      "carousel_label": "Scrolling images"
     }
   },
   "age_gate": {

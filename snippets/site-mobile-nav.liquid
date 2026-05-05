@@ -24,6 +24,15 @@
       %}
     </div>
 
+    <div class="mobile-nav-search" data-mobile-nav-search>
+      {% include 'live-search-form',
+        search_quick_links: linklists[section.settings.search_quick_links],
+        enable_live_search: section.settings.enable_live_search,
+        content_types: section.settings.live_search_content_types,
+        placeholder: 'Search'
+      %}
+    </div>
+
   </div>
 
   <div class="mobile-nav-overlay" data-mobile-nav-overlay></div>

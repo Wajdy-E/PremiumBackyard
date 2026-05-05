@@ -29023,11 +29023,20 @@ var ProductGallery = /*#__PURE__*/function () {
     this.events.register(this.navScroller, 'scroll', function () {
       return _this._handleScrollButtonVisibility();
     });
-    this.events.register(this.navScrollerButtons[0], 'click', function () {
-      return _this._onScrollButtonClick(true);
-    });
-    this.events.register(this.navScrollerButtons[1], 'click', function () {
-      return _this._onScrollButtonClick(false);
+    if (this.navScrollerButtons[0]) {
+      this.events.register(this.navScrollerButtons[0], 'click', function () {
+        return _this._onScrollButtonClick(true);
+      });
+    }
+
+    if (this.navScrollerButtons[1]) {
+      this.events.register(this.navScrollerButtons[1], 'click', function () {
+        return _this._onScrollButtonClick(false);
+      });
+    }
+
+    this.events.register(this.viewer, 'click', function (e) {
+      return _this._onMainNavArrowClick(e);
     });
 
     if (this.settings.click_to_zoom !== 'disabled') {
@@ -29041,6 +29050,10 @@ var ProductGallery = /*#__PURE__*/function () {
         return onZoomButtonClick(e);
       });
       this.events.register(this.viewer, 'click', function (e) {
+        if (e.target.closest('[data-product-gallery-previous], [data-product-gallery-next], .product-gallery__nav-button, .flickity-prev-next-button')) {
+          return;
+        }
+
         return onZoomButtonClick(e);
       });
     }
@@ -29057,6 +29070,8 @@ var ProductGallery = /*#__PURE__*/function () {
     }
 
     this._selectMediaByEl(this.selected.figure);
+
+    this._handleScrollButtonVisibility();
   }
 
   return ProductGallery_createClass(ProductGallery, [{
@@ -29195,6 +29210,24 @@ var ProductGallery = /*#__PURE__*/function () {
         this.flickity.select(selectedIndex);
       } else {
         this._selectMediaByIndex(selectedIndex);
+      }
+    }
+  }, {
+    key: "_onMainNavArrowClick",
+    value: function _onMainNavArrowClick(e) {
+      var button = e.target.closest('[data-product-gallery-previous], [data-product-gallery-next]');
+      if (!button) return;
+      e.preventDefault();
+      e.stopPropagation();
+      if (this.figures.length <= 1) return;
+      var direction = button.hasAttribute('data-product-gallery-next') ? 1 : -1;
+      var currentIndex = parseInt(this.selected.figure.dataset.galleryIndex, 10);
+      var nextIndex = (currentIndex + direction + this.figures.length) % this.figures.length;
+      this.showingInitialSlide = false;
+      if (this.flickity) {
+        this.flickity.select(nextIndex);
+      } else {
+        this._selectMediaByIndex(nextIndex);
       }
     }
   }, {
@@ -29426,6 +29459,36 @@ var ProductGallery = /*#__PURE__*/function () {
       if (containerHeight > 0) {
         this.viewer.style.height = "".concat(containerHeight, "px");
       }
+
+      this._syncLeftThumbnailScrollerMaxHeight();
+    }
+  }, {
+    key: "_syncLeftThumbnailScrollerMaxHeight",
+    value: function _syncLeftThumbnailScrollerMaxHeight() {
+      if (!this.navScroller || this.settings.thumbnail_position !== 'left') return;
+
+      if (Layout.isLessThanBreakpoint('S') || Layout.isLessThanBreakpoint('L') && this.isQuickshop) {
+        this.navScroller.style.maxHeight = '';
+        return;
+      }
+
+      var h = parseFloat(this.viewer.style.height, 10);
+
+      if (!h || h <= 0) {
+        h = this.viewer.clientHeight;
+      }
+
+      if (!h || h <= 0) {
+        h = this.selected.figure.getBoundingClientRect().height;
+      }
+
+      if (h > 0) {
+        this.navScroller.style.maxHeight = "".concat(Math.round(h), "px");
+      } else {
+        this.navScroller.style.maxHeight = '';
+      }
+
+      this._handleScrollButtonVisibility();
     }
   }, {
     key: "_adjustGalleryPositioning",
@@ -29454,6 +29517,8 @@ var ProductGallery = /*#__PURE__*/function () {
           } // When switching layouts in the editor sometimes we need to wait for a few milliseconds
           // before positioning the thumbs.
 
+
+          this._setSlideHeight();
 
           setTimeout(function () {
             // Double check that the layout is the correct size, since the timeout will
@@ -29488,9 +29553,7 @@ var ProductGallery = /*#__PURE__*/function () {
           this._setSlideHeight();
         }
 
-        if (Layout.isLessThanBreakpoint('S')) {
-          this._adjustMobileThumbnailPosition();
-        }
+        this._adjustMobileThumbnailPosition();
       } else {
         this._setSlideHeight();
 
@@ -29511,6 +29574,21 @@ var ProductGallery = /*#__PURE__*/function () {
         } else if (this.selected.thumbnail.offsetLeft < this.navScroller.scrollLeft) {
           this.navScroller.scrollLeft = this.selected.thumbnail.offsetLeft - 35;
         }
+      } else if (this.settings.thumbnail_position === 'left' && Layout.isGreaterThanBreakpoint('S') && this.selected.thumbnail) {
+        var thumbEl = this.selected.thumbnail;
+        var scrollerEl = this.navScroller;
+        var thumbTop = thumbEl.offsetTop;
+        var thumbBottom = thumbTop + thumbEl.offsetHeight;
+        var viewTop = scrollerEl.scrollTop;
+        var viewBottom = viewTop + scrollerEl.clientHeight;
+
+        if (thumbBottom > viewBottom - 4) {
+          scrollerEl.scrollTop = thumbBottom - scrollerEl.clientHeight + 6;
+        } else if (thumbTop < viewTop + 4) {
+          scrollerEl.scrollTop = Math.max(0, thumbTop - 6);
+        }
+
+        this._handleScrollButtonVisibility();
       }
     }
   }, {
@@ -29530,6 +29608,18 @@ var ProductGallery = /*#__PURE__*/function () {
         } else {
           this.navScrollerButtons[1].classList.remove('visible');
         }
+      } else if (this.settings.thumbnail_position === 'left' && this.navScroller.scrollHeight > this.navScroller.clientHeight + 4) {
+        if (this.navScroller.scrollTop > 4) {
+          this.navScrollerButtons[0].classList.add('visible');
+        } else {
+          this.navScrollerButtons[0].classList.remove('visible');
+        }
+
+        if (this.navScroller.scrollTop < this.navScroller.scrollHeight - this.navScroller.clientHeight - 4) {
+          this.navScrollerButtons[1].classList.add('visible');
+        } else {
+          this.navScrollerButtons[1].classList.remove('visible');
+        }
       } else {
         this.navScrollerButtons[0].classList.remove('visible');
         this.navScrollerButtons[1].classList.remove('visible');
@@ -29538,6 +29628,27 @@ var ProductGallery = /*#__PURE__*/function () {
   }, {
     key: "_onScrollButtonClick",
     value: function _onScrollButtonClick(scrollRight) {
+      var isVerticalThumbs = this.settings.thumbnail_position === 'left' && !(Layout.isLessThanBreakpoint('S') || Layout.isLessThanBreakpoint('L') && this.isQuickshop) && this.navScroller.scrollHeight > this.navScroller.clientHeight + 1;
+
+      if (isVerticalThumbs) {
+        var step = 88;
+
+        if (this.thumbnails[0]) {
+          var h = this.thumbnails[0].getBoundingClientRect().height;
+          var scrollerStyle = window.getComputedStyle(this.navScroller);
+          var gap = parseFloat(scrollerStyle.rowGap) || parseFloat(scrollerStyle.columnGap) || parseFloat(scrollerStyle.gap) || 10;
+          step = Math.max(Math.round(h + gap), 72);
+        }
+
+        if (scrollRight) {
+          this.navScroller.scrollTop = this.navScroller.scrollTop - step;
+        } else {
+          this.navScroller.scrollTop = this.navScroller.scrollTop + step;
+        }
+
+        return;
+      }
+
       if (scrollRight) {
         this.navScroller.scrollLeft = this.navScroller.scrollLeft - 100;
       } else {

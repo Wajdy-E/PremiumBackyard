@@ -34,7 +34,7 @@
   >
     <button
       class="gallery-navigation--scroll-button scroll-left"
-      aria-label="Scroll thumbnails left"
+      aria-label="Show previous thumbnails"
       data-gallery-scroll-button
     >
       {% 
@@ -44,7 +44,7 @@
     </button>
     <button
       class="gallery-navigation--scroll-button scroll-right"
-      aria-label="Scroll thumbnails right"
+      aria-label="Show next thumbnails"
       data-gallery-scroll-button
     >
       {% 
@@ -93,20 +93,6 @@
     {% endfor %}
     </div>
   </div>
-{% comment %}
-  This checks if the metafield for a product video exists and is not empty.
-  If it has a value, it will display the video.
-{% endcomment %}
-
-{%- liquid
-  assign video_url = product.metafields.custom.product_video.value
--%}
-
-{% if video_url != blank %}
-  <div class="video-container" style="position:relative; width:100%; height:0; padding-bottom:56.25%;">
-    <iframe src="{{ video_url | replace: 'watch?v=', 'embed/' }}?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
-  </div>
-{% endif %}
   <script>
 ProductGallery_createClass(ProductGallery, [{
   key: "selectMediaByVariant",

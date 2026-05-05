@@ -20,7 +20,24 @@
         "title_2": "Secure Payment",
         "subtitle_2": "100% secure transaction",
         "title_3": "Canadian Company",
-        "subtitle_3": "Based in Ontario"
+        "subtitle_3": "Based in Ontario",
+        "enable_cart_checkout_trust": true,
+        "trust_message_background": "#f9f9f9",
+        "checkout_button_inside_trust_panel": true,
+        "trust_heading": "Safe, Supported Checkout",
+        "trust_panel_radius": 14,
+        "trust_icon_1": "lock",
+        "trust_label_1": "Secure Shopify",
+        "trust_icon_2": "truck",
+        "trust_label_2": "Ships Across Canada",
+        "trust_icon_3": "maple",
+        "trust_label_3": "Canadian-Owned",
+        "trust_icon_4": "phone",
+        "trust_label_4": "Warranty Support",
+        "show_payment_bar": false,
+        "payment_bar_label": "Payment Options:",
+        "payment_methods_text": "Credit Card • Shop Pay • PayPal • Bank Deposit • Money Order",
+        "checkout_button_label": "Proceed to Checkout"
       }
     }
   },

@@ -38,6 +38,36 @@
             "show_gift_card_recipient_form": false
           }
         },
+        "trust_cta_main": {
+          "type": "trust-cta",
+          "settings": {
+            "eyebrow": "Need help choosing?",
+            "heading": "Order confidently with expert support.",
+            "text": "<p>Questions about fit, delivery, warranty, or which model is right for you? Our Canadian team can help before and after you order.</p>",
+            "primary_button_label": "Get expert help",
+            "primary_button_link": "shopify://pages/contact",
+            "secondary_button_label": "",
+            "secondary_button_link": "shopify://pages/contact",
+            "proof_text_1": "Ships across Canada",
+            "proof_text_2": "Warranty-backed products",
+            "proof_text_3": "Real product support",
+            "footer_text": "Secure checkout with trusted payment options.",
+            "background_color": "#ffffff",
+            "background_gradient_color": "#fff7f6",
+            "border_color": "#f0d0cd",
+            "accent_color": "#d42e25",
+            "heading_color": "#212121",
+            "text_color": "#4d4d4d",
+            "proof_text_color": "#212121",
+            "icon_background_color": "#fdebe9",
+            "divider_color": "#f0d0cd",
+            "footer_text_color": "#666666",
+            "primary_button_text_color": "#ffffff",
+            "secondary_button_text_color": "#d42e25",
+            "secondary_button_border_color": "#d42e25",
+            "border_radius": 12
+          }
+        },
         "custom_liquid_8tNYir": {
           "type": "product-download",
           "settings": {
@@ -48,9 +78,9 @@
             "button_label": "Download PDF",
             "background_color": "#ffffff",
             "border_color": "#e1e1e1",
-            "accent_color": "#D42E25",
-            "accent_hover_color": "#A92720",
-            "icon_background_color": "#FDEBE9",
+            "accent_color": "#d42e25",
+            "accent_hover_color": "#a92720",
+            "icon_background_color": "#fdebe9",
             "heading_color": "#212121",
             "text_color": "#666666",
             "border_radius": 10
@@ -61,16 +91,12 @@
           "settings": {
             "number_of_items": 4,
             "icon_1": "icon-delivery",
-            "image_1": "",
             "title_1": "Free Shipping $500+",
             "icon_2": "icon-store",
-            "image_2": "",
             "title_2": "Canadian Company",
             "icon_3": "icon-chat",
-            "image_3": "",
             "title_3": "Expert Support",
             "icon_4": "icon-lock-alternate",
-            "image_4": "",
             "title_4": "Secure Checkout",
             "text_position": "bottom",
             "icon_margin_right": 10,
@@ -79,7 +105,7 @@
             "item_width": 25,
             "item_margin_right": 0,
             "icon_size": 30,
-            "icon_color": "#D42E25",
+            "icon_color": "#d42e25",
             "text_color": "#212121",
             "letter_casing": "capitalize",
             "font_weight": 700,
@@ -102,36 +128,6 @@
         "description": {
           "type": "description",
           "settings": {}
-        },
-        "trust_cta_main": {
-          "type": "trust-cta",
-          "settings": {
-            "eyebrow": "Need help choosing?",
-            "heading": "Order confidently with expert support.",
-            "text": "<p>Questions about fit, delivery, warranty, or which model is right for you? Our Canadian team can help before and after you order.</p>",
-            "primary_button_label": "Get expert help",
-            "primary_button_link": "shopify://pages/contact",
-            "secondary_button_label": "Request a quote",
-            "secondary_button_link": "shopify://pages/contact",
-            "proof_text_1": "Ships across Canada",
-            "proof_text_2": "Warranty-backed products",
-            "proof_text_3": "Real product support",
-            "footer_text": "Secure checkout with trusted payment options.",
-            "background_color": "#ffffff",
-            "background_gradient_color": "#fff7f6",
-            "border_color": "#F0D0CD",
-            "accent_color": "#D42E25",
-            "heading_color": "#212121",
-            "text_color": "#4D4D4D",
-            "proof_text_color": "#212121",
-            "icon_background_color": "#FDEBE9",
-            "divider_color": "#F0D0CD",
-            "footer_text_color": "#666666",
-            "primary_button_text_color": "#ffffff",
-            "secondary_button_text_color": "#D42E25",
-            "secondary_button_border_color": "#D42E25",
-            "border_radius": 12
-          }
         }
       },
       "block_order": [
@@ -198,9 +194,9 @@
         "border_radius": 12,
         "background_color": "#ffffff",
         "border_color": "#e1e1e1",
-        "accent_color": "#D42E25",
+        "accent_color": "#d42e25",
         "heading_color": "#212121",
-        "text_color": "#4D4D4D",
+        "text_color": "#4d4d4d",
         "section_spacing_desktop": 50,
         "section_spacing_mobile": 36
       }

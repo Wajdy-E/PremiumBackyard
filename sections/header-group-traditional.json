@@ -18,15 +18,15 @@
       ],
       "settings": {
         "show_announcement": true,
-        "homepage_announcement": true,
-        "announcement_left_text": "Proudly Canadian - Serving Canada only",
-        "left_icon": "icon-shield",
-        "announcement_text": "Free Shipping on Select Products",
-        "right_icon": "icon-delivery",
-        "announcement_text_mobile": "Free Shipping on Select Products",
-        "announcement_link": "",
+        "homepage_announcement": false,
+        "announcement_left_text": "🔥 Save up to $595 on Selected Bromic Heaters — Sale Ends May 15 🔥",
+        "left_icon": "none",
+        "announcement_text": "🔥 Save up to $595 on Selected Bromic Heaters — Sale Ends May 15 🔥",
+        "right_icon": "none",
+        "announcement_text_mobile": "🔥Save up to $595 on Bromic Heaters🔥",
+        "announcement_link": "shopify://pages/bromic-tungsten-sale",
         "announcement_color": "#ffffff",
-        "announcement_background": "#111827"
+        "announcement_background": "#d63932"
       }
     },
     "utility-bar": {

@@ -306,21 +306,31 @@
         {% endif %}
       </div>
 
+      {% if section.settings.enable_cart_checkout_trust %}
+        {% render 'cart-checkout-trust', section: section %}
+      {% endif %}
+
       <div class="cart-checkout">
-        <button
-          class="button-primary"
-          type="submit"
-          name="checkout"
-          form="cart-form"
-          aria-label="{{ 'cart.general.checkout' | t }}"
-        >
-          {% if settings.enable_checkout_lock_icon %}
-            {% include 'icon-library', id: 'icon-checkout-lock' %}
-          {% else %}
-            {% include 'icon-library', id: 'icon-cart' %}
-          {% endif %}
-          {{ 'cart.general.checkout' | t }}
-        </button>
+        {% unless section.settings.enable_cart_checkout_trust and section.settings.checkout_button_inside_trust_panel %}
+          <button
+            class="button-primary"
+            type="submit"
+            name="checkout"
+            form="cart-form"
+            aria-label="{% if section.settings.checkout_button_label != blank %}{{ section.settings.checkout_button_label | escape }}{% else %}{{ 'cart.general.checkout' | t | escape }}{% endif %}"
+          >
+            {% if settings.enable_checkout_lock_icon %}
+              {% include 'icon-library', id: 'icon-checkout-lock' %}
+            {% else %}
+              {% include 'icon-library', id: 'icon-cart' %}
+            {% endif %}
+            {% if section.settings.checkout_button_label != blank %}
+              {{ section.settings.checkout_button_label | escape }}
+            {% else %}
+              {{ 'cart.general.checkout' | t }}
+            {% endif %}
+          </button>
+        {% endunless %}
 
         {% if additional_checkout_buttons %}
           <div class="additional-checkout-buttons">
@@ -339,26 +349,28 @@
         {% endif %}
       </div>
 
-      <div class="info-list">
-        {% for i in (1..3) %}
-          {% assign title_key = 'title_' | append: i %}
-          {% assign subtitle_key = 'subtitle_' | append: i %}
+      {% unless section.settings.enable_cart_checkout_trust %}
+        <div class="info-list">
+          {% for i in (1..3) %}
+            {% assign title_key = 'title_' | append: i %}
+            {% assign subtitle_key = 'subtitle_' | append: i %}
 
-          {% if section.settings[title_key] != blank %}
-            <div class="info-item">
-              <svg class="info-icon" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
-              </svg>
+            {% if section.settings[title_key] != blank %}
+              <div class="info-item">
+                <svg class="info-icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                </svg>
 
-              <div>
-                <p class="title">{{ section.settings[title_key] }}</p>
-                <p class="subtitle">{{ section.settings[subtitle_key] }}</p>
+                <div>
+                  <p class="title">{{ section.settings[title_key] }}</p>
+                  <p class="subtitle">{{ section.settings[subtitle_key] }}</p>
+                </div>
               </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endunless %}
 
     </div>
   {% endif %}
@@ -473,6 +485,189 @@
       "type": "text",
       "id": "subtitle_3",
       "label": "Subtitle 3"
+    },
+    {
+      "type": "header",
+      "content": "Checkout trust panel"
+    },
+    {
+      "type": "paragraph",
+      "content": "Shows above the checkout button when the cart has items. Uses theme heading/body fonts and primary button colors unless overridden."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_cart_checkout_trust",
+      "label": "Enable checkout trust panel",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "checkout_button_inside_trust_panel",
+      "label": "Place checkout button inside trust panel",
+      "default": true,
+      "info": "Matches the card layout: message, then full-width button, then footer. Turn off to use the default button position below the panel."
+    },
+    {
+      "type": "text",
+      "id": "trust_heading",
+      "label": "Heading",
+      "default": "Safe, Supported Checkout"
+    },
+    {
+      "type": "range",
+      "id": "trust_panel_radius",
+      "label": "Panel corner radius",
+      "min": 0,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "trust_accent_color",
+      "label": "Accent color",
+      "info": "Leave blank to use the theme primary button background color."
+    },
+    {
+      "type": "header",
+      "content": "Trust items (up to four)"
+    },
+    {
+      "type": "select",
+      "id": "trust_icon_1",
+      "label": "Item 1 icon",
+      "default": "lock",
+      "options": [
+        { "value": "lock", "label": "Lock" },
+        { "value": "truck", "label": "Truck" },
+        { "value": "maple", "label": "Maple leaf" },
+        { "value": "star", "label": "Star" },
+        { "value": "phone", "label": "Phone" },
+        { "value": "check", "label": "Checkmark" },
+        { "value": "wrench", "label": "Wrench / tools" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "trust_label_1",
+      "label": "Item 1 text",
+      "default": "Secure Shopify"
+    },
+    {
+      "type": "select",
+      "id": "trust_icon_2",
+      "label": "Item 2 icon",
+      "default": "truck",
+      "options": [
+        { "value": "lock", "label": "Lock" },
+        { "value": "truck", "label": "Truck" },
+        { "value": "maple", "label": "Maple leaf" },
+        { "value": "star", "label": "Star" },
+        { "value": "phone", "label": "Phone" },
+        { "value": "check", "label": "Checkmark" },
+        { "value": "wrench", "label": "Wrench / tools" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "trust_label_2",
+      "label": "Item 2 text",
+      "default": "Ships Across Canada"
+    },
+    {
+      "type": "select",
+      "id": "trust_icon_3",
+      "label": "Item 3 icon",
+      "default": "maple",
+      "options": [
+        { "value": "lock", "label": "Lock" },
+        { "value": "truck", "label": "Truck" },
+        { "value": "maple", "label": "Maple leaf" },
+        { "value": "star", "label": "Star" },
+        { "value": "phone", "label": "Phone" },
+        { "value": "check", "label": "Checkmark" },
+        { "value": "wrench", "label": "Wrench / tools" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "trust_label_3",
+      "label": "Item 3 text",
+      "default": "Canadian-Owned"
+    },
+    {
+      "type": "select",
+      "id": "trust_icon_4",
+      "label": "Item 4 icon",
+      "default": "phone",
+      "options": [
+        { "value": "lock", "label": "Lock" },
+        { "value": "truck", "label": "Truck" },
+        { "value": "maple", "label": "Maple leaf" },
+        { "value": "star", "label": "Star" },
+        { "value": "phone", "label": "Phone" },
+        { "value": "check", "label": "Checkmark" },
+        { "value": "wrench", "label": "Wrench / tools" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "trust_label_4",
+      "label": "Item 4 text",
+      "default": "Warranty Support"
+    },
+    {
+      "type": "richtext",
+      "id": "trust_message",
+      "label": "Help & shipping message",
+      "default": "<p><strong>Need help?</strong> Contact us before checkout. We can help confirm fuel type, voltage, mounting, or product fit.</p><p><strong>Shipping:</strong> Large items may ship by courier. We'll contact you if anything needs confirmation.</p>"
+    },
+    {
+      "type": "color",
+      "id": "trust_message_background",
+      "label": "Info box background",
+      "default": "#f9f9f9",
+      "info": "Kept separate from the theme “secondary background” so this callout stays a light panel (your secondary color may match the red button and would fill the whole block)."
+    },
+    {
+      "type": "richtext",
+      "id": "trust_footer_note",
+      "label": "Footer note (inside panel)",
+      "default": "<p>PremiumBackyard.ca is Canadian-owned and based in Edmonton, Alberta.</p><p>Questions? <a href=\"mailto:dan@premiumbackyard.ca\">Contact us</a></p>"
+    },
+    {
+      "type": "header",
+      "content": "Payment methods strip"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_bar",
+      "label": "Show payment methods",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "payment_bar_label",
+      "label": "Label",
+      "default": "Payment Options:"
+    },
+    {
+      "type": "textarea",
+      "id": "payment_methods_text",
+      "label": "Payment methods",
+      "default": "Credit Card • Shop Pay • PayPal • Bank Deposit • Money Order",
+      "info": "Plain text; use • or commas between methods."
+    },
+    {
+      "type": "header",
+      "content": "Checkout button"
+    },
+    {
+      "type": "text",
+      "id": "checkout_button_label",
+      "label": "Custom button label (optional)",
+      "info": "Leave blank to use the default theme translation for checkout."
     }
   ],
   "blocks": [

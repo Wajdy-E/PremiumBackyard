@@ -1,0 +1,1271 @@
+{%- liquid
+  assign hero_img_alt = section.settings.hero_image_alt | default: ''
+  if hero_img_alt == blank and section.settings.hero_image != blank
+    assign hero_img_alt = section.settings.hero_image.alt | default: ''
+  endif
+
+  assign portable_img_alt = section.settings.portable_image_alt | default: ''
+  if portable_img_alt == blank and section.settings.portable_image != blank
+    assign portable_img_alt = section.settings.portable_image.alt | default: ''
+  endif
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --bromic-sale-bg: {{ section.settings.background_primary }};
+    --bromic-sale-bg-alt: {{ section.settings.background_alternate }};
+    --bromic-sale-border: {{ section.settings.border_color }};
+    --bromic-sale-hero-overlay: {{ section.settings.hero_overlay_color }};
+    --bromic-sale-hero-overlay-opacity: {{ section.settings.hero_overlay_opacity | times: 0.01 }};
+    --bromic-sale-portable-overlay: {{ section.settings.portable_overlay_color }};
+    --bromic-sale-portable-overlay-opacity: {{ section.settings.portable_overlay_opacity | times: 0.01 }};
+    --bromic-sale-pill-radius: {{ settings.button_border_radius | default: 4 | append: 'px' }};
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale {
+    background: var(--bromic-sale-bg);
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale__section {
+    padding: 36px 0;
+    background: var(--bromic-sale-bg);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale__section--alt {
+    background: var(--bromic-sale-bg-alt);
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale__inner {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale__title {
+    margin: 0 0 18px;
+    padding: 0 0 12px;
+    border-bottom: 2px solid var(--bromic-sale-border);
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale__title .home-section--title {
+    margin: 0;
+  }
+
+  /* HERO */
+  #shopify-section-{{ section.id }} .bromic-sale-hero {
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    min-height: clamp(420px, 56vw, 620px);
+    display: flex;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__bg {
+    position: absolute;
+    inset: 0;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--bromic-sale-hero-overlay);
+    opacity: var(--bromic-sale-hero-overlay-opacity);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__content {
+    position: relative;
+    text-align: center;
+    padding: 54px 0 42px;
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale-hero__kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(0,0,0,0.22);
+    backdrop-filter: blur(4px);
+    border-radius: var(--bromic-sale-pill-radius);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__badge-text {
+    color: rgba(255,255,255,0.95);
+    /* font-size: 12px; */
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale-hero__free-ship {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.95);
+    border-radius: var(--bromic-sale-pill-radius);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__free-ship-text {
+    color: rgba(0,0,0,0.9);
+    /* font-size: 12px; */
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale-hero__headline {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__headline .accent {
+    color: {{ section.settings.accent_color }};
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale-hero__sub {
+    max-width: 52ch;
+    margin: 14px auto 0;
+    color: rgba(255,255,255,0.82);
+  }
+
+  #shopify-section-{{ section.id }} .bromic-sale-hero__quiz {
+    margin-top: 14px;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__quiz {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__quiz-text {
+    color: rgba(255,255,255,0.82);
+    font-weight: 700;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__quiz-button.button-primary {
+    text-decoration: none;
+  }
+
+  /* COUNTDOWN */
+  #shopify-section-{{ section.id }} .bromic-sale-countdown {
+    margin-top: 22px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-countdown__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 12px;
+    min-width: 84px;
+    border: 1px solid rgba(255,255,255,0.28);
+    background: rgba(0,0,0,0.18);
+    backdrop-filter: blur(4px);
+    border-radius: var(--bromic-sale-pill-radius);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-countdown__num {
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-countdown__label {
+    margin-top: 6px;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-hero__deadline {
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* GRID */
+  #shopify-section-{{ section.id }} .bromic-sale-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 14px;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card {
+    grid-column: span 12;
+    background: #fff;
+    border: 1px solid var(--bromic-sale-border);
+    border-radius: {{ settings.container_border_radius | default: 6 | append: 'px' }};
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card:hover {
+    box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__media {
+    position: relative;
+    width: 100%;
+    background: #f7f7f7;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__media[data-fit="contain"] img {
+    object-fit: contain;
+    padding: 16px;
+    background: #fff;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__name {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__desc {
+    color: rgba(0,0,0,0.70);
+    flex: 1 1 auto;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__meta {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--bromic-sale-border);
+    background: #fff;
+    color: rgba(0,0,0,0.88);
+    border-radius: var(--bromic-sale-pill-radius);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-tag--accent {
+    border-color: {{ section.settings.accent_color }};
+    background: {{ section.settings.accent_color }};
+    color: #fff;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__note {
+    font-size: 12px;
+    color: rgba(0,0,0,0.55);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-card__cta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* DIVIDER */
+  #shopify-section-{{ section.id }} .bromic-sale-divider {
+    height: 1px;
+    background: rgba(0,0,0,0.14);
+    margin: 0;
+  }
+
+  /* PORTABLE BANNER */
+  #shopify-section-{{ section.id }} .bromic-sale-portable {
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    min-height: clamp(320px, 48vw, 480px);
+    display: flex;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-portable__bg {
+    position: absolute;
+    inset: 0;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-portable__bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-portable__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--bromic-sale-portable-overlay);
+    opacity: var(--bromic-sale-portable-overlay-opacity);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-portable__content {
+    position: relative;
+    text-align: center;
+    padding: 44px 0;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-portable__title {
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.08;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-portable__title .accent {
+    color: {{ section.settings.accent_color }};
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-portable__sub {
+    max-width: 50ch;
+    margin: 14px auto 0;
+    color: rgba(255,255,255,0.82);
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-portable__cta {
+    margin-top: 18px;
+  }
+
+  /* BARS */
+  #shopify-section-{{ section.id }} .bromic-sale-bar {
+    padding: 22px 0;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-bar--dark {
+    background: #111;
+    color: #fff;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-bar--light {
+    background: #f5f0eb;
+    color: rgba(0,0,0,0.92);
+    border-top: 2px solid {{ section.settings.accent_color }};
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-bar__title {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-bar--dark .bromic-sale-bar__title {
+    color: {{ section.settings.accent_color }};
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-bar__text {
+    margin-top: 10px;
+    color: inherit;
+  }
+  #shopify-section-{{ section.id }} .bromic-sale-fine {
+    padding: 16px 0 40px;
+    text-align: center;
+    color: rgba(0,0,0,0.55);
+    font-size: 12px;
+  }
+
+  /* RESPONSIVE */
+  @media screen and (min-width: 720px) {
+    #shopify-section-{{ section.id }} .bromic-sale__section {
+      padding: 54px 0;
+    }
+    #shopify-section-{{ section.id }} .bromic-sale-card {
+      grid-column: span 6;
+    }
+    #shopify-section-{{ section.id }} .bromic-sale-hero__content {
+      padding: 74px 0 62px;
+    }
+  }
+
+    @media screen and (max-width: 720px) {
+      #shopify-section-{{ section.id }} .bromic-sale-hero__bg img {
+        object-position: right;
+      }
+  }
+
+  @media screen and (min-width: 1080px) {
+    {%- if section.settings.desktop_columns == '2' -%}
+      #shopify-section-{{ section.id }} .bromic-sale-card {
+        grid-column: span 6;
+      }
+    {%- else -%}
+      #shopify-section-{{ section.id }} .bromic-sale-card {
+        grid-column: span 4;
+      }
+    {%- endif -%}
+
+    #shopify-section-{{ section.id }} .controls .bromic-sale-card  {
+        grid-column: span 6;
+      }
+  }
+
+  @media screen and (max-width: 420px) {
+    #shopify-section-{{ section.id }} .bromic-sale-countdown__block {
+      min-width: 78px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="bromic-sale">
+  <!-- HERO -->
+  <section class="bromic-sale-hero" aria-label="Bromic sale hero">
+    <div class="bromic-sale-hero__bg">
+      {%- if section.settings.hero_image != blank -%}
+        {%- render 'rimg',
+          img: section.settings.hero_image,
+          size: '2000x',
+          lazy: settings.lazy_load,
+          alt: hero_img_alt
+        -%}
+      {%- elsif section.settings.hero_image_url != blank -%}
+        <img
+          src="{{ section.settings.hero_image_url | escape }}"
+          alt="{{ hero_img_alt | escape }}"
+          loading="{% if settings.lazy_load %}lazy{% else %}eager{% endif %}"
+          width="2000"
+          height="1200"
+        >
+      {%- endif -%}
+    </div>
+
+    <div class="page-content bromic-sale__inner">
+      <div class="bromic-sale-hero__content">
+        <div class="bromic-sale-hero__kicker">
+          {%- if section.settings.hero_badge_text != blank -%}
+            <div class="bromic-sale-hero__badge">
+              <div class="bromic-sale-hero__badge-text">{{ section.settings.hero_badge_text | escape }}</div>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.hero_free_shipping_text != blank -%}
+            <div class="bromic-sale-hero__free-ship">
+              <div class="bromic-sale-hero__free-ship-text">{{ section.settings.hero_free_shipping_text | escape }}</div>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.hero_headline != blank -%}
+          <h1 class="bromic-sale-hero__headline">
+            {{ section.settings.hero_headline | replace: '[accent]', '<span class="accent">' | replace: '[/accent]', '</span>' }}
+          </h1>
+        {%- endif -%}
+
+        {%- if section.settings.hero_subheading != blank -%}
+          <div class="bromic-sale-hero__headline">
+            <h2 style="font-size: var(--font-size-heading-1)">
+            {{ section.settings.hero_subheading }}
+            </h2>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.quiz_link_url != blank and section.settings.quiz_link_text != blank -%}
+          <div class="bromic-sale-hero__quiz">
+            <span class="bromic-sale-hero__quiz-text">{{ section.settings.quiz_link_text | escape }}</span>
+            <a class="button-primary bromic-sale-hero__quiz-button" href="{{ section.settings.quiz_link_url }}">
+              {{ section.settings.quiz_link_button_text | default: 'Take the free 2-minute quiz →' | escape }}
+            </a>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.countdown_end != blank -%}
+          <div
+            class="bromic-sale-countdown"
+            data-bromic-countdown
+            data-end="{{ section.settings.countdown_end | escape }}"
+          >
+            <div class="bromic-sale-countdown__block">
+              <div class="bromic-sale-countdown__num" data-part="d">00</div>
+              <div class="bromic-sale-countdown__label">{{ section.settings.countdown_label_days | escape }}</div>
+            </div>
+            <div class="bromic-sale-countdown__block">
+              <div class="bromic-sale-countdown__num" data-part="h">00</div>
+              <div class="bromic-sale-countdown__label">{{ section.settings.countdown_label_hours | escape }}</div>
+            </div>
+            <div class="bromic-sale-countdown__block">
+              <div class="bromic-sale-countdown__num" data-part="m">00</div>
+              <div class="bromic-sale-countdown__label">{{ section.settings.countdown_label_mins | escape }}</div>
+            </div>
+            <div class="bromic-sale-countdown__block">
+              <div class="bromic-sale-countdown__num" data-part="s">00</div>
+              <div class="bromic-sale-countdown__label">{{ section.settings.countdown_label_secs | escape }}</div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.deadline_note != blank -%}
+          <div class="bromic-sale-hero__deadline">{{ section.settings.deadline_note | escape }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {% comment %} <!-- ELECTRIC -->
+  <section class="bromic-sale__section" aria-label="Electric heaters">
+    <div class="page-content bromic-sale__inner">
+      <div class="bromic-sale__title">
+        <h2 class="home-section--title">{{ section.settings.electric_title | escape }}</h2>
+      </div>
+
+      <div class="bromic-sale-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'product' and block.settings.group == 'electric' -%}
+            <article class="bromic-sale-card" {{ block.shopify_attributes }}>
+              <div class="bromic-sale-card__media" data-fit="{{ block.settings.image_fit | escape }}">
+                {%- assign card_img_alt = block.settings.image_alt | default: '' -%}
+                {%- if card_img_alt == blank and block.settings.image != blank -%}
+                  {%- assign card_img_alt = block.settings.image.alt | default: '' -%}
+                {%- endif -%}
+                {%- if block.settings.image != blank -%}
+                  {%- render 'rimg', img: block.settings.image, size: '900x', lazy: settings.lazy_load, alt: card_img_alt -%}
+                {%- elsif block.settings.image_url != blank -%}
+                  <img
+                    src="{{ block.settings.image_url | escape }}"
+                    alt="{{ card_img_alt | escape }}"
+                    loading="{% if settings.lazy_load %}lazy{% else %}eager{% endif %}"
+                    width="900"
+                    height="675"
+                  >
+                {%- endif -%}
+              </div>
+              <div class="bromic-sale-card__body">
+                <h3 class="bromic-sale-card__name">{{ block.settings.title | escape }}</h3>
+                {%- if block.settings.description != blank -%}
+                  <div class="bromic-sale-card__desc rte">{{ block.settings.description }}</div>
+                {%- endif -%}
+                <div class="bromic-sale-card__meta">
+                  <div class="bromic-sale-tags">
+                    {%- if block.settings.show_sale_tag -%}
+                      <span class="bromic-sale-tag bromic-sale-tag--accent">{{ block.settings.sale_tag_text | escape }}</span>
+                    {%- endif -%}
+                    {%- if block.settings.show_ship_tag -%}
+                      <span class="bromic-sale-tag">{{ block.settings.ship_tag_text | escape }}</span>
+                    {%- endif -%}
+                  </div>
+                  {%- if block.settings.checkout_note != blank -%}
+                    <div class="bromic-sale-card__note">{{ block.settings.checkout_note | escape }}</div>
+                  {%- endif -%}
+                  <div class="bromic-sale-card__cta">
+                    {%- if block.settings.button_link != blank and block.settings.button_text != blank -%}
+                      <a class="button-primary" href="{{ block.settings.button_link }}">{{ block.settings.button_text | escape }}</a>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section> {% endcomment %}
+
+  <div class="bromic-sale-divider" role="presentation"></div>
+
+  <!-- GAS -->
+  <section class="bromic-sale__section bromic-sale__section--alt" aria-label="Gas heaters">
+    <div class="page-content bromic-sale__inner">
+      <div class="bromic-sale__title">
+        <h2 class="home-section--title">{{ section.settings.gas_title | escape }}</h2>
+      </div>
+
+      <div class="bromic-sale-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'product' and block.settings.group == 'gas' -%}
+            <article class="bromic-sale-card" {{ block.shopify_attributes }}>
+              <div class="bromic-sale-card__media" data-fit="{{ block.settings.image_fit | escape }}">
+                {%- assign card_img_alt = block.settings.image_alt | default: '' -%}
+                {%- if card_img_alt == blank and block.settings.image != blank -%}
+                  {%- assign card_img_alt = block.settings.image.alt | default: '' -%}
+                {%- endif -%}
+                {%- if block.settings.image != blank -%}
+                  {%- render 'rimg', img: block.settings.image, size: '900x', lazy: settings.lazy_load, alt: card_img_alt -%}
+                {%- elsif block.settings.image_url != blank -%}
+                  <img
+                    src="{{ block.settings.image_url | escape }}"
+                    alt="{{ card_img_alt | escape }}"
+                    loading="{% if settings.lazy_load %}lazy{% else %}eager{% endif %}"
+                    width="900"
+                    height="675"
+                  >
+                {%- endif -%}
+              </div>
+              <div class="bromic-sale-card__body">
+                <h3 class="bromic-sale-card__name">{{ block.settings.title | escape }}</h3>
+                {%- if block.settings.description != blank -%}
+                  <div class="bromic-sale-card__desc rte">{{ block.settings.description }}</div>
+                {%- endif -%}
+                <div class="bromic-sale-card__meta">
+                  <div class="bromic-sale-tags">
+                    {%- if block.settings.show_sale_tag -%}
+                      <span class="bromic-sale-tag bromic-sale-tag--accent">{{ block.settings.sale_tag_text | escape }}</span>
+                    {%- endif -%}
+                    {%- if block.settings.show_ship_tag -%}
+                      <span class="bromic-sale-tag">{{ block.settings.ship_tag_text | escape }}</span>
+                    {%- endif -%}
+                  </div>
+                  {%- if block.settings.checkout_note != blank -%}
+                    <div class="bromic-sale-card__note">{{ block.settings.checkout_note | escape }}</div>
+                  {%- endif -%}
+                  <div class="bromic-sale-card__cta">
+                    {%- if block.settings.button_link != blank and block.settings.button_text != blank -%}
+                      <a class="button-primary" href="{{ block.settings.button_link }}">{{ block.settings.button_text | escape }}</a>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {% comment %} <!-- PORTABLE BANNER -->
+  <section class="bromic-sale-portable" aria-label="Portable heater banner">
+    <div class="bromic-sale-portable__bg">
+      {%- if section.settings.portable_image != blank -%}
+        {%- render 'rimg',
+          img: section.settings.portable_image,
+          size: '2000x',
+          lazy: settings.lazy_load,
+          alt: portable_img_alt
+        -%}
+      {%- elsif section.settings.portable_image_url != blank -%}
+        <img
+          src="{{ section.settings.portable_image_url | escape }}"
+          alt="{{ portable_img_alt | escape }}"
+          loading="{% if settings.lazy_load %}lazy{% else %}eager{% endif %}"
+          width="2000"
+          height="1200"
+        >
+      {%- endif -%}
+    </div>
+    <div class="page-content bromic-sale__inner">
+      <div class="bromic-sale-portable__content">
+        {%- if section.settings.portable_title != blank -%}
+          <h2 class="bromic-sale-portable__title">
+            {{ section.settings.portable_title | replace: '[accent]', '<span class="accent">' | replace: '[/accent]', '</span>' }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.portable_subheading != blank -%}
+          <div class="bromic-sale-portable__sub rte">{{ section.settings.portable_subheading }}</div>
+        {%- endif -%}
+        {%- if section.settings.portable_button_link != blank and section.settings.portable_button_text != blank -%}
+          <div class="bromic-sale-portable__cta">
+            <a class="button-primary" href="{{ section.settings.portable_button_link }}">{{ section.settings.portable_button_text | escape }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section> {% endcomment %}
+
+  <div class="bromic-sale-divider" role="presentation"></div>
+
+  <!-- CONTROLS -->
+  <section class="bromic-sale__section controls" aria-label="Controls">
+    <div class="page-content bromic-sale__inner">
+      <div class="bromic-sale__title">
+        <h2 class="home-section--title">{{ section.settings.controls_title | escape }}</h2>
+      </div>
+
+      <div class="bromic-sale-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'product' and block.settings.group == 'controls' -%}
+            <article class="bromic-sale-card" {{ block.shopify_attributes }}>
+              <div class="bromic-sale-card__media" data-fit="{{ block.settings.image_fit | escape }}">
+                {%- assign card_img_alt = block.settings.image_alt | default: '' -%}
+                {%- if card_img_alt == blank and block.settings.image != blank -%}
+                  {%- assign card_img_alt = block.settings.image.alt | default: '' -%}
+                {%- endif -%}
+                {%- if block.settings.image != blank -%}
+                  {%- render 'rimg', img: block.settings.image, size: '900x', lazy: settings.lazy_load, alt: card_img_alt -%}
+                {%- elsif block.settings.image_url != blank -%}
+                  <img
+                    src="{{ block.settings.image_url | escape }}"
+                    alt="{{ card_img_alt | escape }}"
+                    loading="{% if settings.lazy_load %}lazy{% else %}eager{% endif %}"
+                    width="900"
+                    height="675"
+                  >
+                {%- endif -%}
+              </div>
+              <div class="bromic-sale-card__body">
+                <h3 class="bromic-sale-card__name">{{ block.settings.title | escape }}</h3>
+                {%- if block.settings.description != blank -%}
+                  <div class="bromic-sale-card__desc rte">{{ block.settings.description }}</div>
+                {%- endif -%}
+                <div class="bromic-sale-card__meta">
+                  <div class="bromic-sale-tags">
+                    {%- if block.settings.show_sale_tag -%}
+                      <span class="bromic-sale-tag bromic-sale-tag--accent">{{ block.settings.sale_tag_text | escape }}</span>
+                    {%- endif -%}
+                    {%- if block.settings.show_ship_tag -%}
+                      <span class="bromic-sale-tag">{{ block.settings.ship_tag_text | escape }}</span>
+                    {%- endif -%}
+                  </div>
+                  {%- if block.settings.checkout_note != blank -%}
+                    <div class="bromic-sale-card__note">{{ block.settings.checkout_note | escape }}</div>
+                  {%- endif -%}
+                  <div class="bromic-sale-card__cta">
+                    {%- if block.settings.button_link != blank and block.settings.button_text != blank -%}
+                      <a class="button-primary" href="{{ block.settings.button_link }}">{{ block.settings.button_text | escape }}</a>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- BUNDLE BAR -->
+  {%- if section.settings.bundle_title != blank or section.settings.bundle_text != blank -%}
+    <section class="bromic-sale-bar bromic-sale-bar--dark" aria-label="Bundle bar">
+      <div class="page-content bromic-sale__inner" style="text-align:center;">
+        {%- if section.settings.bundle_title != blank -%}
+          <h2 class="bromic-sale-bar__title">{{ section.settings.bundle_title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.bundle_text != blank -%}
+          <div class="bromic-sale-bar__text rte">{{ section.settings.bundle_text }}</div>
+        {%- endif -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  <!-- QUIZ BAR -->
+  {%- if section.settings.quiz_bar_title != blank or section.settings.quiz_bar_text != blank -%}
+    <section class="bromic-sale-bar bromic-sale-bar--light" aria-label="Quiz bar">
+      <div class="page-content bromic-sale__inner" style="text-align:center;">
+        {%- if section.settings.quiz_bar_title != blank -%}
+          <h2 class="bromic-sale-bar__title" style="color:inherit;">{{ section.settings.quiz_bar_title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.quiz_bar_text != blank -%}
+          <div class="bromic-sale-bar__text rte">{{ section.settings.quiz_bar_text }}</div>
+        {%- endif -%}
+        {%- if section.settings.quiz_bar_button_link != blank and section.settings.quiz_bar_button_text != blank -%}
+          <div style="margin-top:14px;">
+            <a class="button-primary" href="{{ section.settings.quiz_bar_button_link }}">{{ section.settings.quiz_bar_button_text | escape }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- if section.settings.fine_print != blank -%}
+    <div class="bromic-sale-fine">
+      <div class="page-content bromic-sale__inner rte">
+        {{ section.settings.fine_print }}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  (() => {
+    const root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+    const el = root.querySelector('[data-bromic-countdown]');
+    if (!el) return;
+
+    const endRaw = el.getAttribute('data-end') || '';
+    const end = new Date(endRaw);
+    if (Number.isNaN(end.getTime())) return;
+
+    const parts = {
+      d: el.querySelector('[data-part="d"]'),
+      h: el.querySelector('[data-part="h"]'),
+      m: el.querySelector('[data-part="m"]'),
+      s: el.querySelector('[data-part="s"]'),
+    };
+
+    const pad = (n) => String(n).padStart(2, '0');
+
+    const tick = () => {
+      const now = Date.now();
+      const diff = Math.max(0, end.getTime() - now);
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      if (parts.d) parts.d.textContent = pad(d);
+      if (parts.h) parts.h.textContent = pad(h);
+      if (parts.m) parts.m.textContent = pad(m);
+      if (parts.s) parts.s.textContent = pad(s);
+    };
+
+    tick();
+    window.setInterval(tick, 1000);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Bromic sale landing",
+  "class": "bromic-sale-landing-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand styling"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#D85A30"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color (titles + cards)",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "background_primary",
+      "label": "Background (primary)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background_alternate",
+      "label": "Background (alternate)",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "select",
+      "id": "desktop_columns",
+      "label": "Desktop columns (≥ 1080px)",
+      "options": [
+        { "value": "2", "label": "2 columns" },
+        { "value": "3", "label": "3 columns" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "url",
+      "id": "hero_image_url",
+      "label": "Hero background image URL (optional)",
+      "info": "Use this if your image is hosted on the Shopify CDN and you don't want to upload/select it in the theme editor."
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Hero image alt text",
+      "default": "Bromic Tungsten heaters"
+    },
+    {
+      "type": "color",
+      "id": "hero_overlay_color",
+      "label": "Hero overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "hero_overlay_opacity",
+      "label": "Hero overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "hero_badge_text",
+      "label": "Badge text",
+      "default": "Limited Time Offer — May 1–15, 2026"
+    },
+    {
+      "type": "text",
+      "id": "hero_free_shipping_text",
+      "label": "Free shipping text",
+      "default": "Free Shipping on Orders to Canada"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_headline",
+      "label": "Headline (use [accent]...[/accent] for orange words)",
+      "default": "20% Off\\n[accent]Bromic Tungsten[/accent]\\nHeaters & Controls"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_subheading",
+      "label": "Subheading",
+      "default": "<p>Outdoor heating season is here. Two weeks only — shop the full Tungsten line at PremiumBackyard.ca</p>"
+    },
+    {
+      "type": "url",
+      "id": "quiz_link_url",
+      "label": "Hero quiz link URL"
+    },
+    {
+      "type": "text",
+      "id": "quiz_link_text",
+      "label": "Hero quiz link text",
+      "default": "Not sure which heater is right for you?"
+    },
+    {
+      "type": "text",
+      "id": "quiz_link_button_text",
+      "label": "Hero quiz button text",
+      "default": "Take the free 2-minute quiz →"
+    },
+    {
+      "type": "header",
+      "content": "Countdown"
+    },
+    {
+      "type": "text",
+      "id": "countdown_end",
+      "label": "End datetime (ISO 8601 with timezone offset)",
+      "default": "2026-05-16T00:00:00-07:00",
+      "info": "Example: 2026-05-16T00:00:00-07:00 (MST)."
+    },
+    {
+      "type": "text",
+      "id": "countdown_label_days",
+      "label": "Days label",
+      "default": "Days"
+    },
+    {
+      "type": "text",
+      "id": "countdown_label_hours",
+      "label": "Hours label",
+      "default": "Hours"
+    },
+    {
+      "type": "text",
+      "id": "countdown_label_mins",
+      "label": "Minutes label",
+      "default": "Mins"
+    },
+    {
+      "type": "text",
+      "id": "countdown_label_secs",
+      "label": "Seconds label",
+      "default": "Secs"
+    },
+    {
+      "type": "text",
+      "id": "deadline_note",
+      "label": "Deadline note",
+      "default": "Promotion ends May 15, 2026 at midnight"
+    },
+    {
+      "type": "header",
+      "content": "Section titles"
+    },
+    {
+      "type": "text",
+      "id": "electric_title",
+      "label": "Electric section title",
+      "default": "Electric Heaters"
+    },
+    {
+      "type": "text",
+      "id": "gas_title",
+      "label": "Gas section title",
+      "default": "Gas Heaters"
+    },
+    {
+      "type": "text",
+      "id": "controls_title",
+      "label": "Controls section title",
+      "default": "Controls"
+    },
+    {
+      "type": "header",
+      "content": "Portable banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "portable_image",
+      "label": "Portable banner background image"
+    },
+    {
+      "type": "url",
+      "id": "portable_image_url",
+      "label": "Portable banner image URL (optional)"
+    },
+    {
+      "type": "text",
+      "id": "portable_image_alt",
+      "label": "Portable banner image alt text",
+      "default": "Bromic Tungsten portable heater"
+    },
+    {
+      "type": "color",
+      "id": "portable_overlay_color",
+      "label": "Portable banner overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "portable_overlay_opacity",
+      "label": "Portable banner overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 55
+    },
+    {
+      "type": "textarea",
+      "id": "portable_title",
+      "label": "Portable title (use [accent]...[/accent])",
+      "default": "Heat the dock.\\n[accent]Own the evening.[/accent]"
+    },
+    {
+      "type": "richtext",
+      "id": "portable_subheading",
+      "label": "Portable subheading",
+      "default": "<p>The Tungsten Portable goes wherever you need it. No install. No hassle. Free Shipping across Canada.</p>"
+    },
+    {
+      "type": "text",
+      "id": "portable_button_text",
+      "label": "Portable button text",
+      "default": "Shop Portable →"
+    },
+    {
+      "type": "url",
+      "id": "portable_button_link",
+      "label": "Portable button link"
+    },
+    {
+      "type": "header",
+      "content": "Bundle bar"
+    },
+    {
+      "type": "text",
+      "id": "bundle_title",
+      "label": "Bundle title",
+      "default": "Bundle & Save More"
+    },
+    {
+      "type": "richtext",
+      "id": "bundle_text",
+      "label": "Bundle text",
+      "default": "<p>Add a controller with any heater. 20% off applies to both.<br>20% discount applies automatically at checkout.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Quiz bar"
+    },
+    {
+      "type": "text",
+      "id": "quiz_bar_title",
+      "label": "Quiz bar title",
+      "default": "Not sure which heater fits your space?"
+    },
+    {
+      "type": "richtext",
+      "id": "quiz_bar_text",
+      "label": "Quiz bar text",
+      "default": "<p>Take our free 2-minute quiz and we'll point you in the right direction.</p>"
+    },
+    {
+      "type": "text",
+      "id": "quiz_bar_button_text",
+      "label": "Quiz bar button text",
+      "default": "Find My Heater →"
+    },
+    {
+      "type": "url",
+      "id": "quiz_bar_button_link",
+      "label": "Quiz bar button link"
+    },
+    {
+      "type": "header",
+      "content": "Fine print"
+    },
+    {
+      "type": "richtext",
+      "id": "fine_print",
+      "label": "Fine print",
+      "default": "<p>Terms &amp; conditions apply. Offer valid May 1–15, 2026 only. While supplies last. Free shipping on eligible orders. PremiumBackyard.ca — serving Canadians coast to coast.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "group",
+          "label": "Group",
+          "options": [
+            { "value": "electric", "label": "Electric" },
+            { "value": "gas", "label": "Gas" },
+            { "value": "controls", "label": "Controls" }
+          ],
+          "default": "electric"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image URL (optional)",
+          "info": "Use a Shopify CDN URL if you prefer not to use the image picker."
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "default": "Bromic product"
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image fit",
+          "options": [
+            { "value": "contain", "label": "Contain" },
+            { "value": "cover", "label": "Cover" }
+          ],
+          "default": "contain"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Product name"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Short description.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_sale_tag",
+          "label": "Show sale tag",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "sale_tag_text",
+          "label": "Sale tag text",
+          "default": "20% Off"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_ship_tag",
+          "label": "Show shipping tag",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "ship_tag_text",
+          "label": "Shipping tag text",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "checkout_note",
+          "label": "Note under tags",
+          "default": "Discount applied at checkout."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Shop Now →"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bromic sale landing",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "group": "electric",
+            "title": "Tungsten Electric Radiant Heater",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "checkout_note": "Discount applied at checkout."
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "group": "gas",
+            "title": "Tungsten Gas Patio Heater — 500 Series",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "checkout_note": "Discount applied at checkout."
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "group": "gas",
+            "title": "Tungsten Portable Gas Patio Heater",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "show_ship_tag": true,
+            "ship_tag_text": "Free Shipping",
+            "checkout_note": "Discount applied at checkout."
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "group": "controls",
+            "title": "Affinity On/Off Controller",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "checkout_note": "Discount applied at checkout."
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "group": "controls",
+            "title": "Affinity Dimmer Controller",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "checkout_note": "Discount applied at checkout."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

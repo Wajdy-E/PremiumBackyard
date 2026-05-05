@@ -1,0 +1,394 @@
+{% liquid
+  assign image_count = 0
+  for block in section.blocks
+    if block.settings.image != blank
+      assign image_count = image_count | plus: 1
+    endif
+  endfor
+
+  assign min_items = section.settings.min_track_items
+  assign repeat_sequences = 2
+  if image_count > 0
+    assign repeat_sequences = min_items | plus: image_count | minus: 1 | divided_by: image_count
+    if repeat_sequences < 2
+      assign repeat_sequences = 2
+    endif
+  endif
+%}
+
+{% style %}
+  {% if section.settings.background_color != blank %}
+    #shopify-section-{{ section.id }} {
+      background-color: {{ section.settings.background_color }};
+    }
+  {% endif %}
+
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.spacing_mobile }}px;
+    padding-bottom: {{ section.settings.spacing_mobile }}px;
+    --image-marquee-gap: {{ section.settings.gap_mobile }}px;
+    --image-marquee-height: {{ section.settings.image_height }}px;
+    --image-marquee-duration: {{ section.settings.scroll_speed }}s;
+  }
+
+  @media screen and (min-width: 720px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.spacing_desktop }}px;
+      padding-bottom: {{ section.settings.spacing_desktop }}px;
+      --image-marquee-gap: {{ section.settings.gap_desktop }}px;
+    }
+  }
+
+  {% if section.settings.heading_color != blank %}
+    #shopify-section-{{ section.id }} .image-marquee__heading {
+      color: {{ section.settings.heading_color }};
+    }
+  {% endif %}
+
+  {% if section.settings.subheading_color != blank %}
+    #shopify-section-{{ section.id }} .image-marquee__subheading,
+    #shopify-section-{{ section.id }} .image-marquee__subheading a {
+      color: {{ section.settings.subheading_color }};
+    }
+  {% endif %}
+
+  @keyframes image-marquee-scroll-{{ section.id }} {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  #shopify-section-{{ section.id }} .image-marquee__track {
+    animation-name: image-marquee-scroll-{{ section.id }};
+    animation-duration: var(--image-marquee-duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: {% if section.settings.direction == 'right' %}reverse{% else %}normal{% endif %};
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .image-marquee__viewport {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #shopify-section-{{ section.id }} .image-marquee__track {
+      animation: none;
+    }
+  }
+
+  {% if section.settings.pause_on_hover %}
+    @media (hover: hover) {
+      #shopify-section-{{ section.id }} .image-marquee__viewport:hover .image-marquee__track {
+        animation-play-state: paused;
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-index="{{ section.index }}"
+  data-section-type="dynamic-image-marquee"
+></script>
+
+<section class="image-marquee">
+  {% if section.settings.title != blank or section.settings.subheading != blank %}
+    <header class="home-section--title-container">
+      {% if section.settings.title != blank %}
+        <h2 class="home-section--title image-marquee__heading">{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <div class="home-section--subheading image-marquee__subheading">{{ section.settings.subheading }}</div>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  {% if image_count > 0 %}
+    <div
+      class="image-marquee__viewport"
+      role="region"
+      aria-label="{{ 'sections.image_marquee.carousel_label' | t }}"
+    >
+      <div class="image-marquee__track">
+        {% for strip_index in (1..2) %}
+          <div
+            class="image-marquee__strip"
+            {% if strip_index == 2 %}
+              aria-hidden="true"
+            {% endif %}
+          >
+            {% for sequence in (1..repeat_sequences) %}
+              {% for block in section.blocks %}
+                {% if block.settings.image != blank %}
+                  <div class="image-marquee__item" {{ block.shopify_attributes }}>
+                    {% liquid
+                      assign item_tag = 'div'
+                      if block.settings.link != blank
+                        assign item_tag = 'a'
+                      endif
+                    %}
+                    <{{ item_tag }}
+                      class="image-marquee__media"
+                      {% if block.settings.link != blank %}
+                        href="{{ block.settings.link }}"
+                        {% if block.settings.open_new_tab %}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        {% endif %}
+                      {% endif %}
+                    >
+                      {% liquid
+                        assign marquee_alt = block.settings.alt_text | default: block.settings.image.alt
+                      %}
+                      {% render 'rimg',
+                        img: block.settings.image,
+                        class: 'image-marquee__img',
+                        size: '800x',
+                        lazy: settings.lazy_load,
+                        focal_point: block.settings.image.presentation.focal_point,
+                        alt: marquee_alt
+                      %}
+                    </{{ item_tag }}>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% stylesheet %}
+  .image-marquee__viewport {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .image-marquee__track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .image-marquee__strip {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--image-marquee-gap, 24px);
+    flex-shrink: 0;
+  }
+
+  .image-marquee__item {
+    flex-shrink: 0;
+  }
+
+  .image-marquee__media {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .image-marquee__img {
+    height: var(--image-marquee-height, 48px);
+    width: auto;
+    max-width: none;
+    display: block;
+  }
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Image marquee",
+  "class": "image-marquee-section",
+  "tag": "section",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Image marquee"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#4d4d4d"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "spacing_desktop",
+      "label": "Desktop section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "spacing_mobile",
+      "label": "Mobile section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Marquee"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image height",
+      "min": 24,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 56,
+      "info": "Width scales automatically to preserve aspect ratio."
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap between images (desktop)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap between images (mobile)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "Scroll duration",
+      "min": 10,
+      "max": 120,
+      "step": 5,
+      "unit": "s",
+      "default": 45,
+      "info": "Higher values scroll slower."
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Scroll direction",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "min_track_items",
+      "label": "Minimum images on track",
+      "min": 6,
+      "max": 48,
+      "step": 1,
+      "default": 12,
+      "info": "Fewer uploaded images are repeated to reach at least this many for a full marquee."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt text",
+          "info": "Overrides the image alt from the media library when set."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open link in new tab",
+          "default": false,
+          "visible_if": "{{ block.settings.link != blank }}"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image marquee",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

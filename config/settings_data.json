@@ -117,7 +117,7 @@
     "type_menu_size": 100,
     "type_menu_capitalize": true,
     "type_menu_spacing": -3,
-    "type_highlights_bar": "bitter_n7",
+    "type_highlights_bar": "oswald_n4",
     "type_highlights_size": 90,
     "type_highlights_capitalize": false,
     "type_highlights_spacing": 0,
@@ -167,8 +167,8 @@
     "product_grid_show_quickshop": "disabled",
     "product_grid_show_atc": "always",
     "favicon": "shopify://shop_images/web_icon_bf813431-80d2-478c-9bd8-468c4fa787e7.png",
-    "enable_checkout_lock_icon": false,
-    "product_show_sku": false,
+    "enable_checkout_lock_icon": true,
+    "product_show_sku": true,
     "custom_styles": "",
     "continue_shopping_url": "shopify://collections",
     "lazy_load": true,
@@ -332,9 +332,9 @@
           ".slideshow-background {background-position: bottom !important;}"
         ],
         "settings": {
-          "show_slideshow": true,
+          "show_slideshow": false,
           "enable_autoplay": true,
-          "autoplay_duration": 7,
+          "autoplay_duration": 5,
           "slideshow_height": "medium"
         }
       }

@@ -63,6 +63,10 @@
     hover_zoom: hover_zoom,
   %}
 
+  {% if thumbnail_position == 'left' %}
+    {% include 'product-gallery-metafield-video', product: product %}
+  {% endif %}
+
   {% assign first_model = product.media | where: "media_type", "model" | first %}
   {% if selected_media.media_type == 'model' %}
     {% assign model = selected_media %}
@@ -95,6 +99,7 @@
       image_crop: image_crop,
       hover_zoom: hover_zoom,
     %}
+    {% include 'product-gallery-metafield-video', product: product %}
   {% endif %}
 </div>
 <script>

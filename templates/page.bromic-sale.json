@@ -1,0 +1,165 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bromic_sale_landing": {
+      "type": "bromic-sale-landing",
+      "blocks": {
+        "electric_1": {
+          "type": "product",
+          "settings": {
+            "group": "gas",
+            "image": "shopify://shop_images/Black_Electric_Tungsten_Heater.jpg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0686/9293/4930/files/BromicTungstenElectricRadiantHeater.jpg?v=1755760333",
+            "image_alt": "Bromic Tungsten Electric Radiant Heater",
+            "image_fit": "contain",
+            "title": "Tungsten Electric Radiant Heater",
+            "description": "<p>Wall or ceiling mount. 2000W–6000W. Stainless steel. Wind-resistant. Built for covered decks and patios.</p>",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "show_ship_tag": true,
+            "ship_tag_text": "Free Shipping",
+            "checkout_note": "Discount applied at checkout.",
+            "button_text": "Shop Now →",
+            "button_link": "shopify://products/bromic-tungsten-smart-heat-electric"
+          }
+        },
+        "gas_1": {
+          "type": "product",
+          "settings": {
+            "group": "gas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0686/9293/4930/files/Tungsten_Gas_500_Wall_Mount_Residential_Heater_in_Black_from_Angle.jpg?v=1731180097",
+            "image_alt": "Bromic Tungsten Gas Patio Heater 500",
+            "image_fit": "contain",
+            "title": "Tungsten Gas Patio Heater — 500 Series",
+            "description": "<p>NG & LPG. High-output radiant heat. Built for Canadian conditions. Wall mount. Available in Natural Gas and Propane.</p>",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "show_ship_tag": true,
+            "ship_tag_text": "Free Shipping",
+            "checkout_note": "Discount applied at checkout.",
+            "button_text": "Shop Now →",
+            "button_link": "shopify://products/tungsten-smart-heat™-gas"
+          }
+        },
+        "gas_2": {
+          "type": "product",
+          "settings": {
+            "group": "gas",
+            "image": "shopify://shop_images/Bromic_Portable_Tungsten_Gas_Heater_Free_Shipping.png",
+            "image_url": "https://cdn.shopify.com/s/files/1/0686/9293/4930/files/Bromic_Portable_Tungsten_Gas_Heater_Free_Shipping.jpg?v=1758820564",
+            "image_alt": "Bromic Tungsten Portable Gas Patio Heater",
+            "image_fit": "contain",
+            "title": "Tungsten Portable Gas Patio Heater",
+            "description": "<p>Freestanding. 38,500 BTU. Built-in wheels. Heats up to 215 sq ft. No fixed install needed.</p>",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "show_ship_tag": true,
+            "ship_tag_text": "Free Shipping",
+            "checkout_note": "Discount applied at checkout.",
+            "button_text": "Shop Now →",
+            "button_link": "shopify://products/bromic-tungsten-portable-gas-heater"
+          }
+        },
+        "controls_1": {
+          "type": "product",
+          "settings": {
+            "group": "controls",
+            "image_url": "https://cdn.shopify.com/s/files/1/0686/9293/4930/files/AffinitySmart-HeatOnOffControllers_2.jpg?v=1755936896",
+            "image_alt": "Affinity Smart-Heat On/Off Controller",
+            "image_fit": "cover",
+            "title": "Affinity On/Off Controller",
+            "description": "<p>Simple reliable on/off control. Works with up to 6 zones. Control your heaters from your phone.</p>",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "show_ship_tag": true,
+            "ship_tag_text": "Free Shipping",
+            "checkout_note": "Discount applied at checkout.",
+            "button_text": "Shop Now →",
+            "button_link": "shopify://products/affinity-smart-heat-on-off-controllers"
+          }
+        },
+        "controls_2": {
+          "type": "product",
+          "settings": {
+            "group": "controls",
+            "image_url": "https://cdn.shopify.com/s/files/1/0686/9293/4930/files/AffinitySmart-HeatDimmerControllers.jpg?v=1755938283",
+            "image_alt": "Affinity Smart-Heat Dimmer Controller",
+            "image_fit": "contain",
+            "title": "Affinity Dimmer Controller",
+            "description": "<p>Dial in your exact comfort level. Smooth dimming control for Tungsten Electric heaters.</p>",
+            "show_sale_tag": true,
+            "sale_tag_text": "20% Off",
+            "show_ship_tag": true,
+            "ship_tag_text": "Free Shipping",
+            "checkout_note": "Discount applied at checkout.",
+            "button_text": "Shop Now →",
+            "button_link": "shopify://products/affinity-smart-heat-dimmer-controllers"
+          }
+        }
+      },
+      "block_order": [
+        "electric_1",
+        "gas_1",
+        "gas_2",
+        "controls_1",
+        "controls_2"
+      ],
+      "custom_css": [],
+      "settings": {
+        "accent_color": "#d85a30",
+        "border_color": "#111111",
+        "background_primary": "#ffffff",
+        "background_alternate": "#f5f5f5",
+        "desktop_columns": "3",
+        "hero_image": "shopify://shop_images/Tungsten_Portable_-_Deck_1.png",
+        "hero_image_url": "https://cdn.shopify.com/s/files/1/0686/9293/4930/files/BromicTungstenElectricRadiantHeater_3.jpg?v=1755917030",
+        "hero_image_alt": "Bromic Tungsten heaters on patio",
+        "hero_overlay_color": "#000000",
+        "hero_overlay_opacity": 35,
+        "hero_badge_text": "Limited Time Offer — May 1–15, 2026",
+        "hero_free_shipping_text": "Free Shipping on Orders to Canada",
+        "hero_headline": "20% Off\n[accent]Bromic Tungsten[/accent]\nHeaters & Controls",
+        "hero_subheading": "<p>Extend Your Patio Time This Summer!</p>",
+        "quiz_link_url": "shopify://pages/find-your-perfect-bromic-heater-quiz",
+        "quiz_link_text": "Not sure which heater is right for you?",
+        "quiz_link_button_text": "Take the free 2-minute quiz →",
+        "countdown_end": "2026-05-16T00:00:00-07:00",
+        "countdown_label_days": "Days",
+        "countdown_label_hours": "Hours",
+        "countdown_label_mins": "Mins",
+        "countdown_label_secs": "Secs",
+        "deadline_note": "Promotion ends May 15, 2026 at midnight",
+        "electric_title": "",
+        "gas_title": "Gas and electric Heaters",
+        "controls_title": "Controls",
+        "bromic_flyer": "shopify://shop_images/tungsten_may_1-15_promotion_2026-1_FLYER_page-0001_1.jpg",
+        "portable_image_url": "https://cdn.shopify.com/s/files/1/0686/9293/4930/files/Portable_Tungsten_Heater_and_Chairs_on_Lakeside_Dock.jpg?v=1757031423",
+        "portable_image_alt": "Portable Tungsten heater on lakeside dock",
+        "portable_overlay_color": "#000000",
+        "portable_overlay_opacity": 55,
+        "portable_title": "Heat the dock.\n[accent]Own the evening.[/accent]",
+        "portable_subheading": "<p>The Tungsten Portable goes wherever you need it. No install. No hassle. Free Shipping across Canada.</p>",
+        "portable_button_text": "Shop Portable →",
+        "portable_button_link": "https://premiumbackyard.ca/products/bromic-tungsten-portable-gas-patio-heater",
+        "bundle_title": "Bundle & Save More",
+        "bundle_text": "<p>Add a controller with any heater. 20% off applies to both.<br/>20% discount applies automatically at checkout.</p>",
+        "quiz_bar_title": "Not sure which heater fits your space?",
+        "quiz_bar_text": "<p>Take our free 2-minute quiz and we'll point you in the right direction.</p>",
+        "quiz_bar_button_text": "Find My Heater →",
+        "quiz_bar_button_link": "https://premiumbackyard.ca/pages/find-your-perfect-bromic-heater-free-2-minute-quiz",
+        "fine_print": "<p>Terms & conditions apply. Offer valid May 1–15, 2026 only. While supplies last. Free shipping on eligible orders. PremiumBackyard.ca — serving Canadians coast to coast.</p>"
+      }
+    }
+  },
+  "order": [
+    "bromic_sale_landing"
+  ]
+}

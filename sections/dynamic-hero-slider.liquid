@@ -1,9 +1,15 @@
 {% liquid
   assign slide_count = section.blocks.size
   assign slider_width = '100%'
+  assign autoplay_duration = section.settings.autoplay_duration | plus: 0
+  assign autoplay_enabled = false
 
   if section.settings.max_width != 'full'
     assign slider_width = section.settings.max_width | append: 'px'
+  endif
+
+  if autoplay_duration > 0
+    assign autoplay_enabled = true
   endif
 %}
 
@@ -15,14 +21,13 @@
 
   #shopify-section-{{ section.id }} .hero-slider {
     --hero-slider-accent: {{ section.settings.accent_color }};
-    --hero-slider-radius: {{ section.settings.border_radius }}px;
     --hero-slider-desktop-height: {{ section.settings.desktop_height }}px;
     --hero-slider-mobile-height: {{ section.settings.mobile_height }}px;
     width: min(100%, {{ slider_width }});
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    border-radius: var(--hero-slider-radius);
+    border-radius: 0;
     background: #0a0a0a;
     font-family: inherit;
   }
@@ -40,6 +45,7 @@
   #shopify-section-{{ section.id }} .hero-slider__slide {
     min-width: 100%;
     min-height: var(--hero-slider-mobile-height);
+    height: var(--hero-slider-mobile-height);
     position: relative;
     display: flex;
     align-items: stretch;
@@ -60,6 +66,7 @@
     position: relative;
     z-index: 1;
     width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     gap: 22px;
@@ -69,6 +76,7 @@
   #shopify-section-{{ section.id }} .hero-slider__content {
     align-self: center;
     max-width: 520px;
+    min-height: 0;
   }
 
   #shopify-section-{{ section.id }} .hero-slider__badge {
@@ -170,51 +178,32 @@
     align-self: center;
     display: grid;
     gap: 14px;
+    min-height: 0;
+    align-content: center;
   }
 
   #shopify-section-{{ section.id }} .hero-slider__media-card {
-    min-height: 190px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    gap: 10px;
-    padding: 16px;
-    border: 1px solid var(--slide-media-border-color);
-    border-radius: 8px;
-    color: var(--slide-muted-color);
-    background: var(--slide-media-background-color);
+    min-height: 0;
     text-align: center;
   }
 
   #shopify-section-{{ section.id }} .hero-slider__media-card img,
   #shopify-section-{{ section.id }} .hero-slider__media-card .rimg {
     width: 100%;
-    height: 100%;
+    max-height: min(360px, 42vh);
     object-fit: var(--slide-image-fit);
+    object-position: center;
   }
 
   #shopify-section-{{ section.id }} .hero-slider__media-image {
     width: 100%;
-    max-height: 260px;
+    max-height: min(360px, 42vh);
     object-fit: var(--slide-image-fit);
-  }
-
-  #shopify-section-{{ section.id }} .hero-slider__media-caption {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    line-height: 1.35;
-    text-transform: uppercase;
-  }
-
-  #shopify-section-{{ section.id }} .hero-slider__media-caption span {
-    display: block;
-    margin-top: 3px;
-    color: var(--slide-text-color);
-    font-size: 1rem;
-    letter-spacing: 0;
-    text-transform: none;
+    object-position: center;
   }
 
   #shopify-section-{{ section.id }} .hero-slider__arrow {
@@ -326,20 +315,13 @@
 
     #shopify-section-{{ section.id }} .hero-slider__slide {
       min-height: var(--hero-slider-desktop-height);
+      height: var(--hero-slider-desktop-height);
     }
 
     #shopify-section-{{ section.id }} .hero-slider__inner {
       grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
       gap: 32px;
       padding: 54px 72px;
-    }
-
-    #shopify-section-{{ section.id }} .hero-slider__slide--image-left .hero-slider__content {
-      order: 2;
-    }
-
-    #shopify-section-{{ section.id }} .hero-slider__slide--image-left .hero-slider__media {
-      order: 1;
     }
 
     #shopify-section-{{ section.id }} .hero-slider__slide--no-image .hero-slider__inner {
@@ -358,9 +340,6 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    #shopify-section-{{ section.id }} .hero-slider__media-card {
-      min-height: 260px;
-    }
 
     #shopify-section-{{ section.id }} .hero-slider__arrow {
       display: flex;
@@ -368,21 +347,41 @@
   }
 
   @media screen and (max-width: 719px) {
-    #shopify-section-{{ section.id }} .hero-slider {
-      border-radius: min(var(--hero-slider-radius), 8px);
-    }
-
     #shopify-section-{{ section.id }} .hero-slider__media {
       order: -1;
+    }
+
+    #shopify-section-{{ section.id }} .hero-slider__inner {
+      gap: 14px;
+      padding: 20px 16px 58px;
+    }
+
+    #shopify-section-{{ section.id }} .hero-slider__heading {
+      font-size: clamp(1.65rem, 9.5vw, 2.6rem);
+      line-height: 1;
+    }
+
+    #shopify-section-{{ section.id }} .hero-slider__body {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    #shopify-section-{{ section.id }} .hero-slider__slide--split .hero-slider__media {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .hero-slider__slide--split .hero-slider__media-card img,
+    #shopify-section-{{ section.id }} .hero-slider__slide--split .hero-slider__media-card .rimg,
+    #shopify-section-{{ section.id }} .hero-slider__slide--split .hero-slider__media-image {
+      max-height: min(240px, 32vh);
     }
 
     #shopify-section-{{ section.id }} .hero-slider__slide--no-image .hero-slider__media {
       display: none;
     }
 
-    #shopify-section-{{ section.id }} .hero-slider__media-card {
-      min-height: 160px;
-    }
 
     #shopify-section-{{ section.id }} .hero-slider__content {
       max-width: none;
@@ -404,6 +403,21 @@
     #shopify-section-{{ section.id }} .hero-slider__counter {
       display: none;
     }
+
+    #shopify-section-{{ section.id }} .hero-slider__arrow {
+      display: flex;
+      width: 38px;
+      height: 38px;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    #shopify-section-{{ section.id }} .hero-slider__arrow--previous {
+      left: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .hero-slider__arrow--next {
+      right: 10px;
+    }
   }
 {% endstyle %}
 
@@ -415,8 +429,8 @@
   data-section-data
 >
   {
-    "autoplay": {{ section.settings.enable_autoplay | json }},
-    "duration": {{ section.settings.autoplay_duration | times: 1000 | json }},
+    "autoplay": {{ autoplay_enabled | json }},
+    "duration": {{ autoplay_duration | times: 1000 | json }},
     "slideCount": {{ slide_count | json }}
   }
 </script>
@@ -425,7 +439,7 @@
   <div
     class="hero-slider"
     data-hero-slider
-    style="--hero-slider-autoplay-duration: {{ section.settings.autoplay_duration }}s;"
+    style="--hero-slider-autoplay-duration: {{ autoplay_duration }}s;"
   >
     <div class="hero-slider__viewport">
       <div class="hero-slider__track" data-hero-slider-track>
@@ -433,9 +447,17 @@
           {% liquid
             assign slide_layout = block.settings.layout
             assign primary_image = block.settings.image
-            assign primary_image_url = block.settings.image_url
             assign secondary_image = block.settings.secondary_image
-            assign secondary_image_url = block.settings.secondary_image_url
+            assign primary_focal = nil
+            assign secondary_focal = nil
+            if block.settings.image_fit == 'cover'
+              if primary_image != blank and primary_image.presentation.focal_point != blank
+                assign primary_focal = primary_image.presentation.focal_point
+              endif
+              if secondary_image != blank and secondary_image.presentation.focal_point != blank
+                assign secondary_focal = secondary_image.presentation.focal_point
+              endif
+            endif
           %}
 
           <article
@@ -454,8 +476,6 @@
               --slide-button-color: {{ block.settings.button_text_color }};
               --slide-secondary-color: {{ block.settings.secondary_button_color }};
               --slide-secondary-border-color: {{ block.settings.secondary_button_border_color }};
-              --slide-media-background-color: {{ block.settings.media_background_color }};
-              --slide-media-border-color: {{ block.settings.media_border_color }};
               --slide-image-fit: {{ block.settings.image_fit }};
             "
             data-hero-slider-slide
@@ -528,21 +548,8 @@
                         class: 'hero-slider__media-image',
                         lazy: true,
                         canvas: true,
-                        focal_point: primary_image.presentation.focal_point
+                        focal_point: primary_focal
                       %}
-                    {% elsif primary_image_url != blank %}
-                      <img class="hero-slider__media-image" src="{{ primary_image_url | escape }}" alt="{{ block.settings.image_alt | escape }}" width="900" height="700" loading="lazy">
-                    {% elsif block.settings.image_placeholder != blank %}
-                      <span>{{ block.settings.image_placeholder | escape }}</span>
-                    {% endif %}
-
-                    {% if block.settings.image_caption != blank %}
-                      <div class="hero-slider__media-caption">
-                        {{ block.settings.image_caption | escape }}
-                        {% if block.settings.image_caption_detail != blank %}
-                          <span>{{ block.settings.image_caption_detail | escape }}</span>
-                        {% endif %}
-                      </div>
                     {% endif %}
                   </div>
 
@@ -555,21 +562,8 @@
                           class: 'hero-slider__media-image',
                           lazy: true,
                           canvas: true,
-                          focal_point: secondary_image.presentation.focal_point
+                          focal_point: secondary_focal
                         %}
-                      {% elsif secondary_image_url != blank %}
-                        <img class="hero-slider__media-image" src="{{ secondary_image_url | escape }}" alt="{{ block.settings.secondary_image_alt | escape }}" width="900" height="700" loading="lazy">
-                      {% elsif block.settings.secondary_image_placeholder != blank %}
-                        <span>{{ block.settings.secondary_image_placeholder | escape }}</span>
-                      {% endif %}
-
-                      {% if block.settings.secondary_image_caption != blank %}
-                        <div class="hero-slider__media-caption">
-                          {{ block.settings.secondary_image_caption | escape }}
-                          {% if block.settings.secondary_image_caption_detail != blank %}
-                            <span>{{ block.settings.secondary_image_caption_detail | escape }}</span>
-                          {% endif %}
-                        </div>
                       {% endif %}
                     </div>
                   {% endif %}
@@ -612,7 +606,7 @@
         {% endif %}
       </div>
 
-      {% if section.settings.show_progress %}
+      {% if section.settings.show_progress and autoplay_enabled %}
         <div class="hero-slider__progress" data-hero-slider-progress></div>
       {% endif %}
     {% endif %}
@@ -689,7 +683,7 @@
 
       function play() {
         stop();
-        if (!settings.autoplay) return;
+        if (!settings.autoplay || settings.duration <= 0) return;
         timer = setInterval(function () {
           goTo(index + 1);
         }, settings.duration);
@@ -753,16 +747,11 @@
       "default": "Featured promotions"
     },
     {
-      "type": "checkbox",
-      "id": "enable_autoplay",
-      "label": "Autoplay slides",
-      "default": true
-    },
-    {
       "type": "range",
       "id": "autoplay_duration",
-      "label": "Autoplay duration",
-      "min": 3,
+      "label": "Autoplay timer",
+      "info": "Set to 0 to disable autoplay and move slides manually.",
+      "min": 0,
       "max": 12,
       "step": 1,
       "unit": "s",
@@ -941,10 +930,6 @@
               "label": "Image right"
             },
             {
-              "value": "image-left",
-              "label": "Image left"
-            },
-            {
               "value": "split",
               "label": "Split images"
             },
@@ -961,59 +946,9 @@
           "label": "Image"
         },
         {
-          "type": "text",
-          "id": "image_url",
-          "label": "External image URL"
-        },
-        {
-          "type": "text",
-          "id": "image_alt",
-          "label": "External image alt text"
-        },
-        {
-          "type": "text",
-          "id": "image_placeholder",
-          "label": "Image placeholder text"
-        },
-        {
-          "type": "text",
-          "id": "image_caption",
-          "label": "Image caption"
-        },
-        {
-          "type": "text",
-          "id": "image_caption_detail",
-          "label": "Image caption detail"
-        },
-        {
           "type": "image_picker",
           "id": "secondary_image",
           "label": "Second image"
-        },
-        {
-          "type": "text",
-          "id": "secondary_image_url",
-          "label": "Second external image URL"
-        },
-        {
-          "type": "text",
-          "id": "secondary_image_alt",
-          "label": "Second external image alt text"
-        },
-        {
-          "type": "text",
-          "id": "secondary_image_placeholder",
-          "label": "Second image placeholder text"
-        },
-        {
-          "type": "text",
-          "id": "secondary_image_caption",
-          "label": "Second image caption"
-        },
-        {
-          "type": "text",
-          "id": "secondary_image_caption_detail",
-          "label": "Second image caption detail"
         },
         {
           "type": "select",
@@ -1082,18 +1017,6 @@
           "id": "secondary_button_border_color",
           "label": "Secondary button border",
           "default": "#FFFFFF"
-        },
-        {
-          "type": "color",
-          "id": "media_background_color",
-          "label": "Media background",
-          "default": "#171717"
-        },
-        {
-          "type": "color",
-          "id": "media_border_color",
-          "label": "Media border",
-          "default": "#4D4D4D"
         },
         {
           "type": "checkbox",

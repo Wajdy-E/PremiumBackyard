@@ -35,6 +35,32 @@
         "background_overlay_opacity": 50
       }
     },
+    "custom_tabs_P9JUez": {
+      "type": "custom-tabs",
+      "blocks": {
+        "tab_n7LFMX": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "Lead Time Notice",
+            "tab_content": "<p>⏱ Please note: All Furniture orders have a 6-week lead time plus 2 business days for PremiumBackyard.ca to process your order.</p>"
+          }
+        },
+        "tab_WD8QBh": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "",
+            "tab_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_n7LFMX",
+        "tab_WD8QBh"
+      ],
+      "custom_css": [],
+      "name": "Custom Tabs",
+      "settings": {}
+    },
     "main": {
       "type": "static-collection",
       "custom_css": [],
@@ -125,6 +151,7 @@
   },
   "order": [
     "dynamic_featured_collection_qw84eP",
+    "custom_tabs_P9JUez",
     "main",
     "static-recently-viewed",
     "static-collection-promo-grid"
